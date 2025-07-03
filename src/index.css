@@ -1,0 +1,130 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Gulf-inspired design system with refined color palette */
+
+@layer base {
+  :root {
+    --background: 255 255 255;
+    --foreground: 51 51 51;
+
+    --card: 255 255 255;
+    --card-foreground: 51 51 51;
+
+    --popover: 255 255 255;
+    --popover-foreground: 51 51 51;
+
+    --primary: 26 83 92;      /* Deep Teal #1A535C */
+    --primary-foreground: 255 255 255;
+
+    --secondary: 244 225 210;  /* Warm Sand #F4E1D2 */
+    --secondary-foreground: 51 51 51;
+
+    --muted: 229 231 235;
+    --muted-foreground: 107 114 128;
+
+    --accent: 247 179 43;      /* Saffron Gold #F7B32B */
+    --accent-foreground: 51 51 51;
+
+    --destructive: 239 68 68;
+    --destructive-foreground: 255 255 255;
+
+    --border: 229 231 235;
+    --input: 229 231 235;
+    --ring: 26 83 92;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 51 51 51;
+    --foreground: 255 255 255;
+
+    --card: 51 51 51;
+    --card-foreground: 255 255 255;
+
+    --popover: 51 51 51;
+    --popover-foreground: 255 255 255;
+
+    --primary: 26 83 92;
+    --primary-foreground: 255 255 255;
+
+    --secondary: 75 85 99;
+    --secondary-foreground: 255 255 255;
+
+    --muted: 75 85 99;
+    --muted-foreground: 156 163 175;
+
+    --accent: 247 179 43;
+    --accent-foreground: 51 51 51;
+
+    --destructive: 220 38 38;
+    --destructive-foreground: 255 255 255;
+
+    --border: 75 85 99;
+    --input: 75 85 99;
+    --ring: 26 83 92;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-noto;
+  }
+
+  /* RTL Support for Arabic */
+  [dir="rtl"] {
+    @apply font-noto-arabic;
+  }
+
+  /* Smooth transitions */
+  * {
+    transition: all 0.2s ease-in-out;
+  }
+}
+
+@layer components {
+  /* Primary CTA Buttons - Saffron Gold */
+  .btn-primary {
+    @apply bg-gulf-gold hover:bg-gulf-gold/90 text-gulf-dark px-6 py-3 rounded-lg font-medium transition-all duration-200 hover:scale-105 shadow-lg;
+  }
+  
+  /* Secondary Buttons - Warm Sand */
+  .btn-secondary {
+    @apply bg-gulf-secondary hover:bg-gulf-secondary/80 text-gulf-dark px-6 py-3 rounded-lg font-medium transition-all duration-200 hover:scale-105;
+  }
+
+  /* Accent Buttons - Deep Teal */
+  .btn-accent {
+    @apply bg-gulf-primary hover:bg-gulf-primary/90 text-white px-6 py-3 rounded-lg font-medium transition-all duration-200 hover:scale-105 shadow-lg;
+  }
+
+  /* Coral Accent for Links */
+  .link-coral {
+    @apply text-gulf-coral hover:text-gulf-coral/80 transition-colors;
+  }
+
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-xl hover:-translate-y-1;
+  }
+
+  /* Gulf gradient using the refined palette */
+  .gradient-gulf {
+    background: linear-gradient(135deg, #1A535C 0%, #F7B32B 50%, #FF6F61 100%);
+  }
+
+  /* Background variations */
+  .bg-gulf-sand {
+    @apply bg-gulf-secondary;
+  }
+
+  .bg-gulf-teal {
+    @apply bg-gulf-primary;
+  }
+}
