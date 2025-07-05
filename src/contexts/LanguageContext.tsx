@@ -26,6 +26,8 @@ const translations = {
     'nav.site3': 'مجلس التعاون لدول الخليج العربية',
     'nav.site4': 'منظمة العمل الدولية',
     'nav.site5': 'قسم الشؤون الاقتصادية والاجتماعية بالأمم المتحدة',
+    'nav.login':'Login',
+    'nav.logout':'Logout',
 
 
 
@@ -151,6 +153,20 @@ const translations = {
     'contact.info.email': 'info@sawa-gulf.org',
     'contact.info.phone': '+971 XX XXX XXXX',
     'contact.info.workingHours': 'Sunday - Thursday: 9:00 AM - 6:00 PM\nFriday - Saturday: Closed',
+           // Login Page
+    'login.title': 'Login',
+    'login.subtitle': 'Please log in to download resources and access premium content.',
+    'login.email': 'Email',
+    'login.emailPlaceholder': 'Enter your email',
+    'login.password': 'Password',
+    'login.passwordPlaceholder': 'Enter your password',
+    'login.submit': 'Login',
+    'login.switchToRegister': 'D’ont have an account? Sign up',
+    'login.forgotPassword': 'Forgot your password?',
+        'backToProjects': 'Back to Projects',
+    'backToArticles': 'Back to Articles',
+
+
   },
   ar: {
     // Navigation
@@ -161,6 +177,10 @@ const translations = {
     'nav.resources': 'الموارد',
     'nav.services': 'خدماتنا',
     'nav.contact': 'اتصل بنا',
+    'nav.login':'تسجيل الدخول',
+    'nav.logout':'تسجيل الخروج',
+
+
 
      'nav.site1': 'مجلس التعاون لدول الخليج العربية',
     'nav.site2': 'اتحاد الجمعيات التعاونية الاستهلاكية بدولة الكويت',
@@ -262,6 +282,10 @@ const translations = {
     'projects.status.active': 'نشط',
     'projects.status.completed': 'مكتمل',
     'projects.status.inProgress': 'قيد التنفيذ',
+    'backToProjects': 'العودة إلى المبادرات',
+    'backToArticles': 'العودة إلى المقالات',
+
+
     
     // Resources Page
     'resources.title': 'الموارد والتحميلات',
@@ -287,6 +311,18 @@ const translations = {
     'contact.info.email': 'info@sawa-gulf.org',
     'contact.info.phone': '+971 XX XXX XXXX',
     'contact.info.workingHours': 'الأحد - الخميس: 9:00 صباحاً - 6:00 مساءً\nالجمعة - السبت: مغلق',
+    
+    'login.title': 'تسجيل الدخول',
+    'login.subtitle': 'يرجى تسجيل الدخول لتحميل الموارد والوصول إلى المحتوى المميز.',
+    'login.email': 'البريد الإلكتروني',
+    'login.emailPlaceholder': 'أدخل بريدك الإلكتروني',
+    'login.password': 'كلمة المرور',
+    'login.passwordPlaceholder': 'أدخل كلمة المرور الخاصة بك',
+    'login.submit': 'تسجيل الدخول',
+    'login.switchToRegister': 'ليس لديك حساب؟ سجل الآن',
+    'login.forgotPassword': 'هل نسيت كلمة المرور؟'
+
+
   },
   fr: {
     // Navigation
@@ -297,6 +333,10 @@ const translations = {
     'nav.resources': 'Ressources',
     'nav.services': 'Nos services',
     'nav.contact': 'Contact',
+    'nav.login':'se connecter',
+    'nav.logout':'déconnecter',
+
+
     
     // Hero Section
     'hero.title': 'Construire des',
@@ -322,6 +362,8 @@ const translations = {
     'blog.viewAll': 'Voir Tous les Articles',
     'blog.author': 'Par',
     'blog.readTime': 'min de lecture',
+    'backToProjects': 'Retour aux articles',
+
     
     // Services Section
     'services.title': 'Nos Services',
@@ -398,7 +440,8 @@ const translations = {
     'projects.status.active': 'Actif',
     'projects.status.completed': 'Terminé',
     'projects.status.inProgress': 'En Cours',
-    
+    'backToArticles': 'Retour aux initiatives',
+
     // Resources Page
     'resources.title': 'Ressources et Téléchargements',
     'resources.subtitle': 'Outils et Guides Essentiels pour le Succès Coopératif',
@@ -423,6 +466,22 @@ const translations = {
     'contact.info.email': 'info@sawa-gulf.org',
     'contact.info.phone': '+971 XX XXX XXXX',
     'contact.info.workingHours': 'Dimanche - Jeudi: 9h00 - 18h00\nVendredi - Samedi: Fermé',
+
+    'login.title': 'Connexion',
+    'login.subtitle': 'Veuillez vous connecter pour télécharger des ressources et accéder au contenu premium.',
+    'login.email': 'Email',
+    'login.emailPlaceholder': 'Entrez votre email',
+    'login.password': 'Mot de passe',
+    'login.passwordPlaceholder': 'Entrez votre mot de passe',
+    'login.submit': 'Se connecter',
+    'login.switchToRegister': 'Vous n’avez pas de compte ? Inscrivez-vous',
+    'login.forgotPassword': 'Mot de passe oublié ?'
+
+
+
+
+
+
   },
 };
 

@@ -17,7 +17,7 @@ const Projects = () => {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const response = await axios.get('http://localhost:8080/admin/initiatives/get-all-initiatives');
+        const response = await axios.get('http://localhost:8080/api/initiatives/get-all-initiatives');
         const fetchedProjects = response.data.map((project: any) => ({
           id: project.id,
           title: project.title,
@@ -26,7 +26,6 @@ const Projects = () => {
           date: project.createdAt?.split('T')[0] || 'N/A',
           participants: project.participants || 0,
           image: project.imageUrl || 'https://via.placeholder.com/600x400',
-          status: project.status || 'In Progress',
         }));
         setProjects(fetchedProjects);
       } catch (err: any) {
@@ -51,18 +50,7 @@ const Projects = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const getStatusTranslation = (status: string) => {
-    switch (status) {
-      case 'Active':
-        return t('projects.status.active');
-      case 'Completed':
-        return t('projects.status.completed');
-      case 'In Progress':
-        return t('projects.status.inProgress');
-      default:
-        return status;
-    }
-  };
+ 
 
   if (loading) {
     return (
@@ -123,19 +111,7 @@ const Projects = () => {
                       alt={project.title}
                       className="w-full h-48 object-cover transition-transform duration-500 hover:scale-110"
                     />
-                    <div className="absolute top-4 left-4">
-                      <span
-                        className={`px-3 py-1 rounded-full text-sm font-medium ${
-                          project.status === 'Active'
-                            ? 'bg-gulf-coral text-gulf-white'
-                            : project.status === 'Completed'
-                            ? 'bg-gulf-primary text-gulf-white'
-                            : 'bg-gulf-gold text-gulf-dark'
-                        }`}
-                      >
-                        {getStatusTranslation(project.status)}
-                      </span>
-                    </div>
+                   
                   </div>
 
                   <div className="p-6">
@@ -156,10 +132,7 @@ const Projects = () => {
                         <Calendar className="w-4 h-4 mr-2" />
                         <span>{project.date}</span>
                       </div>
-                      <div className="flex items-center text-sm text-gulf-dark/60">
-                        <Users className="w-4 h-4 mr-2" />
-                        <span>{project.participants} {t('projects.participants')}</span>
-                      </div>
+                     
                     </div>
 
                     <Link
