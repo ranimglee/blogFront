@@ -17,7 +17,7 @@ const Resources = () => {
   useEffect(() => {
     const fetchResources = async () => {
       try {
-        const response = await axios.get('http://localhost:8080/api/ressources');
+        const response = await axios.get('https://blog-production-5144.up.railway.app/api/ressources');
         console.log('API Response:', response.data); // Log full response for debugging
         if (Array.isArray(response.data)) {
           const fetchedResources = response.data.map((resource: any) => {
@@ -71,7 +71,7 @@ const handleDownload = async (ressourceId: string, fileName: any) => {
     console.log(`📥 Début du téléchargement pour ressourceId = ${ressourceId}`);
 
     const response = await axios.get(
-      `http://localhost:8080/api/ressources/download/${ressourceId}`,
+      `https://blog-production-5144.up.railway.app/api/ressources/download/${ressourceId}`,
       { responseType: 'blob' }
     );
 

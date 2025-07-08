@@ -52,7 +52,7 @@ const Login = () => {
       }
 
       try {
-        const response = await axios.post('http://localhost:8080/auth/login', {
+        const response = await axios.post('https://blog-production-5144.up.railway.app/auth/login', {
           email,
           password,
         });
@@ -92,7 +92,7 @@ const Login = () => {
       }
 
       try {
-        const response = await axios.post('http://localhost:8080/auth/register', {
+        const response = await axios.post('https://blog-production-5144.up.railway.app/auth/register', {
           fullName,
           email,
           password,

@@ -15,7 +15,7 @@ const BlogSection = () => {
   useEffect(() => {
     const fetchArticles = async () => {
       try {
-        const response = await axios.get('http://localhost:8080/api/articles');
+        const response = await axios.get('https://blog-production-5144.up.railway.app/api/articles');
         const articles = response.data.map((article: any) => ({
           id: article.id,
           title: article.title,

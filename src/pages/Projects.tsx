@@ -6,6 +6,7 @@ import { Calendar, MapPin, Users, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
+
 const Projects = () => {
   const { t } = useLanguage();
   const [projects, setProjects] = useState<any[]>([]);
@@ -17,7 +18,7 @@ const Projects = () => {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const response = await axios.get('http://localhost:8080/api/initiatives/get-all-initiatives');
+        const response = await axios.get('https://blog-production-5144.up.railway.app/api/initiatives/get-all-initiatives');
         const fetchedProjects = response.data.map((project: any) => ({
           id: project.id,
           title: project.title,

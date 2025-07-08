@@ -17,7 +17,7 @@ const ProjectDetail = () => {
   useEffect(() => {
     const fetchProject = async () => {
       try {
-        const response = await axios.get(`http://localhost:8080/api/initiatives/get-initiative-by/${id}`);
+        const response = await axios.get(`https://blog-production-5144.up.railway.app/api/initiatives/get-initiative-by/${id}`);
         const data = response.data;
 
         const mappedProject = {

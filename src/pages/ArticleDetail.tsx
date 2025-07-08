@@ -29,8 +29,8 @@ const ArticleDetail = () => {
     const fetchArticle = async () => {
       try {
         const [articleResponse, commentsResponse] = await Promise.all([
-          axios.get(`http://localhost:8080/api/articles/${id}`),
-          axios.get(`http://localhost:8080/api/comments/article/${id}`)
+          axios.get(`https://blog-production-5144.up.railway.app/api/articles/${id}`),
+          axios.get(`https://blog-production-5144.up.railway.app/api/comments/article/${id}`)
         ]);
 
         const data = articleResponse.data;
@@ -85,7 +85,7 @@ const ArticleDetail = () => {
     try {
       const token = localStorage.getItem('token');
       await axios.post(
-        'http://localhost:8080/api/comments',
+        'https://blog-production-5144.up.railway.app/api/comments',
         {
           articleId: id,
           content: newComment
