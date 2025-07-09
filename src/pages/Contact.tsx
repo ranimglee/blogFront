@@ -26,7 +26,7 @@ const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElemen
     e.preventDefault();
     setStatus('loading');
     try {
-      await axios.post('http://localhost:8080/send-message', formData);
+      await axios.post('https://blog-production-5144.up.railway.app/public/send-message', formData);
       setStatus('success');
       setFormData({ fullName: '', email: '', subject: '', message: '' });
     } catch (error) {
