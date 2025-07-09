@@ -16,16 +16,19 @@ const BlogSection = () => {
     const fetchArticles = async () => {
       try {
         const response = await axios.get('https://blog-production-5144.up.railway.app/api/articles');
-        const articles = response.data.map((article: any) => ({
-          id: article.id,
-          title: article.title,
-          excerpt: article.description,
-          author: article.auteur,
-          date: article.createdAt.split('T')[0],
-          category: article.type,
-          image: article.imageUrl,
-          readTime: Math.ceil(article.contenu.length / 200) || 4,
-        }));
+      const articles = response.data
+  .sort((a: any, b: any) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
+  .map((article: any) => ({
+    id: article.id,
+    title: article.title,
+    excerpt: article.description,
+    author: article.auteur,
+    date: article.createdAt.split('T')[0],
+    category: article.type,
+    image: article.imageUrl,
+    readTime: Math.ceil(article.contenu.length / 200) || 4,
+  }));
+
         setBlogPosts(articles);
       } catch (err: any) {
         setError('Failed to fetch articles. Please try again later.');
