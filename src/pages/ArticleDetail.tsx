@@ -144,7 +144,7 @@ const ArticleDetail = () => {
       <Header />
       <main className="pt-20">
         <section className="py-12 bg-gradient-to-br from-gulf-secondary/30 to-gulf-white">
-          <div className="container mx-auto px-4">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <Link
               to="/article"
               className="inline-flex items-center text-gulf-primary hover:text-gulf-coral transition-colors mb-8"
@@ -189,7 +189,7 @@ const ArticleDetail = () => {
         </section>
 
         <section className="py-16">
-          <div className="container mx-auto px-4">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <div className="prose prose-lg max-w-none text-gulf-dark/90 leading-relaxed break-words">
                 <div dangerouslySetInnerHTML={{ __html: article.content }} />

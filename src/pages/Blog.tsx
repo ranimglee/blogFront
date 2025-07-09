@@ -10,7 +10,9 @@ const Blog = () => {
       <Header />
       
       <main className="pt-20">
-        <BlogSection />
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <BlogSection />
+        </div>
       </main>
 
       <Footer />

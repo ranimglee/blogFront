@@ -34,7 +34,7 @@ const Header = () => {
 
   return (
     <header className="bg-gulf-primary backdrop-blur-md fixed w-full top-0 z-50 border-b border-gulf-light">
-      <div className="container mx-auto px-4 py-4">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3">
@@ -52,7 +52,7 @@ const Header = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-8">
+          <nav className="hidden lg:flex items-center space-x-4 md:space-x-8">
             {menuItems.map((item) => (
               <Link
                 key={item.key}

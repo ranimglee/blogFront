@@ -88,7 +88,7 @@ const ProjectDetail = () => {
       <Header />
       <main className="pt-20">
         <section className="py-12 bg-gradient-to-br from-gulf-secondary/30 to-gulf-white">
-          <div className="container mx-auto px-4">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <Link to="/projects" className="inline-flex items-center text-gulf-primary hover:text-gulf-coral mb-8">
               <ArrowLeft className="w-4 h-4 mr-2" />
               {t('backToProjects')}

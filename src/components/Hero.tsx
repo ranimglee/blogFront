@@ -16,17 +16,17 @@ const Hero = () => {
       <div className="absolute top-20 right-20 w-64 h-64 bg-gulf-primary/10 rounded-full blur-3xl"></div>
       <div className="absolute bottom-20 left-20 w-96 h-96 bg-gulf-gold/10 rounded-full blur-3xl"></div>
 
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center max-w-4xl mx-auto animate-fade-in">
           {/* Main Heading */}
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-gulf-dark mb-6 leading-tight">
+          <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-gulf-dark mb-6 leading-tight">
             {t('hero.title')}
             <span className="bg-gradient-to-r from-gulf-primary to-gulf-gold bg-clip-text text-transparent"> {t('hero.titleHighlight')} </span>
             {t('hero.titleEnd')}
           </h1>
           
           {/* Subheading */}
-          <h2 className="text-xl md:text-2xl text-gulf-dark/80 mb-8 font-light">
+          <h2 className="text-base sm:text-xl md:text-2xl text-gulf-dark/80 mb-8 font-light">
             {t('hero.subtitle')}
           </h2>
           

@@ -191,7 +191,7 @@ const handleDownload = async (ressourceId: string, fileName: any) => {
       <main className="pt-20">
         {/* Hero Section */}
         <section className="py-20 bg-gradient-to-br from-gulf-secondary/30 to-white">
-          <div className="container mx-auto px-4">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-4xl mx-auto">
               <h1 className="text-5xl md:text-6xl font-bold text-gulf-dark mb-6">
                 {t('resources.title')}
@@ -205,7 +205,7 @@ const handleDownload = async (ressourceId: string, fileName: any) => {
 
         {/* Filter Section */}
         <section className="py-8 bg-white border-b border-gulf-secondary/30">
-          <div className="container mx-auto px-4">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-wrap justify-center gap-4">
               {categories.map((category) => (
                 <button
@@ -226,7 +226,7 @@ const handleDownload = async (ressourceId: string, fileName: any) => {
 
         {/* Resources Grid */}
         <section className="py-20">
-          <div className="container mx-auto px-4">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
               {currentResources.map((resource) => {
                 const fileName = resource.fileUrl

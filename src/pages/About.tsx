@@ -62,7 +62,7 @@ const About = () => {
       <main className="pt-20">
         {/* Hero Section */}
         <section className="py-16 bg-gradient-to-br from-gulf-secondary/10 to-white">
-          <div className="container mx-auto px-4">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
             <div className="text-center max-w-4xl mx-auto">
               <div className="w-12 h-12 bg-gulf-primary rounded-lg flex items-center justify-center text-white mx-auto mb-6">
                 <Compass className="w-6 h-6" />
@@ -76,7 +76,7 @@ const About = () => {
               </p>
               
               {/* Highlights Grid */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+              <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-6">
                 {highlights.map((item, index) => (
                   <div key={index} className="text-center">
                     <div className={`${item.color} mb-3 mx-auto`}>
@@ -93,8 +93,8 @@ const About = () => {
 
         {/* Vision & Mission - Balanced Layout */}
         <section className="py-16 bg-white">
-          <div className="container mx-auto px-4 max-w-6xl">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8">
               {/* Vision */}
               <div className="bg-gulf-secondary/5 p-8 rounded-lg border border-gulf-light/50">
                 <div className="flex items-center mb-6">
@@ -138,7 +138,7 @@ const About = () => {
 
         {/* What We Offer */}
         <section className="py-16 bg-gulf-secondary/5">
-          <div className="container mx-auto px-4 max-w-6xl">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
             <div className="text-center mb-12">
               <div className="w-10 h-10 bg-gulf-coral rounded-lg flex items-center justify-center text-white mx-auto mb-4">
                 <BookOpen className="w-5 h-5" />
@@ -146,7 +146,7 @@ const About = () => {
               <h2 className="text-3xl font-bold text-gulf-dark mb-2">{t('about.offer.title')}</h2>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
               {offerings.map((offering, index) => (
                 <div key={index} className="bg-white p-6 rounded-lg border border-gulf-light/50">
                   <div className="w-8 h-8 bg-gulf-primary/10 rounded-lg flex items-center justify-center text-gulf-primary mb-4">
@@ -162,7 +162,7 @@ const About = () => {
 
         {/* Scope & Team - Balanced Content */}
         <section className="py-16 bg-white">
-          <div className="container mx-auto px-4 max-w-6xl">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               {/* Scope */}
               <div className="bg-gulf-coral/5 p-8 rounded-lg border border-gulf-light/50">
@@ -219,7 +219,7 @@ const About = () => {
 
         {/* Contact Section */}
         <section className="py-16 bg-gulf-primary text-white">
-          <div className="container mx-auto px-4 max-w-4xl text-center">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl text-center">
             <div className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center text-white mx-auto mb-6">
               <Mail className="w-6 h-6" />
             </div>
@@ -228,7 +228,7 @@ const About = () => {
               📧 {t('about.contact.email')}
             </p>
             
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+            <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4 mb-8">
               {contactItems.map((item, index) => (
                 <div key={index} className="bg-white/10 p-4 rounded-lg text-center">
                   <div className="text-white mb-2 flex justify-center">{item.icon}</div>

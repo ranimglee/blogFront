@@ -93,7 +93,7 @@ const translations = {
     'footer.newsletterDescription': 'Get the latest updates on cooperative developments in the Gulf region.',
     'footer.emailPlaceholder': 'Enter your email',
     'footer.subscribe': 'Subscribe',
-    'footer.copyright': '© 2024 Sawa - Gulf Cooperatives Platform. All rights reserved.',
+    'footer.copyright': '© 2025 Afaq - Gulf Cooperatives Platform. All rights reserved.',
     'footer.privacy': 'Privacy Policy',
     'footer.terms': 'Terms of Service',
     'footer.cookies': 'Cookies',
@@ -174,7 +174,7 @@ const translations = {
     'contact.send': 'Send Message',
     'contact.info.title': 'Contact Information',
     'contact.info.address': 'Gulf Cooperation Council Region',
-    'contact.info.email': 'info@sawa-gulf.org',
+    'contact.info.email': 'info@afaq-gulf.org',
     'contact.info.phone': '+971 XX XXX XXXX',
     'contact.info.workingHours': 'Sunday - Thursday: 9:00 AM - 6:00 PM\nFriday - Saturday: Closed',
            // Login Page
@@ -281,7 +281,7 @@ const translations = {
     'footer.newsletterDescription': 'احصل على أحدث التطورات حول تطوير التعاونيات في منطقة الخليج.',
     'footer.emailPlaceholder': 'أدخل بريدك الإلكتروني',
     'footer.subscribe': 'اشترك',
-    'footer.copyright': '© 2025 سوا - منصة التعاونيات الخليجية. جميع الحقوق محفوظة.',
+    'footer.copyright': '© 2025 آفاق - منصة التعاونيات الخليجية. جميع الحقوق محفوظة.',
     'footer.privacy': 'سياسة الخصوصية',
     'footer.terms': 'شروط الخدمة',
     'footer.cookies': 'ملفات تعريف الارتباط',
@@ -366,7 +366,7 @@ const translations = {
     'contact.send': 'إرسال الرسالة',
     'contact.info.title': 'معلومات الاتصال',
     'contact.info.address': 'منطقة مجلس التعاون الخليجي',
-    'contact.info.email': 'info@sawa-gulf.org',
+    'contact.info.email': 'info@afaq-gulf.org',
     'contact.info.phone': '+971 XX XXX XXXX',
     'contact.info.workingHours': 'الأحد - الخميس: 9:00 صباحاً - 6:00 مساءً\nالجمعة - السبت: مغلق',
     
@@ -474,7 +474,7 @@ const translations = {
     'footer.newsletterDescription': 'Recevez les dernières mises à jour sur les développements coopératifs dans la région du Golfe.',
     'footer.emailPlaceholder': 'Entrez votre email',
     'footer.subscribe': 'S\'abonner',
-    'footer.copyright': '© 2024 Sawa - Plateforme des Coopératives du Golfe. Tous droits réservés.',
+    'footer.copyright': '© 2025 Afaq - Plateforme des Coopératives du Golfe. Tous droits réservés.',
     'footer.privacy': 'Politique de Confidentialité',
     'footer.terms': 'Conditions de Service',
     'footer.cookies': 'Cookies',
@@ -556,7 +556,7 @@ const translations = {
     'contact.send': 'Envoyer le Message',
     'contact.info.title': 'Informations de Contact',
     'contact.info.address': 'Région du Conseil de Coopération du Golfe',
-    'contact.info.email': 'info@sawa-gulf.org',
+    'contact.info.email': 'info@afaq-gulf.org',
     'contact.info.phone': '+971 XX XXX XXXX',
     'contact.info.workingHours': 'Dimanche - Jeudi: 9h00 - 18h00\nVendredi - Samedi: Fermé',
 
@@ -591,7 +591,7 @@ const translations = {
 };
 
 export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [language, setLanguage] = useState<Language>('en');
+  const [language, setLanguage] = useState<Language>('ar');
 
   const t = (key: string): string => {
     return translations[language][key] || key;

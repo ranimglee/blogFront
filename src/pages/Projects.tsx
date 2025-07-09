@@ -88,7 +88,7 @@ const Projects = () => {
       <main className="pt-20">
         {/* Hero Section */}
         <section className="py-20 bg-gradient-to-br from-gulf-secondary/30 to-gulf-white">
-          <div className="container mx-auto px-4">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-4xl mx-auto">
               <h1 className="text-5xl md:text-6xl font-bold text-gulf-dark mb-6">
                 {t('projects.title')}
@@ -102,7 +102,7 @@ const Projects = () => {
 
         {/* Projects Grid */}
         <section className="py-20">
-          <div className="container mx-auto px-4">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
               {currentProjects.map((project) => (
                 <div key={project.id} className="bg-gulf-white border border-gulf-light rounded-2xl overflow-hidden shadow-lg card-hover">
