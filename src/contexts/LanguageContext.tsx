@@ -199,7 +199,10 @@ const translations = {
 'register.confirmPassword': 'Confirm Password',
 'register.confirmPasswordPlaceholder': 'Re-enter your password',
 'register.submit': 'Sign up',
-'register.switchToLogin': 'Already have an account? Log in'
+'register.switchToLogin': 'Already have an account? Log in',
+"contact.sending": "Sending...",
+"contact.successMessage": "Message sent successfully!",
+"contact.errorMessage": "Something went wrong. Please try again."
 
   },
   ar: {
@@ -390,6 +393,9 @@ const translations = {
 'register.submit': 'إنشاء حساب',
 'register.switchToLogin': 'هل لديك حساب بالفعل؟ تسجيل الدخول',
 
+"contact.sending": "Sending...",
+"contact.successMessage": "Message sent successfully!",
+"contact.errorMessage": "Something went wrong. Please try again."
 
 
   },
@@ -559,6 +565,9 @@ const translations = {
     'contact.info.email': 'info@afaq-gulf.org',
     'contact.info.phone': '+971 XX XXX XXXX',
     'contact.info.workingHours': 'Dimanche - Jeudi: 9h00 - 18h00\nVendredi - Samedi: Fermé',
+"contact.sending": "Sending...",
+"contact.successMessage": "Message sent successfully!",
+"contact.errorMessage": "Something went wrong. Please try again.",
 
     'login.title': 'Connexion',
     'login.subtitle': 'Veuillez vous connecter pour télécharger des ressources et accéder au contenu premium.',
