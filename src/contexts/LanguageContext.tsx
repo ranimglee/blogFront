@@ -191,7 +191,16 @@ const translations = {
     'backToArticles': 'Back to Articles',
 
   'aboutAuthor':'About the Author',
-    'authorDescription':' is an expert in cooperative development and sustainable business practices in the Gulf region'
+    'authorDescription':' is an expert in cooperative development and sustainable business practices in the Gulf region',
+    'register.title': 'Register',
+'register.subtitle': 'Please sign up to create an account.',
+'register.fullName': 'Full Name',
+'register.fullNamePlaceholder': 'Enter your full name',
+'register.confirmPassword': 'Confirm Password',
+'register.confirmPasswordPlaceholder': 'Re-enter your password',
+'register.submit': 'Sign up',
+'register.switchToLogin': 'Already have an account? Log in'
+
   },
   ar: {
     // Navigation
@@ -272,7 +281,7 @@ const translations = {
     'footer.newsletterDescription': 'احصل على أحدث التطورات حول تطوير التعاونيات في منطقة الخليج.',
     'footer.emailPlaceholder': 'أدخل بريدك الإلكتروني',
     'footer.subscribe': 'اشترك',
-    'footer.copyright': '© 2024 سوا - منصة التعاونيات الخليجية. جميع الحقوق محفوظة.',
+    'footer.copyright': '© 2025 سوا - منصة التعاونيات الخليجية. جميع الحقوق محفوظة.',
     'footer.privacy': 'سياسة الخصوصية',
     'footer.terms': 'شروط الخدمة',
     'footer.cookies': 'ملفات تعريف الارتباط',
@@ -371,7 +380,16 @@ const translations = {
     'login.switchToRegister': 'ليس لديك حساب؟ سجل الآن',
     'login.forgotPassword': 'هل نسيت كلمة المرور؟',
 'aboutAuthor': 'عن المؤلف',
-'authorDescription': ' هو خبير في تطوير التعاونيات والممارسات التجارية المستدامة في منطقة الخليج'
+'authorDescription': ' هو خبير في تطوير التعاونيات والممارسات التجارية المستدامة في منطقة الخليج',
+'register.title': 'التسجيل',
+'register.subtitle': 'يرجى إنشاء حساب للمتابعة.',
+'register.fullName': 'الاسم الكامل',
+'register.fullNamePlaceholder': 'أدخل اسمك الكامل',
+'register.confirmPassword': 'تأكيد كلمة المرور',
+'register.confirmPasswordPlaceholder': 'أعد إدخال كلمة المرور',
+'register.submit': 'إنشاء حساب',
+'register.switchToLogin': 'هل لديك حساب بالفعل؟ تسجيل الدخول',
+
 
 
   },
@@ -551,6 +569,15 @@ const translations = {
     'login.submit': 'Se connecter',
     'login.switchToRegister': 'Vous n’avez pas de compte ? Inscrivez-vous',
     'login.forgotPassword': 'Mot de passe oublié ?',
+'register.title': 'Inscription',
+'register.subtitle': 'Veuillez créer un compte pour continuer.',
+'register.fullName': 'Nom complet',
+'register.fullNamePlaceholder': 'Entrez votre nom complet',
+'register.confirmPassword': 'Confirmer le mot de passe',
+'register.confirmPasswordPlaceholder': 'Confirmez votre mot de passe',
+'register.submit': 'S’inscrire',
+'register.switchToLogin': 'Vous avez déjà un compte ? Connectez-vous',
+
 
 'aboutAuthor': 'À propos de l’auteur',
 'authorDescription': 'est un expert en développement coopératif et en pratiques commerciales durables dans la région du Golfe'

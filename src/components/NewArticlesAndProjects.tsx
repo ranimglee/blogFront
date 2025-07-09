@@ -9,6 +9,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const NewArticlesAndProjects = () => {
   const { t } = useLanguage();
@@ -113,9 +114,11 @@ const [error, setError] = useState<string | null>(null);
         </div>
 
         <div className="text-center">
+           <Link to={`/projects`}>
           <button className="btn-primary">
             {t('projects.viewAll')}
           </button>
+          </Link>
         </div>
       </div>
     </section>

@@ -130,7 +130,13 @@ const BlogSection = () => {
             </article>
           ))}
         </div>
-
+  <div className="text-center">
+           <Link to={`/article`}>
+          <button className="btn-primary">
+            {t('blog.viewAll')}
+          </button>
+          </Link>
+        </div>
         {/* Pagination */}
         {totalPages > 1 && (
           <div className="flex justify-center items-center space-x-2 mt-8">

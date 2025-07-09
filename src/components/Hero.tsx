@@ -2,6 +2,7 @@
 import React from 'react';
 import { ArrowDown } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
+import { Link } from 'react-router-dom';
 
 const Hero = () => {
   const { t } = useLanguage();
@@ -36,12 +37,12 @@ const Hero = () => {
           
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
-            <button className="btn-primary">
-              {t('hero.exploreBtn')}
-            </button>
+                          <Link to={`/about`}>
+          
             <button className="btn-accent">
               {t('hero.learnBtn')}
             </button>
+            </Link>
           </div>
           
           {/* Stats */}
@@ -62,9 +63,7 @@ const Hero = () => {
         </div>
         
         {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <ArrowDown className="w-6 h-6 text-gulf-dark/50" />
-        </div>
+       
       </div>
     </section>
   );
