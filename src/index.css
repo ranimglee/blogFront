@@ -7,7 +7,7 @@
 
 @layer base {
   :root {
-    --background: 255 255 255;
+    /*--background: 255 255 255;*/
     --foreground: 51 51 51;
 
     --card: 255 255 255;
@@ -127,19 +127,4 @@
   .bg-gulf-teal {
     @apply bg-gulf-primary;
   }
-}
-/* Autofill background fix for Chrome & Edge */
-input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus,
-textarea:-webkit-autofill,
-textarea:-webkit-autofill:hover,
-textarea:-webkit-autofill:focus,
-select:-webkit-autofill,
-select:-webkit-autofill:hover,
-select:-webkit-autofill:focus {
-  -webkit-box-shadow: 0 0 0 1000px white inset !important;
-  box-shadow: 0 0 0 1000px white inset !important;
-  -webkit-text-fill-color: #000 !important;
-  transition: background-color 9999s ease-in-out 0s !important;
 }
