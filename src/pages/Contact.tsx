@@ -5,6 +5,8 @@ import { useLanguage } from '../contexts/LanguageContext';
 import { MapPin, Mail, Phone, Clock } from 'lucide-react';
 import axios from 'axios'; // If not already installed: npm install axios
 import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 import React, { useState } from 'react';
 
@@ -17,31 +19,31 @@ const Contact = () => {
     subject: '',
     message: '',
   });
-    const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
-const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { id, value } = e.target;
     setFormData((prev) => ({ ...prev, [id]: value }));
   };
 
-const handleSubmit = async (e: React.FormEvent) => {
-  e.preventDefault();
-  setStatus('loading');
-  try {
-    await axios.post('https://blog-production-5144.up.railway.app/public/send-message', formData);
-    setStatus('success');
-    setFormData({ fullName: '', email: '', subject: '', message: '' });
-    toast.success(t('contact.successMessage') || 'Message sent successfully!');
-  } catch (error) {
-    console.error(error);
-    setStatus('error');
-    toast.error(t('contact.errorMessage') || 'Failed to send message. Please try again.');
-  }
-};
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus('loading');
+    try {
+      await axios.post('https://blog-production-5144.up.railway.app/public/send-message', formData);
+      setStatus('success');
+      setFormData({ fullName: '', email: '', subject: '', message: '' });
+      toast.success(t('contact.successMessage') || 'Message sent successfully!');
+    } catch (error) {
+      console.error(error);
+      setStatus('error');
+      toast.error(t('contact.errorMessage') || 'Failed to send message. Please try again.');
+    }
+  };
 
   return (
     <div className="min-h-screen bg-white">
       <Header />
-      
+
       <main className="pt-20">
         {/* Hero Section */}
         <section className="py-20 bg-gradient-to-br from-gulf-secondary/30 to-white">
@@ -63,68 +65,68 @@ const handleSubmit = async (e: React.FormEvent) => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
               {/* Contact Form */}
               <div className="bg-white p-8 rounded-2xl shadow-lg">
-<form className="space-y-6" onSubmit={handleSubmit}>
+                <form className="space-y-6" onSubmit={handleSubmit}>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                       <label htmlFor="name" className="block text-gulf-dark font-medium mb-2">
                         {t('contact.name')}
                       </label>
-                    <input
-  type="text"
-  id="fullName"
-  value={formData.fullName}
-  onChange={handleChange}
-  className="w-full px-4 py-3 border border-gulf-light rounded-lg focus:outline-none focus:border-gulf-primary"
-  placeholder={t('contact.name')}
-/>
+                      <input
+                        type="text"
+                        id="fullName"
+                        value={formData.fullName}
+                        onChange={handleChange}
+                        className="w-full px-4 py-3 border border-gulf-light rounded-lg focus:outline-none focus:border-gulf-primary"
+                        placeholder={t('contact.name')}
+                      />
 
                     </div>
                     <div>
                       <label htmlFor="email" className="block text-gulf-dark font-medium mb-2">
                         {t('contact.email')}
                       </label>
-                     <input
-  type="email"
-  id="email"
-  value={formData.email}
-  onChange={handleChange}
-  className="w-full px-4 py-3 border border-gulf-light rounded-lg focus:outline-none focus:border-gulf-primary"
-  placeholder={t('contact.email')}
-/>
+                      <input
+                        type="email"
+                        id="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        className="w-full px-4 py-3 border border-gulf-light rounded-lg focus:outline-none focus:border-gulf-primary"
+                        placeholder={t('contact.email')}
+                      />
 
                     </div>
                   </div>
-                  
+
                   <div>
                     <label htmlFor="subject" className="block text-gulf-dark font-medium mb-2">
                       {t('contact.subject')}
                     </label>
-                  <input
-  type="text"
-  id="subject"
-  value={formData.subject}
-  onChange={handleChange}
-  className="w-full px-4 py-3 border border-gulf-light rounded-lg focus:outline-none focus:border-gulf-primary"
-  placeholder={t('contact.subject')}
-/>
+                    <input
+                      type="text"
+                      id="subject"
+                      value={formData.subject}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 border border-gulf-light rounded-lg focus:outline-none focus:border-gulf-primary"
+                      placeholder={t('contact.subject')}
+                    />
 
                   </div>
-                  
+
                   <div>
                     <label htmlFor="message" className="block text-gulf-dark font-medium mb-2">
                       {t('contact.message')}
                     </label>
-                   <textarea
-  id="message"
-  value={formData.message}
-  onChange={handleChange}
-  rows={6}
-  className="w-full px-4 py-3 border border-gulf-light rounded-lg focus:outline-none focus:border-gulf-primary"
-  placeholder={t('contact.message')}
-/>
+                    <textarea
+                      id="message"
+                      value={formData.message}
+                      onChange={handleChange}
+                      rows={6}
+                      className="w-full px-4 py-3 border border-gulf-light rounded-lg focus:outline-none focus:border-gulf-primary"
+                      placeholder={t('contact.message')}
+                    />
 
                   </div>
-                  
+
                   <button type="submit" className="w-full btn-primary">
                     {t('contact.send')}
                   </button>
@@ -137,10 +139,10 @@ const handleSubmit = async (e: React.FormEvent) => {
                   <h3 className="text-2xl font-bold text-gulf-dark mb-6">
                     {t('contact.info.title')}
                   </h3>
-                  
+
                   <div className="space-y-4">
-                   
-                    
+
+
                     <div className="flex items-start space-x-4">
                       <div className="w-12 h-12 bg-gulf-gold/10 rounded-lg flex items-center justify-center text-gulf-gold flex-shrink-0">
                         <Mail className="w-6 h-6" />
@@ -150,7 +152,7 @@ const handleSubmit = async (e: React.FormEvent) => {
                         <p className="text-gulf-dark/70">{t('contact.info.email')}</p>
                       </div>
                     </div>
-                    
+
                     <div className="flex items-start space-x-4">
                       <div className="w-12 h-12 bg-gulf-coral/10 rounded-lg flex items-center justify-center text-gulf-coral flex-shrink-0">
                         <Phone className="w-6 h-6" />
@@ -160,8 +162,8 @@ const handleSubmit = async (e: React.FormEvent) => {
                         <p className="text-gulf-dark/70">{t('contact.info.phone')}</p>
                       </div>
                     </div>
-                    
-                   
+
+
                   </div>
                 </div>
               </div>
@@ -171,6 +173,8 @@ const handleSubmit = async (e: React.FormEvent) => {
       </main>
 
       <Footer />
+      <ToastContainer position="top-right" autoClose={3000} />
+
     </div>
   );
 };
