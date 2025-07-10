@@ -101,7 +101,11 @@ const translations = {
     'footer.email': 'Email',
     'footer.phone': 'Phone',
     'footer.workingHours': 'Working Hours',
-    
+    "footer.invalidEmail": "Please enter a valid email.",
+"footer.subscribeSuccess": "Confirmation email sent!",
+"footer.subscribeError": "Subscription failed.",
+
+
     // About Page - English
     'about.title': 'About AFAQ',
     'about.subtitle': 'Gulf Cooperatives Platform',
@@ -394,9 +398,14 @@ const translations = {
 'register.submit': 'إنشاء حساب',
 'register.switchToLogin': 'هل لديك حساب بالفعل؟ تسجيل الدخول',
 
-"contact.sending": "Sending...",
-"contact.successMessage": "Message sent successfully!",
-"contact.errorMessage": "Something went wrong. Please try again."
+"contact.sending": "جارٍ الإرسال...",
+"contact.successMessage": "تم إرسال الرسالة بنجاح!",
+"contact.errorMessage": "حدث خطأ ما. يرجى المحاولة مرة أخرى.",
+"footer.subscribeSuccess": "تم إرسال بريد التأكيد!",
+"footer.subscribeError": "فشل في الاشتراك.",
+"footer.invalidEmail": "يرجى إدخال بريد إلكتروني صالح.",
+
+
 
 
   },
@@ -566,9 +575,13 @@ const translations = {
     'contact.info.email': 'info@afaq-gulf.org',
     'contact.info.phone': '+971 XX XXX XXXX',
     'contact.info.workingHours': 'Dimanche - Jeudi: 9h00 - 18h00\nVendredi - Samedi: Fermé',
-"contact.sending": "Sending...",
-"contact.successMessage": "Message sent successfully!",
-"contact.errorMessage": "Something went wrong. Please try again.",
+"contact.sending": "Envoi en cours...",
+"contact.successMessage": "Message envoyé avec succès !",
+"contact.errorMessage": "Une erreur est survenue. Veuillez réessayer.",
+
+"footer.subscribeSuccess": "E-mail de confirmation envoyé !",
+"footer.subscribeError": "Échec de l'inscription.",
+"footer.invalidEmail": "Veuillez entrer une adresse e-mail valide.",
 
     'login.title': 'Connexion',
     'login.subtitle': 'Veuillez vous connecter pour télécharger des ressources et accéder au contenu premium.',

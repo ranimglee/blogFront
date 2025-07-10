@@ -1,9 +1,40 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { MapPin, Mail, Link, Linkedin, Twitter, Youtube, Instagram } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
+import axios from 'axios'; // If not already installed: npm install axios
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Footer = () => {
   const { t } = useLanguage();
+
+  const [email, setEmail] = useState('');
+  const [loading, setLoading] = useState(false);
+
+const handleSubscribe = async () => {
+  if (!email.trim()) {
+    toast.error(t('footer.invalidEmail') || 'Please enter a valid email.');
+    return;
+  }
+
+  setLoading(true);
+  try {
+    await axios.post('https://blog-production-5144.up.railway.app/public/subscribe', {
+      email,
+      consent: true,
+    });
+    toast.success(t('footer.subscribeSuccess') || 'Confirmation email sent!');
+    setEmail('');
+  } catch (error: any) {
+    console.error(error);
+    toast.error(
+      error?.response?.data || t('footer.subscribeError') || 'Subscription failed.'
+    );
+  } finally {
+    setLoading(false);
+  }
+}; // ✅ This closing brace was missing!
+
 
   const socialLinks = [
     { name: 'LinkedIn', url: '#', icon: <Linkedin className="w-5 h-5" /> },
@@ -28,7 +59,7 @@ const Footer = () => {
     'Bahrain',
     'Oman',
   ];
-
+ 
   return (
     <footer className="bg-gulf-dark text-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -102,23 +133,62 @@ const Footer = () => {
           </div>
 
           {/* Newsletter */}
-          <div>
-            <h4 className="text-xl font-bold mb-6">{t('footer.newsletter')}</h4>
-            <p className="text-white/70 mb-4">
-              {t('footer.newsletterDescription')}
-            </p>
-            <div className="space-y-3">
-              <input
-                type="email"
-                placeholder={t('footer.emailPlaceholder')}
-                className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/60 focus:outline-none focus:border-gulf-gold"
-              />
-              <button className="w-full bg-gulf-primary hover:bg-gulf-primary/90 text-white px-4 py-3 rounded-lg font-medium transition-colors flex items-center justify-center">
-                <Mail className="w-4 h-4 mr-2" />
-                {t('footer.subscribe')}
-              </button>
-            </div>
-          </div>
+         {/* Newsletter */}
+      <div>
+        <h4 className="text-xl font-bold mb-6">{t('footer.newsletter')}</h4>
+        <p className="text-white/70 mb-4">
+          {t('footer.newsletterDescription')}
+        </p>
+        <div className="space-y-3">
+          <input
+            type="email"
+            placeholder={t('footer.emailPlaceholder')}
+            className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/60 focus:outline-none focus:border-gulf-gold"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+         <button
+  disabled={loading}
+  onClick={handleSubscribe}
+  className="w-full bg-gulf-primary hover:bg-gulf-primary/90 text-white px-4 py-3 rounded-lg font-medium transition-colors flex items-center justify-center disabled:opacity-50"
+>
+  {loading ? (
+    <div className="flex items-center space-x-2">
+      <svg
+        className="animate-spin h-5 w-5 text-white"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+      >
+        <circle
+          className="opacity-25"
+          cx="12"
+          cy="12"
+          r="10"
+          stroke="currentColor"
+          strokeWidth="4"
+        ></circle>
+        <path
+          className="opacity-75"
+          fill="currentColor"
+          d="M4 12a8 8 0 018-8v4l3-3-3-3v4a8 8 0 000 16v-4l-3 3 3 3v-4a8 8 0 01-8-8z"
+        ></path>
+      </svg>
+      <span>{t('contact.sending')}</span>
+    </div>
+  ) : (
+    <>
+      <Mail className="w-4 h-4 mr-2" />
+      {t('footer.subscribe')}
+    </>
+  )}
+</button>
+
+ 
+        </div>
+      </div>
+
+      <ToastContainer position="top-right" autoClose={5000} />
         </div>
 
         {/* Bottom Bar */}
