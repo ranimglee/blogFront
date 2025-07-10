@@ -4,6 +4,7 @@ import Footer from '../components/Footer';
 import { useLanguage } from '../contexts/LanguageContext';
 import { MapPin, Mail, Phone, Clock } from 'lucide-react';
 import axios from 'axios'; // If not already installed: npm install axios
+import { toast, ToastContainer } from 'react-toastify';
 
 import React, { useState } from 'react';
 
@@ -22,18 +23,21 @@ const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElemen
     setFormData((prev) => ({ ...prev, [id]: value }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setStatus('loading');
-    try {
-      await axios.post('https://blog-production-5144.up.railway.app/public/send-message', formData);
-      setStatus('success');
-      setFormData({ fullName: '', email: '', subject: '', message: '' });
-    } catch (error) {
-      console.error(error);
-      setStatus('error');
-    }
-  };
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+  setStatus('loading');
+  try {
+    await axios.post('https://blog-production-5144.up.railway.app/public/send-message', formData);
+    setStatus('success');
+    setFormData({ fullName: '', email: '', subject: '', message: '' });
+    toast.success(t('contact.successMessage') || 'Message sent successfully!');
+  } catch (error) {
+    console.error(error);
+    setStatus('error');
+    toast.error(t('contact.errorMessage') || 'Failed to send message. Please try again.');
+  }
+};
+
   return (
     <div className="min-h-screen bg-white">
       <Header />

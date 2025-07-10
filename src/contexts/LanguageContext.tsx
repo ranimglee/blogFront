@@ -204,6 +204,7 @@ const translations = {
 "contact.successMessage": "Message sent successfully!",
 "contact.errorMessage": "Something went wrong. Please try again."
 
+
   },
   ar: {
     // Navigation
