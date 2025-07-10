@@ -19,7 +19,7 @@ const handleSubscribe = async () => {
 
   setLoading(true);
   try {
-    await axios.post('https://blog-production-5144.up.railway.app/public/subscribe', {
+    await axios.post('https://blog-production-5144.up.railway.app/public/newsletter/subscribe', {
       email,
       consent: true,
     });
