@@ -15,6 +15,7 @@ interface Comment {
 }
 
 const ArticleDetail = () => {
+
   const { id } = useParams<{ id?: string }>();
   const { t } = useLanguage();
   const [article, setArticle] = useState<any>(null);
@@ -29,9 +30,10 @@ const ArticleDetail = () => {
     const fetchArticle = async () => {
       try {
         const [articleResponse, commentsResponse] = await Promise.all([
-          axios.get(`https://blog-production-5144.up.railway.app/api/articles/${id}`),
-          axios.get(`https://blog-production-5144.up.railway.app/api/comments/article/${id}`)
+          axios.get(`${import.meta.env.VITE_API_URL}/api/articles/${id}`),
+          axios.get(`${import.meta.env.VITE_API_URL}/api/comments/article/${id}`)
         ]);
+
 
         const data = articleResponse.data;
         const mappedArticle = {
@@ -85,7 +87,7 @@ const ArticleDetail = () => {
     try {
       const token = localStorage.getItem('token');
       await axios.post(
-        'https://blog-production-5144.up.railway.app/api/comments',
+`${import.meta.env.VITE_API_URL}/api/comments`,
         {
           articleId: id,
           content: newComment
@@ -102,7 +104,7 @@ const ArticleDetail = () => {
       setCommentError(null);
       setTimeout(() => setCommentSuccess(false), 3000);
     } catch (err: any) {
-      setCommentError('Failed to submit comment. Please try again.');
+      setCommentError('You must login to comment');
       console.error('Error submitting comment:', err);
     }
   };

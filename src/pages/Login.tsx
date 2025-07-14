@@ -52,10 +52,14 @@ const Login = () => {
       }
 
       try {
-        const response = await axios.post('https://blog-production-5144.up.railway.app/auth/login', {
-          email,
-          password,
-        });
+        const response = await axios.post(
+          `${import.meta.env.VITE_API_URL}/auth/login`,
+          {
+            email,
+            password,
+          }
+        );
+
         const { token, refreshToken, role } = response.data;
         localStorage.setItem('token', token);
         localStorage.setItem('refreshToken', refreshToken);
@@ -92,7 +96,7 @@ const Login = () => {
       }
 
       try {
-        const response = await axios.post('https://blog-production-5144.up.railway.app/auth/register', {
+        const response = await axios.post(`${import.meta.env.VITE_API_URL}/auth/register`, {
           fullName,
           email,
           password,
@@ -108,7 +112,7 @@ const Login = () => {
   return (
     <div className="min-h-screen bg-white">
       <Header />
-      
+
       <main className="pt-20">
         <section className="py-20">
           <div className="container mx-auto px-4">
@@ -118,13 +122,13 @@ const Login = () => {
                   {isLogin ? t('login.title') : t('register.title')}
                 </h1>
                 <p className="text-gulf-dark/70">
-                  {isLogin 
+                  {isLogin
                     ? t('login.subtitle')
                     : t('register.subtitle')
                   }
                 </p>
               </div>
-              
+
               <form onSubmit={handleSubmit} className="space-y-4">
                 {!isLogin && (
                   <div>
@@ -140,7 +144,7 @@ const Login = () => {
                     />
                   </div>
                 )}
-                
+
                 <div>
                   <label className="block text-sm font-medium text-gulf-dark mb-2">
                     {t('login.email')}
@@ -153,7 +157,7 @@ const Login = () => {
                     required
                   />
                 </div>
-                
+
                 <div>
                   <label className="block text-sm font-medium text-gulf-dark mb-2">
                     {t('login.password')}
@@ -181,17 +185,17 @@ const Login = () => {
                     />
                   </div>
                 )}
-                
+
                 <Button type="submit" className="w-full bg-gulf-primary hover:bg-gulf-primary/90 text-white">
                   {isLogin ? t('login.submit') : t('register.submit')}
                 </Button>
-                
+
                 <div className="text-center">
                   <button
                     onClick={() => setIsLogin(!isLogin)}
                     className="text-gulf-primary hover:text-gulf-primary/80 text-sm"
                   >
-                    {isLogin 
+                    {isLogin
                       ? t('login.switchToRegister')
                       : t('register.switchToLogin')
                     }

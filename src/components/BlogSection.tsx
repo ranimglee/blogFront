@@ -5,6 +5,7 @@ import { useLanguage } from '../contexts/LanguageContext';
 import axios from 'axios';
 
 const BlogSection = () => {
+
   const { t } = useLanguage();
   const [blogPosts, setBlogPosts] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
@@ -15,19 +16,19 @@ const BlogSection = () => {
   useEffect(() => {
     const fetchArticles = async () => {
       try {
-        const response = await axios.get('https://blog-production-5144.up.railway.app/api/articles');
-      const articles = response.data
-  .sort((a: any, b: any) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
-  .map((article: any) => ({
-    id: article.id,
-    title: article.title,
-    excerpt: article.description,
-    author: article.auteur,
-    date: article.createdAt.split('T')[0],
-    category: article.type,
-    image: article.imageUrl,
-    readTime: Math.ceil(article.contenu.length / 200) || 4,
-  }));
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/articles`);
+        const articles = response.data
+          .sort((a: any, b: any) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
+          .map((article: any) => ({
+            id: article.id,
+            title: article.title,
+            excerpt: article.description,
+            author: article.auteur,
+            date: article.createdAt.split('T')[0],
+            category: article.type,
+            image: article.imageUrl,
+            readTime: Math.ceil(article.contenu.length / 200) || 4,
+          }));
 
         setBlogPosts(articles);
       } catch (err: any) {
@@ -133,11 +134,11 @@ const BlogSection = () => {
             </article>
           ))}
         </div>
-  <div className="text-center">
-           <Link to={`/article`}>
-          <button className="btn-primary">
-            {t('blog.viewAll')}
-          </button>
+        <div className="text-center">
+          <Link to={`/article`}>
+            <button className="btn-primary">
+              {t('blog.viewAll')}
+            </button>
           </Link>
         </div>
         {/* Pagination */}
@@ -147,11 +148,10 @@ const BlogSection = () => {
               <button
                 key={index}
                 onClick={() => handlePageChange(index + 1)}
-                className={`px-4 py-2 rounded-full border ${
-                  currentPage === index + 1
+                className={`px-4 py-2 rounded-full border ${currentPage === index + 1
                     ? 'bg-gulf-primary text-white'
                     : 'bg-white text-gulf-dark hover:bg-gulf-light'
-                } transition-colors`}
+                  } transition-colors`}
               >
                 {index + 1}
               </button>

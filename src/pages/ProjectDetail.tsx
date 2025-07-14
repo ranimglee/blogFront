@@ -17,7 +17,7 @@ const ProjectDetail = () => {
   useEffect(() => {
     const fetchProject = async () => {
       try {
-        const response = await axios.get(`https://blog-production-5144.up.railway.app/api/initiatives/get-initiative-by/${id}`);
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/initiatives/get-initiative-by/${id}`);
         const data = response.data;
 
         const mappedProject = {
@@ -95,12 +95,12 @@ const ProjectDetail = () => {
             </Link>
 
             <div className="max-w-4xl mx-auto">
-             
+
 
               <h1 className="text-4xl md:text-5xl font-bold text-gulf-dark mb-6">{project.title}</h1>
 
               <div className="flex flex-wrap items-center gap-6 text-gulf-dark/70 mb-8">
-           
+
                 <div className="flex items-center">
                   <Calendar className="w-4 h-4 mr-2" />
                   <span>{new Date(project.date).toLocaleDateString()}</span>

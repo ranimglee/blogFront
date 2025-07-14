@@ -11,6 +11,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import React, { useState } from 'react';
 
 const Contact = () => {
+
   const { t } = useLanguage();
 
   const [formData, setFormData] = useState({
@@ -29,7 +30,7 @@ const Contact = () => {
     e.preventDefault();
     setStatus('loading');
     try {
-      await axios.post('https://blog-production-5144.up.railway.app/public/send-message', formData);
+      await axios.post(`${import.meta.env.VITE_API_URL}/public/send-message`, formData);
       setStatus('success');
       setFormData({ fullName: '', email: '', subject: '', message: '' });
       toast.success(t('contact.successMessage') || 'Message sent successfully!');

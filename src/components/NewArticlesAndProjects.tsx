@@ -20,7 +20,7 @@ const [error, setError] = useState<string | null>(null);
  useEffect(() => {
   const fetchInitiatives = async () => {
     try {
-      const response = await axios.get('https://blog-production-5144.up.railway.app/api/initiatives/get-all-initiatives');
+const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/initiatives/get-all-initiatives`);
       const initiatives = response.data.map((initiative: any) => ({
            id: initiative.id,
           title: initiative.title,

@@ -8,6 +8,7 @@ import axios from 'axios';
 
 
 const Projects = () => {
+
   const { t } = useLanguage();
   const [projects, setProjects] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
@@ -18,7 +19,7 @@ const Projects = () => {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const response = await axios.get('https://blog-production-5144.up.railway.app/api/initiatives/get-all-initiatives');
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/initiatives/get-all-initiatives`);
         const fetchedProjects = response.data.map((project: any) => ({
           id: project.id,
           title: project.title,
@@ -51,7 +52,7 @@ const Projects = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
- 
+
 
   if (loading) {
     return (
@@ -112,7 +113,7 @@ const Projects = () => {
                       alt={project.title}
                       className="w-full h-48 object-cover transition-transform duration-500 hover:scale-110"
                     />
-                   
+
                   </div>
 
                   <div className="p-6">
@@ -133,7 +134,7 @@ const Projects = () => {
                         <Calendar className="w-4 h-4 mr-2" />
                         <span>{project.date}</span>
                       </div>
-                     
+
                     </div>
 
                     <Link
@@ -157,11 +158,10 @@ const Projects = () => {
                     <button
                       key={pageNumber}
                       onClick={() => handlePageChange(pageNumber)}
-                      className={`px-4 py-2 rounded-full border ${
-                        currentPage === pageNumber
+                      className={`px-4 py-2 rounded-full border ${currentPage === pageNumber
                           ? 'bg-gulf-primary text-white'
                           : 'bg-white text-gulf-dark hover:bg-gulf-light'
-                      } transition-colors`}
+                        } transition-colors`}
                     >
                       {pageNumber}
                     </button>
@@ -170,7 +170,7 @@ const Projects = () => {
               </div>
             )}
 
-          
+
           </div>
         </section>
       </main>
