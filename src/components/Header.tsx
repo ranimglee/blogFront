@@ -21,8 +21,9 @@ const Header = () => {
     { key: 'nav.home', href: '/' },
     { key: 'nav.about', href: '/about' },
     { key: 'nav.article', href: '/article' },
-    { key: 'nav.projects', href: '/projects' },
+    
     { key: 'nav.resources', href: '/resources' },
+    { key: 'nav.projects', href: '/projects' },
     { key: 'nav.contact', href: '/contact' },
   ];
 
