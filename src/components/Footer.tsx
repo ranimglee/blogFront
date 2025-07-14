@@ -50,15 +50,15 @@ await axios.post(`${import.meta.env.VITE_API_URL}/public/newsletter/subscribe`, 
     { nameKey: 'nav.site4', href: 'https://www.ilo.org/topics/cooperatives' },
     { nameKey: 'nav.site5', href: 'https://social.desa.un.org/issues/cooperatives' },
   ];
-
-  const countries = [
-    'United Arab Emirates',
-    'Saudi Arabia',
-    'Kuwait',
-    'Qatar',
-    'Bahrain',
-    'Oman',
+   const usefullinks = [
+    { nameKey: 'nav.site6', href: '/' },
+    { nameKey: 'nav.site7', href: '/about' },
+    { nameKey: 'nav.site8', href: '/article' },
+    { nameKey: 'nav.site9', href: '/projects' },
+    { nameKey: 'nav.site10', href: '/resources' },
   ];
+
+
  
   return (
     <footer className="bg-gulf-dark text-white">
@@ -98,7 +98,7 @@ await axios.post(`${import.meta.env.VITE_API_URL}/public/newsletter/subscribe`, 
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-xl font-bold mb-6">{t('footer.quickLinks')}</h4>
+            <h4 className="text-xl font-bold mb-6">{t('footer.usefullLinks')}</h4>
             <ul className="space-y-3">
               {quickLinks.map((link, index) => (
                 <li key={index}>
@@ -114,31 +114,32 @@ await axios.post(`${import.meta.env.VITE_API_URL}/public/newsletter/subscribe`, 
             </ul>
           </div>
 
-          {/* Gulf Countries */}
+           {/* Quick Links */}
           <div>
-            <h4 className="text-xl font-bold mb-6">{t('footer.gulfRegion')}</h4>
+            <h4 className="text-xl font-bold mb-6">{t('footer.quickLinks')}</h4>
             <ul className="space-y-3">
-              {countries.map((country) => (
-                <li key={country}>
+              {usefullinks.map((link, index) => (
+                <li key={index}>
                   <a
-                    href="#"
+                    href={link.href}
                     className="text-white/70 hover:text-white transition-colors flex items-center"
                   >
-                    <MapPin className="w-4 h-4 mr-2" />
-                    {country}
+                    <Link className="w-4 h-4 mr-2" />
+                    {t(link.nameKey)}
                   </a>
                 </li>
               ))}
             </ul>
           </div>
 
+          {/* Gulf Countries */}
+         
+
           {/* Newsletter */}
          {/* Newsletter */}
       <div>
         <h4 className="text-xl font-bold mb-6">{t('footer.newsletter')}</h4>
-        <p className="text-white/70 mb-4">
-          {t('footer.newsletterDescription')}
-        </p>
+       
         <div className="space-y-3">
           <input
             type="email"

@@ -148,7 +148,6 @@ const Resources = () => {
         <section className="py-20 bg-gradient-to-br from-gulf-secondary/30 to-white text-center">
           <div className="container mx-auto">
             <h1 className="text-5xl font-bold text-gulf-dark mb-4">{t('resources.title')}</h1>
-            <p className="text-xl text-gulf-dark/70">{t('resources.subtitle')}</p>
           </div>
         </section>
 
@@ -159,7 +158,7 @@ const Resources = () => {
               <button
                 key={c.value}
                 onClick={() => setSelectedCategory(c.value)}
-                className={`px-6 py-2 rounded-full border transition-colors ${selectedCategory === c.value
+className={`px-6 py-2 rounded-full   transition-colors ${selectedCategory === c.value
                   ? 'bg-gulf-primary text-white'
                   : 'hover:bg-gulf-primary hover:text-white'
                   }`}
@@ -176,7 +175,7 @@ const Resources = () => {
             {currentResources.map((resource) => {
               const fileName = resource.fileUrl?.split('/').pop()?.split('?')[0] || `resource_${resource.id}`;
               return (
-                <div key={resource.id} className="bg-white border rounded-2xl p-6 shadow-lg">
+<div key={resource.id} className="bg-white border-black rounded-2xl p-6 shadow-lg">
                   <div className="flex space-x-4">
                     <div className="w-12 h-12 bg-gulf-primary/10 rounded-lg flex items-center justify-center text-gulf-primary">
                       {resource.icon}

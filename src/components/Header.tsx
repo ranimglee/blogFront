@@ -31,7 +31,6 @@ const Header = () => {
     setIsAuthenticated(false);
     navigate('/login'); // Redirect to login page
   };
-
   return (
     <header className="bg-gulf-primary backdrop-blur-md fixed w-full top-0 z-50 border-b border-gulf-light">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4">

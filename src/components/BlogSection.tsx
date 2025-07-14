@@ -79,9 +79,7 @@ const BlogSection = () => {
           <h2 className="text-4xl font-bold text-gulf-dark mb-6">
             {t('blog.title')}
           </h2>
-          <p className="text-lg text-gulf-dark/70 max-w-2xl mx-auto">
-            {t('blog.subtitle')}
-          </p>
+         
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">

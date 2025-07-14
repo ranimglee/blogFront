@@ -29,8 +29,12 @@ const translations = {
     'nav.login':'Login',
     'nav.logout':'Logout',
 
-
-
+    'nav.site6': 'Home',
+    'nav.site7': 'About',
+    'nav.site8': 'Articles',
+    'nav.site9': 'Projects',
+    'nav.site10': 'Resources',
+'register.close':'Close',
 
     
     // Hero Section
@@ -88,6 +92,8 @@ const translations = {
     // Footer
     'footer.description': 'Empowering Gulf communities through collaborative innovation, sustainable development, and shared prosperity.',
     'footer.quickLinks': 'Quick Links',
+    'footer.usefullLinks': 'Usefull Links ',
+
     'footer.gulfRegion': 'Gulf Region',
     'footer.newsletter': 'Stay Connected',
     'footer.newsletterDescription': 'Get the latest updates on cooperative developments in the Gulf region.',
@@ -167,7 +173,10 @@ const translations = {
     'resources.filter.finance': 'Finance',
     'resources.filter.governance': 'Governance',
     'resources.filter.caseStudies': 'Case Studies',
-    
+    "register.accept": "I accept the",
+"register.privacyPolicy": "Privacy Policy",
+"register.error.acceptPrivacy": "You must accept the Privacy Policy",
+
     // Contact Page
     'contact.title': 'Contact Us',
     'contact.subtitle': 'Get in Touch with Our Team',
@@ -214,9 +223,9 @@ const translations = {
     // Navigation
     'nav.home': 'الصفحة الرئيسية',
     'nav.about': 'من نحن',
-    'nav.article': 'المقالات',
-    'nav.projects': 'المبادرات',
-    'nav.resources': 'الموارد',
+    'nav.article': 'مقالات',
+    'nav.projects': 'مبادرات',
+    'nav.resources': 'موارد',
     'nav.services': 'خدماتنا',
     'nav.contact': 'اتصل بنا',
     'nav.login':'تسجيل الدخول',
@@ -224,11 +233,17 @@ const translations = {
 
 
 
-     'nav.site1': 'مجلس التعاون لدول الخليج العربية',
+    'nav.site1': 'مجلس التعاون لدول الخليج العربية',
     'nav.site2': 'اتحاد الجمعيات التعاونية الاستهلاكية بدولة الكويت',
     'nav.site3': 'مجلس التعاون لدول الخليج العربية',
     'nav.site4': 'منظمة العمل الدولية',
     'nav.site5': 'قسم الشؤون الاقتصادية والاجتماعية بالأمم المتحدة',
+'nav.site6': 'الرئيسية',
+'nav.site7': 'من نحن',
+'nav.site8': 'مقالات',
+'nav.site9': 'مبادرات',
+'nav.site10': 'موارد',
+
     // Hero Section
     'hero.title': 'بناء',
     'hero.titleHighlight': 'أقوى',
@@ -242,7 +257,7 @@ const translations = {
     'hero.stats.members': 'أعضاء المجتمع',
     
     // Blog Section
-    'blog.title': 'أحدث الرؤى والقصص',
+    'blog.title': 'مقالات',
     'blog.subtitle': 'ابق مطلعاً على أحدث الاتجاهات وقصص النجاح والرؤى المتخصصة من حركة التعاونيات الخليجية.',
     'blog.readMore': 'اقرأ المزيد',
     'blog.viewAll': 'عرض جميع المقالات',
@@ -284,6 +299,8 @@ const translations = {
     // Footer
     'footer.description': 'تمكين مجتمعات الخليج من خلال الابتكار التعاوني والتنمية المستدامة والازدهار المشترك.',
     'footer.quickLinks': 'روابط سريعة',
+    'footer.usefullLinks': 'روابط مفيدة',
+
     'footer.gulfRegion': 'منطقة الخليج',
     'footer.newsletter': 'ابق على اتصال',
     'footer.newsletterDescription': 'احصل على أحدث التطورات حول تطوير التعاونيات في منطقة الخليج.',
@@ -310,7 +327,7 @@ const translations = {
     'about.mission.point3': 'دعم الهوية التعاونية لمزيد الاندماج المحلي والإقليمي في الحركة التعاونية العالمية',
     'about.mission.point4': 'متابعة بيئة العمل التعاوني ومناصرة السياسات والمبادرات الداعمة',
     'about.mission.point5': 'المساهمة في تطوير ريادة الأعمال الاجتماعية المستدامة وتبني الآليات الكفيلة بتنمية الأفراد وبناء المجتمعات المتماسكة والعادلة',
-    'about.offer.title': 'ماذا نقدّم',
+    'about.offer.title': ' المحتوى',
     'about.offer.texts': 'مقالات تحليلية وتفسيرية',
     'about.offer.textsDesc': 'مقالات تحليلية حول العمل التعاوني',
     'about.offer.studies': 'بحوث ودراسات',
@@ -340,7 +357,7 @@ const translations = {
     'about.contact.legal': 'الإشعارات القانونية',
     
     // Projects Page
-    'projects.title': 'مبادراتنا',
+    'projects.title': 'مبادرات',
     'projects.subtitle': 'تحويل المجتمعات من خلال الابتكار التعاوني',
     'projects.viewAll': 'عرض جميع المبادرات',
     'projects.learnMore': 'اعرف المزيد',
@@ -351,10 +368,12 @@ const translations = {
     'backToProjects': 'العودة إلى المبادرات',
     'backToArticles': 'العودة إلى المقالات',
 
-
+"register.accept": "أوافق على",
+"register.privacyPolicy": "سياسة الخصوصية",
+"register.error.acceptPrivacy": "يجب عليك الموافقة على سياسة الخصوصية",
     
     // Resources Page
-    'resources.title': 'الموارد والتحميلات',
+    'resources.title': 'موارد',
     'resources.subtitle': 'الأدوات والأدلة الأساسية لنجاح التعاونيات',
     'resources.download': 'تحميل',
     'resources.viewAll': 'عرض جميع الموارد',
@@ -405,6 +424,7 @@ const translations = {
 "footer.subscribeError": "فشل في الاشتراك.",
 "footer.invalidEmail": "يرجى إدخال بريد إلكتروني صالح.",
 
+'register.close':'إغلاق',
 
 
 
@@ -420,7 +440,11 @@ const translations = {
     'nav.contact': 'Contact',
     'nav.login':'se connecter',
     'nav.logout':'déconnecter',
-
+'nav.site6': 'Accueil',
+'nav.site7': 'À propos',
+'nav.site8': 'Articles',
+'nav.site9': 'Projets',
+'nav.site10': 'Ressources',
 
     
     // Hero Section
@@ -440,6 +464,8 @@ const translations = {
     'nav.site3': 'مجلس التعاون لدول الخليج العربية',
     'nav.site4': 'منظمة العمل الدولية',
     'nav.site5': 'قسم الشؤون الاقتصادية والاجتماعية بالأمم المتحدة',
+
+
     // Blog Section
     'blog.title': 'Dernières Informations et Histoires',
     'blog.subtitle': 'Restez informé des dernières tendances, histoires de succès et perspectives d\'experts du mouvement coopératif du Golfe.',
@@ -449,7 +475,8 @@ const translations = {
     'blog.readTime': 'min de lecture',
     'backToProjects': 'Retour aux articles',
 
-    
+    'register.close':'Fermer',
+
     // Services Section
     'services.title': 'Nos Services',
     'services.subtitle': 'Services de soutien complets conçus pour autonomiser la croissance et le succès des coopératives dans toute la région du Golfe.',
@@ -485,6 +512,8 @@ const translations = {
     // Footer
     'footer.description': 'Autonomiser les communautés du Golfe grâce à l\'innovation collaborative, au développement durable et à la prospérité partagée.',
     'footer.quickLinks': 'Liens Rapides',
+    'footer.usefullLinks': 'Liens utiles',
+
     'footer.gulfRegion': 'Région du Golfe',
     'footer.newsletter': 'Rester Connecté',
     'footer.newsletterDescription': 'Recevez les dernières mises à jour sur les développements coopératifs dans la région du Golfe.',
@@ -541,7 +570,7 @@ const translations = {
     'about.contact.legal': 'Mentions légales',
     
     // Projects Page
-    'projects.title': 'Nos Projets',
+    'projects.title': 'Les Projets',
     'projects.subtitle': 'Transformer les Communautés grâce à l\'Innovation Coopérative',
     'projects.viewAll': 'Voir Tous les Projets',
     'projects.learnMore': 'En Savoir Plus',
@@ -603,10 +632,13 @@ const translations = {
 
 
 'aboutAuthor': 'À propos de l’auteur',
-'authorDescription': 'est un expert en développement coopératif et en pratiques commerciales durables dans la région du Golfe'
+'authorDescription': 'est un expert en développement coopératif et en pratiques commerciales durables dans la région du Golfe',
 
 
 
+"register.accept": "J'accepte la",
+"register.privacyPolicy": "Politique de confidentialité",
+"register.error.acceptPrivacy": "Vous devez accepter la politique de confidentialité"
 
 
 

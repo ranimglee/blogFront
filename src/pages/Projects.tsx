@@ -94,9 +94,7 @@ const Projects = () => {
               <h1 className="text-5xl md:text-6xl font-bold text-gulf-dark mb-6">
                 {t('projects.title')}
               </h1>
-              <p className="text-xl text-gulf-dark/80 mb-12">
-                {t('projects.subtitle')}
-              </p>
+             
             </div>
           </div>
         </section>

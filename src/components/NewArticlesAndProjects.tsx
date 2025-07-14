@@ -88,9 +88,7 @@ const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/initiative
           <h2 className="text-4xl font-bold text-gulf-dark mb-6">
             {t('projects.title')}
           </h2>
-          <p className="text-lg text-gulf-dark/70 max-w-2xl mx-auto">
-            {t('projects.subtitle')}
-          </p>
+         
         </div>
 
         <div className="mb-12">
