@@ -7,6 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const Footer = () => {
   const { t } = useLanguage();
+const [showPrivacyModal, setShowPrivacyModal] = useState(false);
 
   const [email, setEmail] = useState('');
   const [loading, setLoading] = useState(false);
@@ -192,6 +193,31 @@ await axios.post(`${import.meta.env.VITE_API_URL}/public/newsletter/subscribe`, 
 
       <ToastContainer position="top-right" autoClose={5000} />
         </div>
+{showPrivacyModal && (
+  <div
+    className="fixed inset-0 bg-black/70 z-50 flex items-center justify-center"
+    onClick={() => setShowPrivacyModal(false)} // Close on background click
+  >
+    <div
+      className="bg-white rounded-xl w-full max-w-4xl h-[80vh] p-6 relative shadow-xl"
+      onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside the modal
+    >
+      <button
+        onClick={() => setShowPrivacyModal(false)}
+        className="absolute top-4 right-4 text-gray-900 hover:text-black text-2xl font-bold"
+        aria-label="Close modal"
+      >
+        ×
+      </button>
+      <iframe
+        src="/privacy-policy.pdf"
+        title="Privacy Policy"
+        className="w-full h-full border-none rounded"
+      />
+    </div>
+  </div>
+)}
+
 
         {/* Bottom Bar */}
         <div className="border-t border-white/20 pt-8">
@@ -200,15 +226,15 @@ await axios.post(`${import.meta.env.VITE_API_URL}/public/newsletter/subscribe`, 
               {t('footer.copyright')}
             </p>
             <div className="flex space-x-6">
-              <a href="#" className="text-white/60 hover:text-white transition-colors">
-                {t('footer.privacy')}
-              </a>
-              <a href="#" className="text-white/60 hover:text-white transition-colors">
-                {t('footer.terms')}
-              </a>
-              <a href="#" className="text-white/60 hover:text-white transition-colors">
-                {t('footer.cookies')}
-              </a>
+              <button
+  onClick={() => setShowPrivacyModal(true)}
+  className="text-white/60 hover:text-white transition-colors"
+>
+  {t('footer.privacy')}
+</button>
+
+             
+             
             </div>
           </div>
         </div>

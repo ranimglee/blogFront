@@ -11,6 +11,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import React, { useState } from 'react';
 
 const Contact = () => {
+const [loading, setLoading] = useState(false);
 
   const { t } = useLanguage();
 
@@ -26,20 +27,21 @@ const Contact = () => {
     setFormData((prev) => ({ ...prev, [id]: value }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setStatus('loading');
+    setLoading(true);
     try {
       await axios.post(`${import.meta.env.VITE_API_URL}/public/send-message`, formData);
-      setStatus('success');
-      setFormData({ fullName: '', email: '', subject: '', message: '' });
       toast.success(t('contact.successMessage') || 'Message sent successfully!');
+      setFormData({ fullName: '', email: '', subject: '', message: '' });
     } catch (error) {
       console.error(error);
-      setStatus('error');
       toast.error(t('contact.errorMessage') || 'Failed to send message. Please try again.');
+    } finally {
+      setLoading(false);
     }
   };
+
 
   return (
     <div className="min-h-screen bg-white">
@@ -128,9 +130,40 @@ const Contact = () => {
 
                   </div>
 
-                  <button type="submit" className="w-full btn-primary">
-                    {t('contact.send')}
-                  </button>
+                  <button
+  type="submit"
+  className="w-full btn-primary flex items-center justify-center gap-2"
+  disabled={loading}
+>
+  {loading ? (
+    <>
+      <svg
+        className="animate-spin h-5 w-5 text-white"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+      >
+        <circle
+          className="opacity-25"
+          cx="12"
+          cy="12"
+          r="10"
+          stroke="currentColor"
+          strokeWidth="4"
+        ></circle>
+        <path
+          className="opacity-75"
+          fill="currentColor"
+          d="M4 12a8 8 0 018-8v4l3.5-3.5L12 0v4a8 8 0 00-8 8h4z"
+        ></path>
+      </svg>
+      {t('contact.sending') || 'Sending...'}
+    </>
+  ) : (
+    t('contact.send')
+  )}
+</button>
+
                 </form>
               </div>
 

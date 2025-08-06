@@ -4,11 +4,17 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { useLanguage } from '../contexts/LanguageContext';
 import { Users, Target, Lightbulb, Shield, Compass, Globe, Award, Building2, Handshake, Zap, Heart, Rocket, TreePine, Mail, FileText, Video, BookOpen, Scale, Newspaper, MessageSquare } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const About = () => {
   const { t } = useLanguage();
 
  
+const navigate = useNavigate();
+
+const handleContactClick = () => {
+  navigate('/contact');
+};
 
 
   const missionPoints = [
@@ -177,10 +183,14 @@ const About = () => {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-white text-gulf-primary px-6 py-3 rounded-lg font-medium hover:bg-gulf-secondary transition-colors flex items-center justify-center gap-2">
-                <Mail className="w-4 h-4" />
-                {t('about.contact.btn')}
-              </button>
+             <button
+  onClick={handleContactClick}
+  className="bg-white text-gulf-primary px-6 py-3 rounded-lg font-medium hover:bg-gulf-secondary transition-colors flex items-center justify-center gap-2"
+>
+  <Mail className="w-4 h-4" />
+  {t('about.contact.btn')}
+</button>
+
               <button className="border-2 border-white text-white px-6 py-3 rounded-lg font-medium hover:bg-white hover:text-gulf-primary transition-colors flex items-center justify-center gap-2">
                 <Scale className="w-4 h-4" />
                 {t('about.contact.legal')}
