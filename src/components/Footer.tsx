@@ -54,8 +54,9 @@ await axios.post(`${import.meta.env.VITE_API_URL}/public/newsletter/subscribe`, 
     { nameKey: 'nav.site6', href: '/' },
     { nameKey: 'nav.site7', href: '/about' },
     { nameKey: 'nav.site8', href: '/article' },
-    { nameKey: 'nav.site9', href: '/projects' },
+    
     { nameKey: 'nav.site10', href: '/resources' },
+    { nameKey: 'nav.site9', href: '/projects' },
   ];
 
 
