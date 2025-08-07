@@ -1,0 +1,194 @@
+/* Global Responsive Styles */
+
+/* Mobile First Responsive Design */
+@media (max-width: 640px) {
+  /* Container adjustments */
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  /* Typography scaling */
+  h1 {
+    font-size: 1.875rem !important; /* 30px */
+    line-height: 2.25rem !important;
+  }
+
+  h2 {
+    font-size: 1.5rem !important; /* 24px */
+    line-height: 2rem !important;
+  }
+
+  h3 {
+    font-size: 1.25rem !important; /* 20px */
+    line-height: 1.75rem !important;
+  }
+
+  p {
+    font-size: 0.875rem !important; /* 14px */
+    line-height: 1.5rem !important;
+  }
+
+  /* Grid adjustments */
+  .grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .grid-cols-2,
+  .grid-cols-3,
+  .grid-cols-4,
+  .grid-cols-5,
+  .grid-cols-6 {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Flex adjustments */
+  .flex-row {
+    flex-direction: column !important;
+  }
+
+  .flex-col {
+    flex-direction: column !important;
+  }
+
+  /* Spacing adjustments */
+  .px-8 {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  .py-20 {
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important;
+  }
+
+  .mb-12 {
+    margin-bottom: 2rem !important;
+  }
+
+  /* Button adjustments */
+  .btn-primary,
+  .btn-secondary,
+  .btn-accent {
+    padding: 0.75rem 1.5rem !important;
+    font-size: 0.875rem !important;
+    width: 100% !important;
+    max-width: 300px !important;
+  }
+
+  /* Card adjustments */
+  .card {
+    padding: 1.5rem !important;
+    margin-bottom: 1rem !important;
+  }
+
+  /* Image adjustments */
+  img {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+
+  /* Header adjustments */
+  header {
+    padding: 0.5rem 1rem !important;
+  }
+
+  /* Footer adjustments */
+  footer {
+    padding: 2rem 1rem !important;
+  }
+
+  /* Form adjustments */
+  input,
+  textarea,
+  select {
+    font-size: 16px !important; /* Prevents zoom on iOS */
+  }
+}
+
+/* Tablet adjustments */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .grid-cols-3,
+  .grid-cols-4 {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  .grid-cols-5,
+  .grid-cols-6 {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+
+  h1 {
+    font-size: 2.25rem !important;
+  }
+
+  h2 {
+    font-size: 1.875rem !important;
+  }
+}
+
+/* Large screen adjustments */
+@media (min-width: 1025px) {
+  .container {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+}
+
+/* Touch-friendly adjustments */
+@media (hover: none) and (pointer: coarse) {
+  button,
+  a,
+  [role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  .touch-target {
+    padding: 12px;
+  }
+}
+
+/* Landscape orientation */
+@media (max-height: 600px) and (orientation: landscape) {
+  .min-h-screen {
+    min-height: auto !important;
+    padding: 2rem 0;
+  }
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .bg-gulf-primary {
+    background-color: #000 !important;
+  }
+  
+  .text-gulf-dark {
+    color: #000 !important;
+  }
+  
+  .border-gulf-light {
+    border-color: #000 !important;
+  }
+}

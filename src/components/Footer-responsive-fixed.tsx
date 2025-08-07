@@ -1,17 +1,7 @@
 import React, { useState } from 'react';
-import {
-  MapPin,
-  Mail,
-  Link as LinkIcon,
-  Linkedin,
-  Twitter,
-  Youtube,
-  Instagram,
-} from 'lucide-react';
+import { MapPin, Mail, Link as LinkIcon, Linkedin, Twitter, Youtube, Instagram } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { Link as RouterLink } from 'react-router-dom';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 const Footer = () => {
   const { t } = useLanguage();
@@ -87,7 +77,7 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Footer External Links */}
+          {/* Footer Links */}
           <div>
             <h4 className="text-lg font-bold mb-4">{t('footer.quickLinks')}</h4>
             <ul className="space-y-2">
@@ -123,32 +113,6 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Privacy Modal */}
-        {showPrivacyModal && (
-          <div
-            className="fixed inset-0 bg-black/70 z-50 flex items-center justify-center"
-            onClick={() => setShowPrivacyModal(false)}
-          >
-            <div
-              className="bg-white rounded-xl w-full max-w-4xl h-[80vh] p-6 relative shadow-xl"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <button
-                onClick={() => setShowPrivacyModal(false)}
-                className="absolute top-4 right-4 text-gray-900 hover:text-black text-2xl font-bold"
-                aria-label="Close modal"
-              >
-                ×
-              </button>
-              <iframe
-                src="/privacy-policy.pdf"
-                title="Privacy Policy"
-                className="w-full h-full border-none rounded"
-              />
-            </div>
-          </div>
-        )}
-
         {/* Bottom Bar */}
         <div className="border-t border-white/20 pt-8 mt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
@@ -166,9 +130,6 @@ const Footer = () => {
           </div>
         </div>
       </div>
-
-      {/* Toast Notifications */}
-      <ToastContainer position="top-right" autoClose={5000} />
     </footer>
   );
 };

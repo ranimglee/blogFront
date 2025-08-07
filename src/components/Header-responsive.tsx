@@ -110,49 +110,48 @@ const Header = () => {
           </div>
         </div>
 
-       {/* Mobile Menu Dropdown (instead of fixed fullscreen) */}
-{isMenuOpen && (
-  <div className="lg:hidden absolute left-0 right-0 top-full bg-gulf-primary border-t border-white/10 shadow-lg z-40">
-    <div className="px-4 py-6">
-      <nav className="flex flex-col space-y-4">
-        {menuItems.map((item) => (
-          <Link
-            key={item.key}
-            to={item.href}
-            className={`text-white hover:text-gulf-gold font-medium transition-colors text-base border-b border-white/10 pb-2 ${
-              location.pathname === item.href ? 'text-gulf-gold' : ''
-            }`}
-            onClick={() => setIsMenuOpen(false)}
-          >
-            {t(item.key)}
-          </Link>
-        ))}
-
-        {/* Mobile Login/Logout */}
-        {isAuthenticated ? (
-          <button
-            onClick={() => {
-              handleLogout();
-              setIsMenuOpen(false);
-            }}
-            className="mt-4 px-4 py-2 bg-gulf-gold text-gulf-dark hover:bg-gulf-gold/90 rounded-lg transition-colors w-full"
-          >
-            {t('nav.logout')}
-          </button>
-        ) : (
-          <Link
-            to="/login"
-            className="mt-4 px-4 py-2 bg-gulf-gold text-gulf-dark hover:bg-gulf-gold/90 rounded-lg transition-colors w-full text-center"
-            onClick={() => setIsMenuOpen(false)}
-          >
-            {t('nav.login')}
-          </Link>
+        {/* Mobile Menu Overlay */}
+        {isMenuOpen && (
+          <div className="lg:hidden fixed inset-0 top-16 bg-gulf-primary/98 backdrop-blur-md z-40">
+            <div className="container mx-auto px-4 py-8">
+              <nav className="flex flex-col space-y-4">
+                {menuItems.map((item) => (
+                  <Link
+                    key={item.key}
+                    to={item.href}
+                    className={`text-white hover:text-gulf-gold font-medium transition-colors py-3 text-lg border-b border-white/10 ${
+                      location.pathname === item.href ? 'text-gulf-gold' : ''
+                    }`}
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {t(item.key)}
+                  </Link>
+                ))}
+                
+                {/* Mobile Login/Logout */}
+                {isAuthenticated ? (
+                  <button
+                    onClick={() => {
+                      handleLogout();
+                      setIsMenuOpen(false);
+                    }}
+                    className="mt-6 px-4 py-2 bg-gulf-gold text-gulf-dark hover:bg-gulf-gold/90 rounded-lg transition-colors w-full"
+                  >
+                    {t('nav.logout')}
+                  </button>
+                ) : (
+                  <Link
+                    to="/login"
+                    className="mt-6 px-4 py-2 bg-gulf-gold text-gulf-dark hover:bg-gulf-gold/90 rounded-lg transition-colors w-full text-center"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {t('nav.login')}
+                  </Link>
+                )}
+              </nav>
+            </div>
+          </div>
         )}
-      </nav>
-    </div>
-  </div>
-)}
-
       </div>
     </header>
   );
