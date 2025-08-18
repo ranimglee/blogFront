@@ -192,3 +192,9 @@
     border-color: #000 !important;
   }
 }
+
+/* Custom RTL spacing for header nav links */
+.rtl-nav-link {
+  margin-inline-start: 1rem;
+  margin-inline-end: 1rem;
+}

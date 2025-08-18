@@ -1,7 +1,7 @@
 
 import React from 'react';
 import Header from '../components/Header';
-import Hero from '../components/Hero';
+import Hero from '../components/Hero-responsive-fixed';
 import BlogSection from '../components/BlogSection';
 import NewArticlesAndProjects from '../components/NewArticlesAndProjects';
 import Footer from '../components/Footer';

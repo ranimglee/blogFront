@@ -51,12 +51,12 @@ const Header = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-6 xl:space-x-8">
+          <nav className="hidden lg:flex items-center rtl:space-x-reverse xl:space-x-8">
             {menuItems.map((item) => (
               <Link
                 key={item.key}
                 to={item.href}
-                className={`text-white hover:text-gulf-gold font-medium transition-colors relative group text-sm xl:text-base ${
+                className={`text-white hover:text-gulf-gold font-medium transition-colors relative group text-sm xl:text-base rtl-nav-link ${
                   location.pathname === item.href ? 'text-gulf-gold' : ''
                 }`}
               >
@@ -110,7 +110,7 @@ const Header = () => {
           </div>
         </div>
 
-       {/* Mobile Menu Dropdown (instead of fixed fullscreen) */}
+     {/* Mobile Menu Dropdown (instead of fixed fullscreen) */}
 {isMenuOpen && (
   <div className="lg:hidden absolute left-0 right-0 top-full bg-gulf-primary border-t border-white/10 shadow-lg z-40">
     <div className="px-4 py-6">

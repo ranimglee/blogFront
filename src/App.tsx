@@ -15,6 +15,7 @@ import ArticleDetail from "./pages/ArticleDetail";
 import ProjectDetail from "./pages/ProjectDetail";
 import Login from "./pages/Login";
 import Blog from "./pages/Blog";
+import ForgotPassword from "./pages/ForgotPassword";
 
 const queryClient = new QueryClient();
 
@@ -30,6 +31,7 @@ const App = () => (
             <Route path="/about" element={<About />} />
             <Route path="/article" element={<Blog />} />
             <Route path="/article/:id" element={<ArticleDetail />} />
+            <Route path="/forgot-password" element={<ForgotPassword />} /> {/* ✅ Add this here */}
 
             <Route path="/projects" element={<Projects />} />
             <Route path="/projects/:id" element={<ProjectDetail />} />

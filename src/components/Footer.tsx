@@ -35,28 +35,28 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-gulf-dark text-white">
-      <div className="container mx-auto px-4 py-12 md:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+<footer className="bg-gulf-dark text-white" dir="auto">
+      <div className="container mx-auto px-4 py-12 md:py-16" dir="auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8" dir="auto">
           {/* Brand & Description */}
-          <div className="lg:col-span-1">
-            <div className="flex items-center space-x-3 mb-4">
-              <div className="w-10 h-10 flex items-center justify-center">
+          <div className="lg:col-span-1" dir="auto">
+            <div className="flex items-center space-x-3 rtl:space-x-reverse mb-4" dir="auto">
+              <div className="w-10 h-10 flex items-center justify-center" dir="auto">
                 <img
                   src="/lovable-uploads/aef43724-883d-4580-8f95-576adc701eaa.png"
                   alt="Sawa Palm Logo"
                   className="w-8 h-8 object-contain brightness-0 invert"
                 />
               </div>
-              <div>
-                <h3 className="text-xl font-bold">Sawa</h3>
-                <p className="text-xs text-gulf-gold">Gulf Cooperatives</p>
+              <div dir="auto">
+                <h3 className="text-xl font-bold" dir="auto">Sawa</h3>
+                <p className="text-xs text-gulf-gold" dir="auto">Gulf Cooperatives</p>
               </div>
             </div>
-            <p className="text-white/70 mb-6 leading-relaxed text-sm">
+            <p className="text-white/70 mb-6 leading-relaxed text-sm" dir="auto">
               {t('footer.description')}
             </p>
-            <div className="flex space-x-3">
+            <div className="flex space-x-3 rtl:space-x-reverse" dir="auto">
               {[Linkedin, Twitter, Youtube, Instagram].map((Icon, index) => (
                 <a
                   key={index}
