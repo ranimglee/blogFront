@@ -17,22 +17,23 @@ const translations = {
     'nav.home': 'Home',
     'nav.about': 'About',
     'nav.article': 'Articles',
-    'nav.projects': 'Projects',
+    'nav.projects': 'Initiatives',
     'nav.resources': 'Resources',
     'nav.services': 'Services',
     'nav.contact': 'Contact',
-    'nav.site1': 'مجلس التعاون لدول الخليج العربية',
-    'nav.site2': 'اتحاد الجمعيات التعاونية الاستهلاكية بدولة الكويت',
-    'nav.site3': 'مجلس التعاون لدول الخليج العربية',
-    'nav.site4': 'منظمة العمل الدولية',
-    'nav.site5': 'قسم الشؤون الاقتصادية والاجتماعية بالأمم المتحدة',
+   'nav.site1': 'Gulf Cooperation Council',
+'nav.site2': 'Union of Consumer Cooperative Societies of Kuwait',
+'nav.site3': 'Gulf Cooperation Council',
+'nav.site4': 'International Labour Organization',
+'nav.site5': 'United Nations Department of Economic and Social Affairs',
+
     'nav.login':'Login',
     'nav.logout':'Logout',
 
     'nav.site6': 'Home',
     'nav.site7': 'About',
     'nav.site8': 'Articles',
-    'nav.site9': 'Projects',
+    'nav.site9': 'Initiatives',
     'nav.site10': 'Resources',
 'register.close':'Close',
 
@@ -154,9 +155,9 @@ const translations = {
     'about.contact.legal': 'Legal Notice',
     
     // Projects Page
-    'projects.title': 'Our Projects',
+    'projects.title': 'Initiatives',
     'projects.subtitle': 'Transforming Communities Through Cooperative Innovation',
-    'projects.viewAll': 'View All Projects',
+    'projects.viewAll': 'View All Initiatives',
     'projects.learnMore': 'Learn More',
     'projects.participants': 'participants',
     'projects.status.active': 'Active',
@@ -200,7 +201,7 @@ const translations = {
     'login.submit': 'Login',
     'login.switchToRegister': 'D’ont have an account? Sign up',
     'login.forgotPassword': 'Forgot your password?',
-        'backToProjects': 'Back to Projects',
+        'backToProjects': 'Back to Initiatives',
     'backToArticles': 'Back to Articles',
 
   'aboutAuthor':'About the Author',
@@ -433,7 +434,7 @@ const translations = {
     'nav.home': 'Accueil',
     'nav.about': 'À propos',
     'nav.article': 'Articles',
-    'nav.projects': 'Projets',
+    'nav.projects': 'Initiatives',
     'nav.resources': 'Ressources',
     'nav.services': 'Nos services',
     'nav.contact': 'Contact',
@@ -442,7 +443,7 @@ const translations = {
 'nav.site6': 'Accueil',
 'nav.site7': 'À propos',
 'nav.site8': 'Articles',
-'nav.site9': 'Projets',
+'nav.site9': 'Initiatives',
 'nav.site10': 'Ressources',
 
     
@@ -458,11 +459,12 @@ const translations = {
     'hero.stats.countries': 'Pays du Golfe',
     'hero.stats.members': 'Membres de la Communauté',
     
-     'nav.site1': 'مجلس التعاون لدول الخليج العربية',
-    'nav.site2': 'اتحاد الجمعيات التعاونية الاستهلاكية بدولة الكويت',
-    'nav.site3': 'مجلس التعاون لدول الخليج العربية',
-    'nav.site4': 'منظمة العمل الدولية',
-    'nav.site5': 'قسم الشؤون الاقتصادية والاجتماعية بالأمم المتحدة',
+    'nav.site1': 'Conseil de coopération du Golfe',
+'nav.site2': 'Union des associations coopératives de consommation du Koweït',
+'nav.site3': 'Conseil de coopération du Golfe',
+'nav.site4': 'Organisation internationale du travail',
+'nav.site5': 'Département des affaires économiques et sociales des Nations Unies',
+
 
 
     // Blog Section
@@ -569,9 +571,9 @@ const translations = {
     'about.contact.legal': 'Mentions légales',
     
     // Projects Page
-    'projects.title': 'Les Projets',
+    'projects.title': 'Initiatives',
     'projects.subtitle': 'Transformer les Communautés grâce à l\'Innovation Coopérative',
-    'projects.viewAll': 'Voir Tous les Projets',
+    'projects.viewAll': 'Voir Tous les Initiatives',
     'projects.learnMore': 'En Savoir Plus',
     'projects.participants': 'participants',
     'projects.status.active': 'Actif',

@@ -38,7 +38,7 @@ const handleContactClick = () => {
       
       <main className="pt-20">
         {/* Hero Section */}
-        <section className="py-16 bg-gradient-to-br from-gulf-secondary/10 to-white">
+<section className="py-10 bg-gradient-to-br from-gulf-secondary/10 to-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
             <div className="text-center max-w-4xl mx-auto">
               <div className="w-12 h-12 bg-gulf-primary rounded-lg flex items-center justify-center text-white mx-auto mb-6">
@@ -57,7 +57,7 @@ const handleContactClick = () => {
         </section>
 
         {/* Vision & Mission - Balanced Layout */}
-        <section className="py-10 bg-white">
+        <section className="py-8 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8">
               {/* Vision */}
@@ -100,9 +100,9 @@ const handleContactClick = () => {
         </section>
 
         {/* What We Offer */}
-        <section className="py-16 bg-gulf-secondary/5">
+        <section className="py-6 bg-gulf-secondary/5">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
-            <div className="text-center mb-12">
+            <div className="text-center mb-4">
               <div className="w-10 h-10 bg-gulf-coral rounded-lg flex items-center justify-center text-white mx-auto mb-4">
                 <BookOpen className="w-5 h-5" />
               </div>
@@ -114,7 +114,7 @@ const handleContactClick = () => {
         </section>
 
         {/* Scope & Team - Balanced Content */}
-        <section className="py-16 bg-white">
+        <section className="py-8 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               {/* Scope */}
@@ -163,7 +163,7 @@ const handleContactClick = () => {
         </section>
 
         {/* Contact Section */}
-        <section className="py-16 bg-gulf-primary text-white">
+        <section className="py-8 bg-gulf-primary text-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl text-center">
             <div className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center text-white mx-auto mb-6">
               <Mail className="w-6 h-6" />

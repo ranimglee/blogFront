@@ -49,7 +49,7 @@ const Footer = () => {
                 />
               </div>
               <div dir="auto">
-                <h3 className="text-xl font-bold" dir="auto">Sawa</h3>
+                <h3 className="text-xl font-bold" dir="auto">AFAQ</h3>
                 <p className="text-xs text-gulf-gold" dir="auto">Gulf Cooperatives</p>
               </div>
             </div>
