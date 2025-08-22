@@ -51,7 +51,7 @@ const translations = {
     'hero.stats.members': 'Community Members',
     
     // Blog Section
-    'blog.title': 'Latest Insights & Stories',
+    'blog.title': 'Articles',
     'blog.subtitle': 'Stay updated with the latest trends, success stories, and expert insights from the Gulf cooperative movement.',
     'blog.readMore': 'Read More',
     'blog.viewAll': 'View All Articles',
@@ -216,7 +216,44 @@ const translations = {
 'register.switchToLogin': 'Already have an account? Log in',
 "contact.sending": "Sending...",
 "contact.successMessage": "Message sent successfully!",
-"contact.errorMessage": "Something went wrong. Please try again."
+"contact.errorMessage": "Something went wrong. Please try again.",
+'resources.no_content': 'No content available',
+'loading.pleaseWait':'Please wait',
+ 'privacy.title': 'Privacy Policy',
+  'privacy.lastUpdated': 'Last updated: June 2025',
+  'privacy.intro': 'The AFAQ Gulf Cooperatives Blog is committed to protecting the privacy of its visitors. This page explains how we collect, use, share, and safeguard your information.',
+  'privacy.info.title': '1. Information We Collect',
+  'privacy.info.content': `We may collect two types of information:
+a) Non-personal data
+- IP address
+- Browser and device type
+- Pages visited
+- Date and time of your visit
+- Referring source
+b) Personal data (when applicable)
+- Contact form
+- Comment section
+It may include: name, email address, country, or any other information you voluntarily provide.`,
+  'privacy.usage.title': '2. Use of Information',
+  'privacy.usage.content': `The collected information is used for legitimate purposes, such as:
+- Improving browsing experience and website content
+- Analyzing performance and most-read content
+- Responding to your inquiries or feedback
+- Sending updates or news (only with your consent)`,
+  'privacy.cookies.title': '3. Cookies',
+  'privacy.cookies.content': 'The site uses cookies to personalize your experience and analyze performance. You can always change your preferences through your browser settings or disable cookies entirely.',
+  'privacy.protection.title': '4. Data Protection',
+  'privacy.protection.content': 'We implement reasonable technical and organizational measures to protect your data, in accordance with local laws. We do not sell or share your personal data with third parties for marketing purposes.',
+  'privacy.links.title': '5. External Links',
+  'privacy.links.content': 'Our website may contain links to external websites. We are not responsible for the privacy practices of those third-party sites.',
+  'privacy.rights.title': '6. User Rights',
+  'privacy.rights.content': 'You have the right, at any time, to request access, correction, or deletion of your data, or withdraw consent for communications. Contact us at: Contact-gulfcoop-horizons@......ae',
+  'privacy.law.title': '7. Applicable Law',
+  'privacy.law.content': 'This policy is governed by the laws of the United Arab Emirates, specifically Federal Decree-Law No. 34 of 2021 on Combating Rumors and Cybercrime, and Federal Decree-Law No. 55 of 2023 on Media Regulation.',
+  'privacy.changes.title': '8. Changes to the Privacy Policy',
+  'privacy.changes.content': 'This policy may be updated from time to time. Any changes will be posted on this page along with the update date. We recommend reviewing it regularly.',
+  'privacy.contact': 'For any privacy-related inquiries, please contact us at: Contact-gulfcoop-horizons@......ae',
+
 
 
   },
@@ -231,6 +268,8 @@ const translations = {
     'nav.contact': 'اتصل بنا',
     'nav.login':'تسجيل الدخول',
     'nav.logout':'تسجيل الخروج',
+    'loading.pleaseWait':'يرجى الانتظار',
+
 
 
     'nav.site1': 'مجلس التعاون لدول الخليج العربية',
@@ -425,8 +464,42 @@ const translations = {
 "footer.invalidEmail": "يرجى إدخال بريد إلكتروني صالح.",
 
 'register.close':'إغلاق',
+'resources.no_content': 'لا يوجد محتوى متاح',
 
-
+ 'privacy.title': 'سياسة الخصوصية',
+  'privacy.lastUpdated': 'آخر تحديث: يونيو 2025',
+  'privacy.intro': 'نلتزم في مدونة آفاق تعاونيات الخليج بحماية خصوصية زوّارنا. توضح هذه الصفحة كيف نقوم بجمع المعلومات واستخدامها ومشاركتها وتأمينها.',
+  'privacy.info.title': '1. المعلومات التي نقوم بجمعها',
+  'privacy.info.content': `قد نقوم بجمع نوعين من المعلومات:
+أ) بيانات غير شخصية
+- عنوان IP
+- نوع المتصفح والجهاز
+- الصفحات التي تزورها
+- وقت وتاريخ زيارتك
+- مصدر الإحالة
+ب) بيانات شخصية (عند الاقتضاء)
+- نموذج الاتصال
+- كتابة تعليق
+قد تتضمن: الاسم، البريد الإلكتروني، البلد، أو أي معلومات أخرى تقوم بإدخالها طوعًا.`,
+  'privacy.usage.title': '2. كيفية استخدام المعلومات',
+  'privacy.usage.content': `نستخدم المعلومات لأغراض مشروعة، مثل:
+- تحسين تجربة التصفح والمحتوى
+- تحليل الأداء والمحتوى الأكثر قراءة
+- الرد على استفساراتك أو ملاحظاتك
+- إرسال التحديثات أو المستجدات (بموافقتك فقط)`,
+  'privacy.cookies.title': '3. ملفات تعريف الارتباط (Cookies)',
+  'privacy.cookies.content': 'يستخدم الموقع ملفات تعريف الارتباط لتخصيص تجربتك وتحليل الأداء. يمكنك دائمًا تعديل تفضيلاتك من إعدادات المتصفح أو إلغاء تفعيل الكوكيز.',
+  'privacy.protection.title': '4. حماية البيانات',
+  'privacy.protection.content': 'نلتزم باتخاذ التدابير الفنية والتنظيمية المعقولة لحماية بياناتك، بما يتوافق مع القوانين المحلية. لا نقوم ببيع أو مشاركة بياناتك مع أي طرف ثالث لأغراض تسويقية.',
+  'privacy.links.title': '5. روابط خارجية',
+  'privacy.links.content': 'قد يحتوي موقعنا على روابط لمواقع خارجية. لا نتحمل أي مسؤولية عن ممارسات الخصوصية لهذه المواقع.',
+  'privacy.rights.title': '6. حقوق المستخدم',
+  'privacy.rights.content': 'يحق لك في أي وقت طلب الوصول إلى بياناتك، تصحيحها، حذفها، أو سحب موافقتك على تلقي الرسائل. مراسلتنا على: Contact-gulfcoop-horizons@......ae',
+  'privacy.law.title': '7. القانون الواجب التطبيق',
+  'privacy.law.content': 'تخضع هذه السياسة لقوانين دولة الإمارات العربية المتحدة، خصوصًا المرسوم بقانون اتحادي رقم 34 لسنة 2021 بشأن مكافحة الشائعات والجرائم الإلكترونية، والمرسوم بقانون رقم 55 لسنة 2023 بشأن تنظيم الإعلام.',
+  'privacy.changes.title': '8. التعديلات على سياسة الخصوصية',
+  'privacy.changes.content': 'قد نقوم بتحديث هذه السياسة من وقت إلى آخر. سيتم نشر التحديثات على هذه الصفحة مع تاريخ التعديل. نوصيك بمراجعتها دوريًا.',
+  'privacy.contact': '📬 للاتصال بنا: Contact-gulfcoop-horizons@......ae',
 
   },
   fr: {
@@ -445,6 +518,7 @@ const translations = {
 'nav.site8': 'Articles',
 'nav.site9': 'Initiatives',
 'nav.site10': 'Ressources',
+'loading.pleaseWait':'Veuillez patienter',
 
     
     // Hero Section
@@ -569,6 +643,10 @@ const translations = {
     'about.contact.feedback': 'Faire part d\'un avis ou demander une correction',
     'about.contact.btn': 'Contactez-nous',
     'about.contact.legal': 'Mentions légales',
+    'resources.no_content':'Aucun contenu disponible',
+
+
+
     
     // Projects Page
     'projects.title': 'Initiatives',
@@ -639,12 +717,35 @@ const translations = {
 
 "register.accept": "J'accepte la",
 "register.privacyPolicy": "Politique de confidentialité",
-"register.error.acceptPrivacy": "Vous devez accepter la politique de confidentialité"
+"register.error.acceptPrivacy": "Vous devez accepter la politique de confidentialité",
+
+'privacy.title': 'Politique de confidentialité',
+  'privacy.lastUpdated': 'Dernière mise à jour : Juin 2025',
+  'privacy.intro': 'Le blog AFAQ Gulf Cooperatives s’engage à protéger la vie privée de ses visiteurs. Cette page explique comment nous collectons, utilisons, partageons et sécurisons vos informations.',
+  'privacy.info.title': '1. Informations que nous collectons',
+  'privacy.info.content': 'Nous pouvons collecter deux types d’informations :\na) Données non personnelles : collectées automatiquement lors de votre visite, incluant l’adresse IP, le type de navigateur et d’appareil, les pages visitées, la date et l’heure de visite, la source de référence.\nb) Données personnelles : collectées uniquement si vous les fournissez volontairement via des formulaires (contact, commentaires), pouvant inclure le nom, l’e-mail, le pays ou toute autre information volontairement fournie.',
+  'privacy.usage.title': '2. Utilisation des informations',
+  'privacy.usage.content': 'Les informations collectées sont utilisées à des fins légitimes, telles que l’amélioration de l’expérience de navigation, l’analyse des performances, la réponse à vos demandes et l’envoi de mises à jour (avec votre consentement).',
+  'privacy.cookies.title': '3. Cookies & Suivi',
+  'privacy.cookies.content': 'Le site utilise des cookies pour personnaliser votre expérience et analyser les performances. Vous pouvez accepter, personnaliser ou désactiver les cookies dans les paramètres de votre navigateur.',
+  'privacy.protection.title': '4. Protection des données',
+  'privacy.protection.content': 'Nous prenons des mesures techniques et organisationnelles raisonnables pour protéger vos données conformément aux lois locales. Nous ne vendons ni ne partageons vos données personnelles avec des tiers à des fins marketing.',
+  'privacy.links.title': '5. Liens externes',
+  'privacy.links.content': 'Notre site peut contenir des liens vers des sites externes. Nous ne sommes pas responsables des pratiques de confidentialité de ces sites tiers.',
+  'privacy.rights.title': '6. Droits des utilisateurs',
+  'privacy.rights.content': 'Vous avez le droit d’accéder à vos données, de les corriger, de demander leur suppression et de retirer votre consentement pour recevoir des communications. Contact : Contact-gulfcoop-horizons@......ae',
+  'privacy.law.title': '7. Droit applicable',
+  'privacy.law.content': 'Cette politique est régie par les lois des Émirats arabes unis, y compris le décret-loi fédéral n°34/2021 sur la cybercriminalité et le décret n°55/2023 sur la régulation des médias.',
+  'privacy.changes.title': '8. Modifications de la politique de confidentialité',
+  'privacy.changes.content': 'Cette politique peut être mise à jour périodiquement. Les mises à jour seront publiées sur cette page avec la date de révision. Nous recommandons de la consulter régulièrement.',
+  'privacy.contact': 'Pour toute question relative à la confidentialité, veuillez nous contacter à : Contact-gulfcoop-horizons@......ae'
+
 
 
 
   },
 };
+
 
 export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [language, setLanguage] = useState<Language>('ar');

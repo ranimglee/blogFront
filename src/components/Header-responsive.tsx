@@ -45,7 +45,7 @@ const Header = () => {
               />
             </div>
             <div>
-              <h1 className="text-lg md:text-xl lg:text-2xl font-bold text-white">AFAK</h1>
+              <h1 className="text-lg md:text-xl lg:text-2xl font-bold text-white">AFAQ</h1>
               <p className="text-xs text-gulf-gold hidden sm:block">Gulf Cooperatives</p>
             </div>
           </Link>

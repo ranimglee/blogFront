@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   MapPin,
   Mail,
@@ -10,12 +10,9 @@ import {
 } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { Link as RouterLink } from 'react-router-dom';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 const Footer = () => {
   const { t } = useLanguage();
-  const [showPrivacyModal, setShowPrivacyModal] = useState(false);
 
   const menuItems = [
     { key: 'nav.home', href: '/' },
@@ -35,7 +32,7 @@ const Footer = () => {
   ];
 
   return (
-<footer className="bg-gulf-dark text-white" dir="auto">
+    <footer className="bg-gulf-dark text-white" dir="auto">
       <div className="container mx-auto px-4 py-12 md:py-16" dir="auto">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8" dir="auto">
           {/* Brand & Description */}
@@ -123,32 +120,6 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Privacy Modal */}
-        {showPrivacyModal && (
-          <div
-            className="fixed inset-0 bg-black/70 z-50 flex items-center justify-center"
-            onClick={() => setShowPrivacyModal(false)}
-          >
-            <div
-              className="bg-white rounded-xl w-full max-w-4xl h-[80vh] p-6 relative shadow-xl"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <button
-                onClick={() => setShowPrivacyModal(false)}
-                className="absolute top-4 right-4 text-gray-900 hover:text-black text-2xl font-bold"
-                aria-label="Close modal"
-              >
-                ×
-              </button>
-              <iframe
-                src="/privacy-policy.pdf"
-                title="Privacy Policy"
-                className="w-full h-full border-none rounded"
-              />
-            </div>
-          </div>
-        )}
-
         {/* Bottom Bar */}
         <div className="border-t border-white/20 pt-8 mt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
@@ -156,19 +127,16 @@ const Footer = () => {
               {t('footer.copyright')}
             </p>
             <div className="flex space-x-4">
-              <button
-                onClick={() => setShowPrivacyModal(true)}
+              <RouterLink
+                to="/privacy"
                 className="text-white/60 hover:text-white transition-colors text-sm"
               >
                 {t('footer.privacy')}
-              </button>
+              </RouterLink>
             </div>
           </div>
         </div>
       </div>
-
-      {/* Toast Notifications */}
-      <ToastContainer position="top-right" autoClose={5000} />
     </footer>
   );
 };

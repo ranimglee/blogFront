@@ -16,6 +16,7 @@ import ProjectDetail from "./pages/ProjectDetail";
 import Login from "./pages/Login";
 import Blog from "./pages/Blog";
 import ForgotPassword from "./pages/ForgotPassword";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
 
 const queryClient = new QueryClient();
 
@@ -34,6 +35,9 @@ const App = () => (
             <Route path="/forgot-password" element={<ForgotPassword />} /> {/* ✅ Add this here */}
 
             <Route path="/projects" element={<Projects />} />
+            <Route path="/privacy" element={<PrivacyPolicy />} />
+
+
             <Route path="/projects/:id" element={<ProjectDetail />} />
 
             <Route path="/resources" element={<Resources />} />

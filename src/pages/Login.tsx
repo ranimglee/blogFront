@@ -15,7 +15,6 @@ const Login = () => {
 
   const [isLogin, setIsLogin] = useState(true);
   const [acceptedPrivacy, setAcceptedPrivacy] = useState(false);
-  const [showPdfModal, setShowPdfModal] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [fullName, setFullName] = useState('');
@@ -144,27 +143,26 @@ const Login = () => {
                     </div>
 
                     <div className="flex items-start gap-2 text-sm text-gulf-dark">
-                      <input
-                        id="privacy"
-                        type="checkbox"
-                        checked={acceptedPrivacy}
-                        onChange={(e) => setAcceptedPrivacy(e.target.checked)}
-                        className="mt-1"
-                      />
-                      <label htmlFor="privacy">
-                        {t('register.accept')}{' '}
-                        <a
-                          href="#!"
-                          className="text-gulf-primary hover:underline"
-                          onClick={(e) => {
-                            e.preventDefault();
-                            setShowPdfModal(true);
-                          }}
-                        >
-                          {t('register.privacyPolicy')}
-                        </a>
-                      </label>
-                    </div>
+  <input
+    id="privacy"
+    type="checkbox"
+    checked={acceptedPrivacy}
+    onChange={(e) => setAcceptedPrivacy(e.target.checked)}
+    className="mt-1"
+  />
+  <label htmlFor="privacy">
+    {t('register.accept')}{' '}
+    <a
+      href="/privacy"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="text-gulf-primary hover:underline"
+    >
+      {t('register.privacyPolicy')}
+    </a>
+  </label>
+</div>
+
                   </>
                 )}
 
@@ -197,33 +195,6 @@ const Login = () => {
 
       <Footer />
       <ToastContainer position="top-right" autoClose={3000} />
-
-      {/* Modal PDF */}
-      {showPdfModal && (
-        <div
-          className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
-          onClick={() => setShowPdfModal(false)}
-        >
-          <div
-            className="bg-white p-4 rounded-lg max-w-3xl w-full max-h-[80vh] overflow-auto"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <button
-              onClick={() => setShowPdfModal(false)}
-              className="mb-2 text-red-500 hover:text-red-700"
-            >
-              {t('register.close')}
-            </button>
-           <iframe
-  src="/privacy-policy.pdf"
-  title="Politique de confidentialité"
-  className="w-full h-[70vh]"
-  frameBorder="0"
-/>
-
-          </div>
-        </div>
-      )}
     </div>
   );
 };
