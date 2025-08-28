@@ -110,8 +110,13 @@ const translations = {
     'footer.workingHours': 'Working Hours',
     "footer.invalidEmail": "Please enter a valid email.",
 "footer.subscribeSuccess": "Confirmation email sent!",
-"footer.subscribeError": "Subscription failed.",
-
+    "footer.subscribeError": "Subscription failed.",
+    'footer.sitemap': 'Sitemap',
+    'sitemap.title': 'Sitemap',
+    'sitemap.mainPages': 'Main Website Pages',
+    'sitemap.externalResources': 'External Resources',
+    'sitemap.additionalInfo': 'Additional Information',
+    'sitemap.description': 'This sitemap lists all important pages and resources available on our platform. Use it to easily navigate and discover all available content.',
 
     // About Page - English
     'about.title': 'About AFAQ',
@@ -460,11 +465,17 @@ It may include: name, email address, country, or any other information you volun
 "contact.successMessage": "تم إرسال الرسالة بنجاح!",
 "contact.errorMessage": "حدث خطأ ما. يرجى المحاولة مرة أخرى.",
 "footer.subscribeSuccess": "تم إرسال بريد التأكيد!",
-"footer.subscribeError": "فشل في الاشتراك.",
-"footer.invalidEmail": "يرجى إدخال بريد إلكتروني صالح.",
+    "footer.subscribeError": "فشل في الاشتراك.",
+    "footer.invalidEmail": "يرجى إدخال بريد إلكتروني صالح.",
+    'footer.sitemap': 'خريطة الموقع',
 
 'register.close':'إغلاق',
 'resources.no_content': 'لا يوجد محتوى متاح',
+'sitemap.title': 'خريطة الموقع',
+'sitemap.mainPages': 'الصفحات الرئيسية للموقع',
+'sitemap.externalResources': 'الموارد الخارجية',
+'sitemap.additionalInfo': 'معلومات إضافية',
+'sitemap.description': 'تعرض هذه الخريطة جميع الصفحات والموارد الهامة المتاحة على منصتنا. استخدمها للتنقل بسهولة واكتشاف كل المحتويات المتاحة.',
 
  'privacy.title': 'سياسة الخصوصية',
   'privacy.lastUpdated': 'آخر تحديث: يونيو 2025',
@@ -690,6 +701,12 @@ It may include: name, email address, country, or any other information you volun
 "footer.subscribeSuccess": "E-mail de confirmation envoyé !",
 "footer.subscribeError": "Échec de l'inscription.",
 "footer.invalidEmail": "Veuillez entrer une adresse e-mail valide.",
+'footer.sitemap': 'Plan du site',
+    'sitemap.title': 'Plan du site',
+    'sitemap.mainPages': 'Pages principales du site',
+    'sitemap.externalResources': 'Ressources externes',
+    'sitemap.additionalInfo': 'Informations supplémentaires',
+    'sitemap.description': 'Ce plan de site répertorie toutes les pages et ressources importantes disponibles sur notre plateforme. Utilisez-le pour naviguer facilement et découvrir tout le contenu disponible.',
 
     'login.title': 'Connexion',
     'login.subtitle': 'Veuillez vous connecter pour télécharger des ressources et accéder au contenu premium.',

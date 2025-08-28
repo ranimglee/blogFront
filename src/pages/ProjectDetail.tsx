@@ -3,9 +3,8 @@ import { useParams, Link } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { useLanguage } from '../contexts/LanguageContext';
-import { Calendar, MapPin, Users, ArrowLeft, CheckCircle, Target, Clock } from 'lucide-react';
+import { Calendar, MapPin, ArrowLeft } from 'lucide-react';
 import axios from 'axios';
-
 
 const ProjectDetail = () => {
   const { id } = useParams<{ id?: string }>();
@@ -29,6 +28,7 @@ const ProjectDetail = () => {
           date: data.createdAt?.split('T')[0] || 'N/A',
           image: data.imageUrl || 'https://via.placeholder.com/600x400',
           location: data.country || 'Unknown',
+          tags: data.tags || [],
         };
 
         if (typeof mappedProject.content === 'string' && !mappedProject.content.match(/<[^>]+>/)) {
@@ -55,12 +55,31 @@ const ProjectDetail = () => {
     }
   }, [id]);
 
+  // Animated LoadingBooks component
+  const LoadingBooks = () => (
+    <div className="flex flex-col items-center justify-center mt-20">
+      <div className="w-24 h-32 perspective">
+        <div className="w-full h-full bg-blue-500 rounded-lg shadow-lg animate-rotateBook flex items-center justify-center text-white font-bold text-lg">
+          📖
+        </div>
+      </div>
+      <p className="text-lg text-gulf-dark/70 mt-6 animate-pulse">
+        {t('loading.pleaseWait') || 'Please wait for a moment...'}
+      </p>
+      <style>{`
+        .perspective { perspective: 600px; }
+        .animate-rotateBook { animation: rotateBook 1.5s linear infinite; transform-style: preserve-3d; }
+        @keyframes rotateBook { 0% { transform: rotateY(0deg); } 50% { transform: rotateY(180deg); } 100% { transform: rotateY(360deg); } }
+      `}</style>
+    </div>
+  );
+
   if (loading || !project) {
     return (
-      <div className="min-h-screen bg-gulf-white">
+      <div className="min-h-screen bg-gulf-white flex flex-col">
         <Header />
-        <main className="pt-20 py-20 text-center">
-          <p className="text-lg text-gulf-dark/70">Chargement du projet...</p>
+        <main className="pt-20 py-20 flex flex-col items-center justify-center flex-1">
+          <LoadingBooks />
         </main>
         <Footer />
       </div>
@@ -95,12 +114,9 @@ const ProjectDetail = () => {
             </Link>
 
             <div className="max-w-4xl mx-auto">
-
-
               <h1 className="text-4xl md:text-5xl font-bold text-gulf-dark mb-6">{project.title}</h1>
 
               <div className="flex flex-wrap items-center gap-6 text-gulf-dark/70 mb-8">
-
                 <div className="flex items-center">
                   <Calendar className="w-4 h-4 mr-2" />
                   <span>{new Date(project.date).toLocaleDateString()}</span>
@@ -144,6 +160,5 @@ const ProjectDetail = () => {
     </div>
   );
 };
-
 
 export default ProjectDetail;

@@ -35,20 +35,20 @@ const Header = () => {
     <header className="bg-gulf-primary backdrop-blur-md fixed w-full top-0 z-50 border-b border-gulf-light">
       <div className="container mx-auto px-3 sm:px-4 md:px-6 lg:px-8 py-3 md:py-4">
         <div className="flex items-center justify-between">
-          {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2">
-            <div className="w-8 h-8 md:w-10 flex items-center justify-center">
-              <img
-                src="/lovable-uploads/aef43724-883d-4580-8f95-576adc701eaa.png"
-                alt="Sawa Palm Logo"
-                className="w-6 h-6 md:w-8 object-contain brightness-0 invert"
-              />
-            </div>
-            <div>
-              <h1 className="text-lg md:text-xl lg:text-2xl font-bold text-white">AFAQ</h1>
-              <p className="text-xs text-gulf-gold hidden sm:block">Gulf Cooperatives</p>
-            </div>
-          </Link>
+        
+<Link to="/" className="flex items-center space-x-2">
+  <div className="w-30 h-12 md:w-15 flex items-center justify-center">
+  <img
+  src="/images/logo-vv.png"
+  alt="Sawa Palm Logo"
+  className="w-28 h-28 sm:w-36 sm:h-36 lg:w-28 lg:h-28 object-contain"
+/>
+        
+
+  </div>
+
+</Link>
+
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center rtl:space-x-reverse xl:space-x-8">

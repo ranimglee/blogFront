@@ -126,6 +126,13 @@ const Footer = () => {
               >
                 {t('footer.privacy')}
               </button>
+
+              <RouterLink
+                to="/sitemap"
+                className="text-white/60 hover:text-white transition-colors text-sm"
+              >
+                {t('footer.sitemap')}
+              </RouterLink>
             </div>
           </div>
         </div>

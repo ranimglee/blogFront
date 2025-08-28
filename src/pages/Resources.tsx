@@ -80,51 +80,59 @@ useEffect(() => {
       default: return <FileText className="w-6 h-6" />;
     }
   };
+const [downloadingId, setDownloadingId] = useState<string | null>(null);
 
-  const handleDownload = async (ressourceId: string, fileName: string) => {
-    if (!isAuthenticated) {
-      toast.warning(t('You must login to download') || 'Veuillez vous connecter pour télécharger ce fichier.');
-      return;
-    }
 
-    try {
-      const response = await axios.get(
-        `${import.meta.env.VITE_API_URL}/api/ressources/download/${ressourceId}`,
-        {
-          responseType: 'blob',
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem('token')}`, 
-          },
-        }
-      );
+const handleDownload = async (ressourceId: string, fileName: string) => {
+  if (!isAuthenticated) {
+    toast.warning(t('You must login to download') || 'Veuillez vous connecter pour télécharger ce fichier.');
+    return;
+  }
 
-      const contentDisposition = response.headers['content-disposition'];
-      const contentType = response.headers['content-type'];
+  setDownloadingId(ressourceId); // Start spinner
 
-      let filename = 'fichier';
-      if (contentDisposition) {
-        const match = contentDisposition.match(/filename="([^"]+)"/);
-        if (match && match[1]) {
-          filename = decodeURIComponent(match[1]);
-        }
+  try {
+    console.log('Downloading resource:', ressourceId); // Debug
+
+    const response = await axios.get(
+      `${import.meta.env.VITE_API_URL}/api/ressources/download/${ressourceId}`,
+      {
+        responseType: 'blob',
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
       }
+    );
 
-      const blob = new Blob([response.data], { type: contentType });
-      const url = URL.createObjectURL(blob);
-      const link = document.createElement('a');
-      link.href = url;
-      link.setAttribute('download', filename);
-      document.body.appendChild(link);
-      link.click();
-      link.remove();
-      URL.revokeObjectURL(url);
+    const contentDisposition = response.headers['content-disposition'];
+    const contentType = response.headers['content-type'];
 
-      toast.success(t('resources.download_success') || 'Téléchargement terminé.');
-    } catch (error) {
-      console.error(error);
-      toast.error(t('resources.download_error') || 'Échec du téléchargement.');
+    let filename = fileName;
+    if (contentDisposition) {
+      const match = contentDisposition.match(/filename="([^"]+)"/);
+      if (match && match[1]) filename = decodeURIComponent(match[1]);
     }
-  };
+
+    const blob = new Blob([response.data], { type: contentType });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.setAttribute('download', filename);
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    URL.revokeObjectURL(url);
+
+    toast.success(t('resources.download_success') || 'Téléchargement terminé.');
+  } catch (err) {
+    console.error('Download error:', err);
+    toast.error(t('resources.download_error') || 'Échec du téléchargement.');
+  } finally {
+    setDownloadingId(null); // Stop spinner
+  }
+};
+
+
 
   const categories = [
     { key: 'resources.filter.all', value: 'All' },
@@ -257,14 +265,40 @@ className={`px-6 py-2 rounded-full   transition-colors ${selectedCategory === c.
                 <p className="text-sm text-gulf-dark/70 mb-4">{resource.description}</p>
                 <div className="flex justify-between items-center">
                   <span className="text-sm text-gulf-dark/60">{resource.type}</span>
-                  <button
-                    onClick={() => handleDownload(resource.id || '', fileName)}
-                    className="flex items-center space-x-2 bg-gulf-primary hover:bg-gulf-primary/90 text-white px-4 py-2 rounded-lg transition"
-                    disabled={!resource.fileUrl}
-                  >
-                    <Download className="w-4 h-4" />
-                    <span>{t('resources.download')}</span>
-                  </button>
+<button
+  onClick={() => handleDownload(resource.id || '', fileName)}
+  className="flex items-center space-x-2 bg-gulf-primary hover:bg-gulf-primary/90 text-white px-4 py-2 rounded-lg transition"
+  disabled={!resource.fileUrl || downloadingId === resource.id}
+>
+  {downloadingId === resource.id ? (
+    // Spinner animation
+    <svg className="animate-spin w-4 h-4 mr-2" viewBox="0 0 24 24">
+      <circle
+        className="opacity-25"
+        cx="12"
+        cy="12"
+        r="10"
+        stroke="currentColor"
+        strokeWidth="4"
+        fill="none"
+      ></circle>
+      <path
+        className="opacity-75"
+        fill="currentColor"
+        d="M4 12a8 8 0 018-8v4l3-3-3-3v4a8 8 0 00-8 8h4l-3 3 3 3H4z"
+      ></path>
+    </svg>
+  ) : (
+    <Download className="w-4 h-4" />
+  )}
+  <span>
+    {downloadingId === resource.id
+      ? t('resources.downloading') || 'Downloading...'
+      : t('resources.download')}
+  </span>
+</button>
+
+
                 </div>
               </div>
             </div>

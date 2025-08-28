@@ -15,7 +15,6 @@ interface Comment {
 }
 
 const ArticleDetail = () => {
-
   const { id } = useParams<{ id?: string }>();
   const { t } = useLanguage();
   const [article, setArticle] = useState<any>(null);
@@ -33,7 +32,6 @@ const ArticleDetail = () => {
           axios.get(`${import.meta.env.VITE_API_URL}/api/articles/${id}`),
           axios.get(`${import.meta.env.VITE_API_URL}/api/comments/article/${id}`)
         ]);
-
 
         const data = articleResponse.data;
         const mappedArticle = {
@@ -87,18 +85,10 @@ const ArticleDetail = () => {
     try {
       const token = localStorage.getItem('token');
       await axios.post(
-`${import.meta.env.VITE_API_URL}/api/comments`,
-        {
-          articleId: id,
-          content: newComment
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          }
-        }
+        `${import.meta.env.VITE_API_URL}/api/comments`,
+        { articleId: id, content: newComment },
+        { headers: { Authorization: `Bearer ${token}` } }
       );
-
       setCommentSuccess(true);
       setNewComment('');
       setCommentError(null);
@@ -109,14 +99,31 @@ const ArticleDetail = () => {
     }
   };
 
+  // Animated LoadingBooks component
+  const LoadingBooks = () => (
+    <div className="flex flex-col items-center justify-center mt-20">
+      <div className="w-24 h-32 perspective">
+        <div className="w-full h-full bg-blue-500 rounded-lg shadow-lg animate-rotateBook flex items-center justify-center text-white font-bold text-lg">
+          📖
+        </div>
+      </div>
+      <p className="text-lg text-gulf-dark/70 mt-6 animate-pulse">
+        {t('loading.pleaseWait') || 'Please wait for a moment...'}
+      </p>
+      <style>{`
+        .perspective { perspective: 600px; }
+        .animate-rotateBook { animation: rotateBook 1.5s linear infinite; transform-style: preserve-3d; }
+        @keyframes rotateBook { 0% { transform: rotateY(0deg); } 50% { transform: rotateY(180deg); } 100% { transform: rotateY(360deg); } }
+      `}</style>
+    </div>
+  );
+
   if (loading) {
     return (
-      <div className="min-h-screen bg-gulf-white">
+      <div className="min-h-screen bg-gulf-white flex flex-col">
         <Header />
-        <main className="pt-20 py-20">
-          <div className="container mx-auto px-4 text-center">
-            <p className="text-lg text-gulf-dark/70">Chargement de l'article...</p>
-          </div>
+        <main className="pt-20 py-20 flex flex-col items-center justify-center flex-1">
+          <LoadingBooks />
         </main>
         <Footer />
       </div>
@@ -127,14 +134,9 @@ const ArticleDetail = () => {
     return (
       <div className="min-h-screen bg-gulf-white">
         <Header />
-        <main className="pt-20 py-20">
-          <div className="container mx-auto px-4 text-center">
-            <h1 className="text-4xl font-bold text-gulf-dark mb-4">Article Not Found</h1>
-            <p className="text-gulf-dark/70 mb-8">{error || "The article you're looking for doesn't exist."}</p>
-            <Link to="/article" className="btn-primary">
-              {t('backToArticles')}
-            </Link>
-          </div>
+        <main className="pt-20 py-20 text-center">
+          <p className="text-lg text-red-600">{error || "The article you're looking for doesn't exist."}</p>
+          <Link to="/article" className="btn-primary mt-4 inline-block">{t('backToArticles')}</Link>
         </main>
         <Footer />
       </div>
@@ -145,6 +147,7 @@ const ArticleDetail = () => {
     <div className="min-h-screen bg-gulf-white">
       <Header />
       <main className="pt-20">
+        {/* Article Hero */}
         <section className="py-12 bg-gradient-to-br from-gulf-secondary/30 to-gulf-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <Link
@@ -154,18 +157,15 @@ const ArticleDetail = () => {
               <ArrowLeft className="w-4 h-4 mr-2" />
               {t('backToArticles')}
             </Link>
-
             <div className="max-w-4xl mx-auto">
               <div className="mb-6">
                 <span className="bg-gulf-primary text-gulf-white px-3 py-1 rounded-full text-sm font-medium">
                   {article.category}
                 </span>
               </div>
-
               <h1 className="text-4xl md:text-5xl font-bold text-gulf-dark mb-6 break-words">
                 {article.title}
               </h1>
-
               <div className="flex flex-wrap items-center gap-6 text-gulf-dark/70 mb-8">
                 <div className="flex items-center">
                   <User className="w-4 h-4 mr-2" />
@@ -180,7 +180,6 @@ const ArticleDetail = () => {
                   <span>{article.readTime} {t('minRead')}</span>
                 </div>
               </div>
-
               <img
                 src={article.image}
                 alt={article.title}
@@ -190,6 +189,7 @@ const ArticleDetail = () => {
           </div>
         </section>
 
+        {/* Article Content & Comments */}
         <section className="py-16">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
@@ -197,6 +197,7 @@ const ArticleDetail = () => {
                 <div dangerouslySetInnerHTML={{ __html: article.content }} />
               </div>
 
+              {/* Tags */}
               <div className="mt-12 pt-8 border-t border-gulf-light">
                 <div className="flex items-center flex-wrap gap-2">
                   <Tag className="w-4 h-4 text-gulf-dark/60" />
@@ -211,14 +212,12 @@ const ArticleDetail = () => {
                 </div>
               </div>
 
-              {/* Comment Form (without name) */}
+              {/* Comment Form */}
               <div className="mt-12 p-6 bg-gulf-secondary/20 rounded-2xl">
                 <h3 className="text-xl font-bold text-gulf-dark mb-4">Leave a Comment</h3>
                 <form onSubmit={handleCommentSubmit} className="space-y-4">
                   <div>
-                    <label htmlFor="comment" className="block text-sm font-medium text-gulf-dark/70">
-                      Comment
-                    </label>
+                    <label htmlFor="comment" className="block text-sm font-medium text-gulf-dark/70">Comment</label>
                     <textarea
                       id="comment"
                       value={newComment}
@@ -228,12 +227,8 @@ const ArticleDetail = () => {
                       required
                     />
                   </div>
-                  {commentError && (
-                    <p className="text-red-500 text-sm">{commentError}</p>
-                  )}
-                  {commentSuccess && (
-                    <p className="text-green-500 text-sm">Comment submitted! It will appear after approval.</p>
-                  )}
+                  {commentError && <p className="text-red-500 text-sm">{commentError}</p>}
+                  {commentSuccess && <p className="text-green-500 text-sm">Comment submitted! It will appear after approval.</p>}
                   <button
                     type="submit"
                     className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-gulf-primary hover:bg-gulf-primary/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gulf-primary"
@@ -254,9 +249,7 @@ const ArticleDetail = () => {
                       <div key={comment.id} className="p-4 bg-gulf-secondary/10 rounded-lg">
                         <div className="flex items-center justify-between mb-2">
                           <span className="font-medium text-gulf-dark">{comment.author}</span>
-                          <span className="text-sm text-gulf-dark/70">
-                            {new Date(comment.createdAt).toLocaleDateString()}
-                          </span>
+                          <span className="text-sm text-gulf-dark/70">{new Date(comment.createdAt).toLocaleDateString()}</span>
                         </div>
                         <p className="text-gulf-dark/90">{comment.content}</p>
                       </div>

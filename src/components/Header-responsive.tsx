@@ -37,11 +37,11 @@ const Header = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
-            <div className="w-8 h-8 md:w-10 flex items-center justify-center">
+            <div className="w-16 h-16 md:w-20 flex items-center justify-center">
               <img
                 src="/lovable-uploads/aef43724-883d-4580-8f95-576adc701eaa.png"
                 alt="Sawa Palm Logo"
-                className="w-6 h-6 md:w-8 object-contain brightness-0 invert"
+                className="w-12 h-12 md:w-16 object-contain brightness-0 invert"
               />
             </div>
             <div>

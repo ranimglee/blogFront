@@ -126,14 +126,26 @@ const Footer = () => {
             <p className="text-white/60 mb-4 md:mb-0 text-sm">
               {t('footer.copyright')}
             </p>
-            <div className="flex space-x-4">
-              <RouterLink
-                to="/privacy"
-                className="text-white/60 hover:text-white transition-colors text-sm"
-              >
-                {t('footer.privacy')}
-              </RouterLink>
-            </div>
+          <div className="flex items-center space-x-4">
+  <RouterLink
+    to="/privacy"
+    className="text-white/60 hover:text-white transition-colors text-sm"
+  >
+    {t('footer.privacy')}
+  </RouterLink>
+
+  <span className="text-white/40">|</span>
+
+  <RouterLink
+    to="/sitemap"
+    className="text-white/60 hover:text-white transition-colors text-sm"
+  >
+    {t('footer.sitemap')}
+  </RouterLink>
+</div>
+
+
+             
           </div>
         </div>
       </div>

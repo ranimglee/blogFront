@@ -162,42 +162,47 @@ const handleContactClick = () => {
           </div>
         </section>
 
-        {/* Contact Section */}
-        <section className="py-8 bg-gulf-primary text-white">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl text-center">
-            <div className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center text-white mx-auto mb-6">
-              <Mail className="w-6 h-6" />
-            </div>
-            <h2 className="text-3xl font-bold mb-4">{t('about.contact.title')}</h2>
-            <p className="text-lg text-white/90 mb-8">
-              📧 {t('about.contact.email')}
-            </p>
-            
-            <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-              {contactItems.map((item, index) => (
-                <div key={index} className="bg-white/10 p-4 rounded-lg text-center">
-                  <div className="text-white mb-2 flex justify-center">{item.icon}</div>
-                  <p className="text-white/90 text-sm">{item.text}</p>
-                </div>
-              ))}
-            </div>
+  {/* Contact Section */}
+<section className="py-16 bg-white mb-12">
+  <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl text-center">
+    <div className="w-14 h-14 bg-gulf-primary/10 rounded-2xl flex items-center justify-center text-gulf-primary mx-auto mb-6">
+      <Mail className="w-7 h-7" />
+    </div>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-             <button
-  onClick={handleContactClick}
-  className="bg-white text-gulf-primary px-6 py-3 rounded-lg font-medium hover:bg-gulf-secondary transition-colors flex items-center justify-center gap-2"
->
-  <Mail className="w-4 h-4" />
-  {t('about.contact.btn')}
-</button>
+    <h2 className="text-3xl font-bold text-gulf-dark mb-4">
+      {t('about.contact.title')}
+    </h2>
+    <p className="text-lg text-gulf-dark/70 mb-10">
+      📧 {t('about.contact.email')}
+    </p>
 
-              <button className="border-2 border-white text-white px-6 py-3 rounded-lg font-medium hover:bg-white hover:text-gulf-primary transition-colors flex items-center justify-center gap-2">
-                <Scale className="w-4 h-4" />
-                {t('about.contact.legal')}
-              </button>
-            </div>
+    {/* Contact options as cards */}
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mb-12">
+      {contactItems.map((item, index) => (
+        <div
+          key={index}
+          className="bg-white shadow-md border border-gray-100 hover:shadow-lg transition rounded-xl p-6 flex flex-col items-center text-center"
+        >
+          <div className="w-10 h-10 flex items-center justify-center rounded-lg bg-gulf-primary/10 text-gulf-primary mb-3">
+            {item.icon}
           </div>
-        </section>
+          <p className="text-sm text-gulf-dark/80">{item.text}</p>
+        </div>
+      ))}
+    </div>
+
+    {/* CTA Button */}
+    <button
+      onClick={handleContactClick}
+className="bg-gulf-primary text-white px-8 py-3 rounded-xl font-medium hover:brightness-90 transition-all flex items-center justify-center gap-2 mx-auto"
+    >
+      <Mail className="w-4 h-4" />
+      {t('about.contact.btn')}
+    </button>
+  </div>
+</section>
+
+
       </main>
 
       <Footer />
