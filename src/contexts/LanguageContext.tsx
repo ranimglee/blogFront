@@ -23,7 +23,7 @@ const translations = {
     'nav.contact': 'Contact',
    'nav.site1': 'Gulf Cooperation Council',
 'nav.site2': 'Union of Consumer Cooperative Societies of Kuwait',
-'nav.site3': 'Gulf Cooperation Council',
+'nav.site3': 'International Cooperative Alliance',
 'nav.site4': 'International Labour Organization',
 'nav.site5': 'United Nations Department of Economic and Social Affairs',
 
@@ -279,7 +279,7 @@ It may include: name, email address, country, or any other information you volun
 
     'nav.site1': 'مجلس التعاون لدول الخليج العربية',
     'nav.site2': 'اتحاد الجمعيات التعاونية الاستهلاكية بدولة الكويت',
-    'nav.site3': 'مجلس التعاون لدول الخليج العربية',
+    'nav.site3': 'التحالف التعاوني الدولي',
     'nav.site4': 'منظمة العمل الدولية',
     'nav.site5': 'قسم الشؤون الاقتصادية والاجتماعية بالأمم المتحدة',
 'nav.site6': 'الرئيسية',
@@ -546,7 +546,7 @@ It may include: name, email address, country, or any other information you volun
     
     'nav.site1': 'Conseil de coopération du Golfe',
 'nav.site2': 'Union des associations coopératives de consommation du Koweït',
-'nav.site3': 'Conseil de coopération du Golfe',
+'nav.site3': 'Alliance coopérative internationale',
 'nav.site4': 'Organisation internationale du travail',
 'nav.site5': 'Département des affaires économiques et sociales des Nations Unies',
 

@@ -68,7 +68,7 @@ const NewProjectsCarousel = () => {
 
   const renderProjectCard = (project) => (
     <div className="bg-gulf-white border border-gulf-light rounded-2xl overflow-hidden shadow-lg hover:scale-105 transition-transform duration-300 flex flex-col h-full">
-      <div className="relative overflow-hidden h-48">
+      <div className="relative overflow-hidden h-40 sm:h-48">
         <img
           src={project.image}
           alt={project.title}

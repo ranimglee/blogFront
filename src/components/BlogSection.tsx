@@ -84,7 +84,9 @@ const BlogCarousel = () => {
     slidesToShow: 3,
     slidesToScroll: 1,
     responsive: [
+      { breakpoint: 1280, settings: { slidesToShow: 3 } },
       { breakpoint: 1024, settings: { slidesToShow: 2 } },
+      { breakpoint: 768, settings: { slidesToShow: 2 } },
       { breakpoint: 640, settings: { slidesToShow: 1 } },
     ],
   };
@@ -98,8 +100,8 @@ const BlogCarousel = () => {
           <Slider {...settings}>
             {blogPosts.map(post => (
               <div key={post.id} className="p-4 flex justify-center">
-                <div className="bg-gulf-white border border-gulf-light rounded-2xl overflow-hidden shadow-lg card-hover flex flex-col" style={{ height: '450px', maxWidth: '400px' }}>
-                  <div className="relative overflow-hidden h-48">
+                <div className="bg-gulf-white border border-gulf-light rounded-2xl overflow-hidden shadow-lg card-hover flex flex-col min-h-[400px] max-w-full sm:max-w-sm md:max-w-md">
+                  <div className="relative overflow-hidden h-40 sm:h-48">
                     <img
                       src={post.image}
                       alt={post.title}

@@ -31,11 +31,11 @@ const Footer = () => {
           {/* Brand & Description */}
           <div className="lg:col-span-1">
             <div className="flex items-center space-x-3 mb-4">
-              <div className="w-10 h-10 flex items-center justify-center">
+               <div className="w-10 h-10 flex items-center justify-center" dir="auto">
                 <img
-                  src="/lovable-uploads/aef43724-883d-4580-8f95-576adc701eaa.png"
+                  src="/images/logo-vv.png"
                   alt="Sawa Palm Logo"
-                  className="w-8 h-8 object-contain brightness-0 invert"
+                  className="w-10 h-10 object-contain"
                 />
               </div>
               <div>

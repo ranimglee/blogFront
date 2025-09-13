@@ -11,8 +11,8 @@ const Hero = () => {
       <div className="absolute inset-0 bg-gradient-to-br from-gulf-secondary/20 to-gulf-white/50"></div>
       
       {/* Animated Background Elements */}
-      <div className="absolute top-20 right-20 w-64 h-64 bg-gulf-primary/10 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-20 left-20 w-96 h-96 bg-gulf-gold/10 rounded-full blur-3xl"></div>
+      <div className="absolute top-20 right-4 sm:right-20 w-32 h-32 sm:w-64 sm:h-64 bg-gulf-primary/10 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-20 left-4 sm:left-20 w-48 h-48 sm:w-96 sm:h-96 bg-gulf-gold/10 rounded-full blur-3xl"></div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center max-w-4xl mx-auto animate-fade-in">

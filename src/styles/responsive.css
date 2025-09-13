@@ -140,6 +140,29 @@
   }
 }
 
+/* Extra large screen adjustments */
+@media (min-width: 1281px) {
+  .container {
+    max-width: 1440px;
+  }
+
+  h1 {
+    font-size: 4rem !important; /* 64px */
+  }
+
+  h2 {
+    font-size: 2.5rem !important; /* 40px */
+  }
+
+  .grid-cols-3 {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+
+  .grid-cols-4 {
+    grid-template-columns: repeat(4, 1fr) !important;
+  }
+}
+
 /* Touch-friendly adjustments */
 @media (hover: none) and (pointer: coarse) {
   button,
