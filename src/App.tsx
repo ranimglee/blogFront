@@ -40,7 +40,6 @@ const App = () => (
             <Route path="/sitemap" element={<Sitemap />} />
 
 
-
             <Route path="/projects/:id" element={<ProjectDetail />} />
 
             <Route path="/resources" element={<Resources />} />

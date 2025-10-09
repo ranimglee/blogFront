@@ -5,7 +5,8 @@ import { useLanguage } from '../contexts/LanguageContext';
 import { toast, ToastContainer } from 'react-toastify';
 import axios from 'axios';
 import 'react-toastify/dist/ReactToastify.css';
-
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 const ForgotPassword = () => {
   const { t } = useLanguage();
   const [step, setStep] = useState(1); // Step 1 = request code, Step 2 = reset password
@@ -44,6 +45,8 @@ const ForgotPassword = () => {
   };
 
   return (
+     <div className="min-h-screen bg-white">
+      <Header />
     <div className="min-h-screen bg-white flex justify-center items-center p-4">
       <div className="max-w-md w-full bg-white border border-gray-200 p-8 rounded-lg shadow-lg">
         <h2 className="text-2xl font-bold text-center text-gulf-dark mb-6">
@@ -96,6 +99,8 @@ const ForgotPassword = () => {
         )}
         <ToastContainer />
       </div>
+    </div>
+     <Footer />
     </div>
   );
 };

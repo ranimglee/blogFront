@@ -69,18 +69,28 @@ const BlogPage = () => {
 
   const LoadingBooks = () => (
     <div className="flex flex-col items-center justify-center mt-20">
-      <div className="w-24 h-32 perspective">
-        <div className="w-full h-full bg-blue-500 rounded-lg shadow-lg animate-rotateBook flex items-center justify-center text-white font-bold text-lg">
-          📖
-        </div>
+    <div className="w-24 h-32 perspective flex items-center justify-center">
+      <div className="animate-rotateBook text-5xl">
+        📖
       </div>
-      <p className="text-lg text-gulf-dark/70 mt-6 animate-pulse">{t('loading.pleaseWait') || 'Please wait for a moment...'}</p>
-      <style>{`
-        .perspective { perspective: 600px; }
-        .animate-rotateBook { animation: rotateBook 1.5s linear infinite; transform-style: preserve-3d; }
-        @keyframes rotateBook { 0% { transform: rotateY(0deg); } 50% { transform: rotateY(180deg); } 100% { transform: rotateY(360deg); } }
-      `}</style>
     </div>
+    <p className="text-lg text-gulf-dark/70 mt-6 animate-pulse">
+      {t('loading.pleaseWait') || 'Please wait for a moment...'}
+    </p>
+    <style>{`
+      .perspective { perspective: 600px; }
+      .animate-rotateBook { 
+        animation: rotateBook 1.5s linear infinite; 
+        transform-style: preserve-3d; 
+        display: inline-block;
+      }
+      @keyframes rotateBook {
+        0% { transform: rotateY(0deg); }
+        50% { transform: rotateY(180deg); }
+        100% { transform: rotateY(360deg); }
+      }
+    `}</style>
+  </div>
   );
 
   if (loading) {

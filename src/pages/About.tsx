@@ -61,7 +61,7 @@ const handleContactClick = () => {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8">
               {/* Vision */}
-              <div className="bg-gulf-secondary/5 p-8 rounded-lg border border-gulf-light/50">
+              <div className="bg-gulf-gold/10 p-8 rounded-lg border border-gulf-light/50">
                 <div className="flex items-center mb-6">
                   <div className="w-10 h-10 bg-gulf-primary rounded-lg flex items-center justify-center text-white mr-4">
                     <Zap className="w-5 h-5" />
@@ -74,7 +74,7 @@ const handleContactClick = () => {
               </div>
               
               {/* Mission Overview */}
-              <div className="bg-gulf-gold/5 p-8 rounded-lg border border-gulf-light/50">
+              <div className="bg-gulf-gold/10 p-8 rounded-lg border border-gulf-light/50">
                 <div className="flex items-center mb-6">
                   <div className="w-10 h-10 bg-gulf-gold rounded-lg flex items-center justify-center text-gulf-dark mr-4">
                     <Target className="w-5 h-5" />
