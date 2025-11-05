@@ -86,19 +86,21 @@ const BlogCarousel = () => {
   if (loading) return <LoadingBooks />;
   if (error) return <p className="text-red-600 text-center">{error}</p>;
 
-  const settings = {
-    dots: true,
-    infinite: blogPosts.length > 3,
-    speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    responsive: [
-      { breakpoint: 1280, settings: { slidesToShow: 3 } },
-      { breakpoint: 1024, settings: { slidesToShow: 2 } },
-      { breakpoint: 768, settings: { slidesToShow: 2 } },
-      { breakpoint: 640, settings: { slidesToShow: 1 } },
-    ],
-  };
+const settings = {
+  dots: true,
+  infinite: blogPosts.length > 3,
+  speed: 500,
+  slidesToShow: 3,
+  slidesToScroll: 1,
+  centerMode: false,
+  responsive: [
+    { breakpoint: 1280, settings: { slidesToShow: 3 } },
+    { breakpoint: 1024, settings: { slidesToShow: 2 } },
+    { breakpoint: 768, settings: { slidesToShow: 1, dots: true, arrows: false } },
+    { breakpoint: 480, settings: { slidesToShow: 1, dots: true, arrows: false } },
+  ],
+};
+
 
   return (
     <section className="py-20 bg-gulf-white">
@@ -108,9 +110,9 @@ const BlogCarousel = () => {
         {blogPosts.length > 0 ? (
           <Slider {...settings}>
             {blogPosts.map(post => (
-              <div key={post.id} className="p-4 flex justify-center">
-                <div className="bg-gulf-white border border-gulf-light rounded-2xl overflow-hidden shadow-lg card-hover flex flex-col min-h-[400px] max-w-full sm:max-w-sm md:max-w-md">
-                  <div className="relative overflow-hidden h-40 sm:h-48">
+<div key={post.id} className="px-2 sm:px-4">
+<div className="bg-gulf-white border border-gulf-light rounded-2xl overflow-hidden shadow-lg flex flex-col min-h-[400px] w-full sm:w-[90%] mx-auto">
+<div className="relative overflow-hidden h-48 sm:h-56 md:h-64">
                     <img
                       src={post.image}
                       alt={post.title}
