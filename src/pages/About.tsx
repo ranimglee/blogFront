@@ -152,7 +152,6 @@ const handleContactClick = () => {
                 </div>
                 <p className="text-gulf-dark/80 leading-relaxed mb-4">
                   {t('about.team.text')}
-                  {t('about.team.languages')}
                   {t('about.team.diversity')}
                 </p>
                
