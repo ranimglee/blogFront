@@ -23,7 +23,7 @@ const BlogCarousel = () => {
       setLoading(true);
       setError(null);
       try {
-        const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/articles`, {
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/articles`, {
           params: { lang: languageMap[language] },
         });
 

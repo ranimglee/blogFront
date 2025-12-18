@@ -1,19 +1,21 @@
-import React from 'react';
 import {
   MapPin,
   Mail,
   Link as LinkIcon,
   Linkedin,
   Twitter,
-  Youtube,
+  Facebook,
   Instagram,
 } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { Link as RouterLink } from 'react-router-dom';
+import React, { useState } from 'react';
 
 const Footer = () => {
   const { t } = useLanguage();
-
+ const [email, setEmail] = useState('');
+  const [status, setStatus] = useState(null); // 'success' | 'error' | null
+  const [loading, setLoading] = useState(false);
   const menuItems = [
     { key: 'nav.home', href: '/' },
     { key: 'nav.about', href: '/about' },
@@ -29,6 +31,43 @@ const Footer = () => {
     { key: 'nav.site4', href: 'https://www.ilo.org/topics/cooperatives' },
     { key: 'nav.site5', href: 'https://social.desa.un.org/issues/cooperatives' },
   ];
+const handleSubscribe = async () => {
+  if (!email.trim()) {
+    setStatus({ type: 'error', message: t('footer.errorMessage') });
+    return;
+  }
+
+  try {
+    setLoading(true);
+    setStatus(null);
+
+    const response = await fetch(
+      `${import.meta.env.VITE_API_URL || ''}/public/newsletter/subscribe`,
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, consent: true }),
+      }
+    );
+
+    if (!response.ok) {
+      // Try to extract the backend error message
+      const errorText = await response.text();
+      setStatus({
+        type: 'error',
+        message: errorText || t('footer.errorMessage'),
+      });
+      return;
+    }
+
+    setStatus({ type: 'success', message: t('footer.successMessage') });
+    setEmail('');
+  } catch (err) {
+    setStatus({ type: 'error', message: t('footer.errorMessage') });
+  } finally {
+    setLoading(false);
+  }
+};
 
   return (
 <footer className="bg-gulf-dark text-white" dir="auto">
@@ -49,7 +88,7 @@ const Footer = () => {
           {t('footer.description')}
         </p>
         <div className="flex space-x-3 rtl:space-x-reverse">
-          {[Linkedin, Twitter, Youtube, Instagram].map((Icon, index) => (
+          {[Linkedin, Twitter, Facebook, Instagram].map((Icon, index) => (
             <a
               key={index}
               href="#"
@@ -99,21 +138,38 @@ const Footer = () => {
         </ul>
       </div>
 
-      {/* Newsletter */}
-      <div className="flex flex-col" dir="auto">
-        <h4 className="text-lg font-bold mb-4">{t('footer.newsletter')}</h4>
-        <div className="space-y-3 flex-1">
-          <input
-            type="email"
-            placeholder={t('footer.emailPlaceholder')}
-            className="w-full px-3 py-2 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/60 focus:outline-none focus:border-gulf-gold text-sm"
-          />
-          <button className="w-full bg-gulf-gold text-gulf-dark hover:bg-gulf-gold/90 rounded-lg transition-colors py-2 text-sm">
-            {t('footer.subscribe')}
-          </button>
+     {/* Newsletter */}
+          <div className="flex flex-col" dir="auto">
+            <h4 className="text-lg font-bold mb-4">{t('footer.newsletter')}</h4>
+            <div className="space-y-3 flex-1">
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder={t('footer.emailPlaceholder')}
+                className="w-full px-3 py-2 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/60 focus:outline-none focus:border-gulf-gold text-sm"
+              />
+              <button
+                onClick={handleSubscribe}
+                disabled={loading}
+                className="w-full bg-gulf-gold text-gulf-dark hover:bg-gulf-gold/90 rounded-lg transition-colors py-2 text-sm disabled:opacity-50"
+              >
+                {loading ? t('footer.loading') : t('footer.subscribe')}
+              </button>
+             {status && (
+  <p
+    className={`text-sm ${
+      status.type === 'success' ? 'text-green-400' : 'text-red-400'
+    }`}
+  >
+    {status.message}
+  </p>
+)}
+
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
+
 
     {/* Bottom Bar */}
     <div className="border-t border-white/20 pt-8 mt-8">

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { MapPin, Mail, Link as LinkIcon, Linkedin, Twitter, Youtube, Instagram } from 'lucide-react';
+import { MapPin, Mail, Link as LinkIcon, Linkedin, Twitter, Facebook, Instagram } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { Link as RouterLink } from 'react-router-dom';
 
@@ -47,7 +47,7 @@ const Footer = () => {
               {t('footer.description')}
             </p>
             <div className="flex space-x-3">
-              {[Linkedin, Twitter, Youtube, Instagram].map((Icon, index) => (
+              {[Linkedin, Twitter, Facebook, Instagram].map((Icon, index) => (
                 <a
                   key={index}
                   href="#"

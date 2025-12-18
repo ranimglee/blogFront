@@ -26,7 +26,9 @@ const translations = {
 'nav.site3': 'International Cooperative Alliance',
 'nav.site4': 'International Labour Organization - cooperatives portal',
 'nav.site5': 'United Nations Department of Economic and Social Affairs',
-
+"register.country": "Country",
+  "register.phoneNumber": "Phone Number",
+  "register.countryPlaceholder": "Select your country",
     'nav.login':'Login',
     'nav.logout':'Logout',
 
@@ -53,7 +55,8 @@ const translations = {
   "forgotPassword.errorReset": "An error occurred while resetting the password.",
   "forgotPassword.passwordMismatch": "Passwords do not match.",
   "forgotPassword.switchToLogin": "Remember your password? Sign in",
-    
+    "minRead": "min read",
+
     // Hero Section
     'hero.title': 'Afaq',
     'hero.titleHighlight': 'Gulf',
@@ -65,7 +68,16 @@ const translations = {
     'hero.stats.cooperatives': 'Active Cooperatives',
     'hero.stats.countries': 'Gulf Countries',
     'hero.stats.members': 'Community Members',
-    
+    // Comments
+'comments.title': 'Comments',
+'comments.leaveComment': 'Leave a Comment',
+'comments.comment': 'Comment',
+'comments.submit': 'Submit',
+'comments.noComments': 'No approved comments yet.',
+'comments.success': 'Comment submitted! It will appear after approval.',
+'comments.error': 'Please write a comment.',
+'comments.loginRequired': 'You must login to comment',
+
     // Blog Section
     'blog.title': 'Latest Articles',
     'blog.subtitle': 'Stay updated with the latest trends, success stories, and expert insights from the Gulf cooperative movement.',
@@ -127,6 +139,8 @@ const translations = {
     "footer.invalidEmail": "Please enter a valid email.",
 "footer.subscribeSuccess": "Confirmation email sent!",
     "footer.subscribeError": "Subscription failed.",
+    "footer.loading": "Subscribing...",
+
     'footer.sitemap': 'Sitemap',
     'sitemap.title': 'Sitemap',
     'sitemap.mainPages': 'Main Website Pages',
@@ -194,6 +208,12 @@ const translations = {
     'resources.filter.finance': 'Finance',
     'resources.filter.governance': 'Governance',
     'resources.filter.caseStudies': 'Case Studies',
+ "resources.download_success": "Download completed successfully.",
+  "resources.download_error": "Download failed. Please try again.",
+  "resources.downloading": "Downloading...",
+  "resources.no_content": "No content available.",
+  "resources.login_required": "You must login to download this file.",
+
     "register.accept": "I accept the",
 "register.privacyPolicy": "Privacy Policy",
 "register.error.acceptPrivacy": "You must accept the Privacy Policy",
@@ -221,6 +241,24 @@ const translations = {
     'login.submit': 'Login',
     'login.switchToRegister': 'D’ont have an account? Sign up',
     'login.forgotPassword': 'Forgot your password?',
+
+"login.error.invalidEmail": "Please enter a valid email address.",
+  "login.error.invalidPassword": "Password must be at least 6 characters long.",
+  "login.error.invalid": "Invalid email or password.",
+  "login.error.banned": "Your account has been banned.",
+  "login.error.tooManyAttempts": "Too many failed attempts. Try again later.",
+  "login.error.generic": "An error occurred during login. Please try again.",
+  "login.success": "Login successful!",
+
+  "register.error.invalidFullName": "Please enter your full name.",
+  "register.error.invalidEmail": "Please enter a valid email address.",
+  "register.error.invalidPassword": "Password must be at least 6 characters long.",
+  "register.error.passwordMismatch": "Passwords do not match.",
+  "register.error.invalidCountry": "Please select your country.",
+  "register.error.invalidPhone": "Please enter your phone number.",
+  "register.error.generic": "An error occurred during registration. Please try again.",
+  "register.success": "Registration successful!",
+
         'backToProjects': 'Back to Initiatives',
     'backToArticles': 'Back to Articles',
 
@@ -237,7 +275,6 @@ const translations = {
 "contact.sending": "Sending...",
 "contact.successMessage": "Message sent successfully!",
 "contact.errorMessage": "Something went wrong. Please try again.",
-'resources.no_content': 'No content available',
 'loading.pleaseWait':'Please wait',
  'privacy.title': 'Privacy Policy',
   'privacy.lastUpdated': 'Last updated: June 2025',
@@ -273,8 +310,10 @@ It may include: name, email address, country, or any other information you volun
   'privacy.changes.title': '8. Changes to the Privacy Policy',
   'privacy.changes.content': 'This policy may be updated from time to time. Any changes will be posted on this page along with the update date. We recommend reviewing it regularly.',
   'privacy.contact': 'For any privacy-related inquiries, please contact us at: Contact-gulfcoop-horizons@......ae',
-'privacy.contactTitle':'Contact details'
+'privacy.contactTitle':'Contact details',
 
+  "footer.successMessage": "You have successfully subscribed!",
+  "footer.errorMessage": "Subscription failed. Please try again."
 
   },
   ar: {
@@ -290,6 +329,7 @@ It may include: name, email address, country, or any other information you volun
     'nav.logout':'تسجيل الخروج',
     'loading.pleaseWait':'يرجى الانتظار',
 
+"comments.loginRequired": "يجب تسجيل الدخول لإضافة تعليق.",
 
 
     'nav.site1': 'مجلس التعاون لدول الخليج العربية',
@@ -316,7 +356,7 @@ It may include: name, email address, country, or any other information you volun
     'hero.stats.members': 'الأعضاء المساهمين',
     
     // Blog Section
-    'blog.title': 'أهم وآخر المقالات ',
+    'blog.title':' المقالات ',
     'blog.subtitle': 'ابق مطلعاً على أحدث الاتجاهات وقصص النجاح والرؤى المتخصصة من حركة التعاونيات الخليجية.',
     'blog.readMore': 'اقرأ المزيد',
     'blog.viewAll': 'عرض جميع المقالات',
@@ -425,6 +465,14 @@ It may include: name, email address, country, or any other information you volun
     'projects.status.inProgress': 'قيد التنفيذ',
     'backToProjects': 'العودة إلى المبادرات',
     'backToArticles': 'العودة إلى المقالات',
+// التعليقات
+'comments.title': 'التعليقات',
+'comments.leaveComment': 'أضف تعليقًا',
+'comments.comment': 'التعليق',
+'comments.submit': 'إرسال',
+'comments.noComments': 'لا توجد تعليقات معتمدة بعد.',
+'comments.success': 'تم إرسال التعليق! سيظهر بعد الموافقة.',
+'comments.error': 'يرجى كتابة تعليق.',
 
 "register.accept": "أوافق على",
 "register.privacyPolicy": "سياسة الخصوصية",
@@ -474,7 +522,22 @@ It may include: name, email address, country, or any other information you volun
 'register.confirmPasswordPlaceholder': 'أعد إدخال كلمة المرور',
 'register.submit': 'إنشاء حساب',
 'register.switchToLogin': 'هل لديك حساب بالفعل؟ تسجيل الدخول',
+"login.error.invalidEmail": "يرجى إدخال بريد إلكتروني صالح.",
+  "login.error.invalidPassword": "يجب أن تتكون كلمة المرور من 6 أحرف على الأقل.",
+  "login.error.invalid": "البريد الإلكتروني أو كلمة المرور غير صحيحة.",
+  "login.error.banned": "تم حظر حسابك.",
+  "login.error.tooManyAttempts": "عدد كبير جدًا من المحاولات الفاشلة. حاول لاحقًا.",
+  "login.error.generic": "حدث خطأ أثناء تسجيل الدخول. حاول مرة أخرى.",
+  "login.success": "تم تسجيل الدخول بنجاح!",
 
+  "register.error.invalidFullName": "يرجى إدخال الاسم الكامل.",
+  "register.error.invalidEmail": "يرجى إدخال بريد إلكتروني صالح.",
+  "register.error.invalidPassword": "يجب أن تتكون كلمة المرور من 6 أحرف على الأقل.",
+  "register.error.passwordMismatch": "كلمتا المرور غير متطابقتين.",
+  "register.error.invalidCountry": "يرجى اختيار بلدك.",
+  "register.error.invalidPhone": "يرجى إدخال رقم الهاتف.",
+  "register.error.generic": "حدث خطأ أثناء التسجيل. حاول مرة أخرى.",
+  "register.success": "تم التسجيل بنجاح!",
 "contact.sending": "جارٍ الإرسال...",
 "contact.successMessage": "تم إرسال الرسالة بنجاح!",
 "contact.errorMessage": "حدث خطأ ما. يرجى المحاولة مرة أخرى.",
@@ -482,6 +545,7 @@ It may include: name, email address, country, or any other information you volun
     "footer.subscribeError": "فشل في الاشتراك.",
     "footer.invalidEmail": "يرجى إدخال بريد إلكتروني صالح.",
     'footer.sitemap': 'خريطة الموقع',
+"minRead": "دقائق قراءة",
 
 'register.close':'إغلاق',
 'resources.no_content': 'لا يوجد محتوى متاح',
@@ -543,8 +607,18 @@ It may include: name, email address, country, or any other information you volun
   "forgotPassword.errorRequest": "حدث خطأ أثناء إرسال الرمز. يرجى المحاولة مرة أخرى.",
   "forgotPassword.errorReset": "حدث خطأ أثناء إعادة تعيين كلمة المرور.",
   "forgotPassword.passwordMismatch": "كلمتا المرور غير متطابقتين.",
-  "forgotPassword.switchToLogin": "هل تتذكر كلمة المرور؟ سجّل الدخول"
+  "forgotPassword.switchToLogin": "هل تتذكر كلمة المرور؟ سجّل الدخول",
 
+"footer.successMessage": "تم الاشتراك بنجاح!",
+"footer.errorMessage": "فشل الاشتراك. الرجاء المحاولة مرة أخرى.",
+"footer.loading": "جارٍ الاشتراك...",
+"register.country": "البلد",
+  "register.phoneNumber": "رقم الهاتف",
+  "register.countryPlaceholder": "اختر بلدك",
+   "resources.download_success": "اكتمل التحميل بنجاح.",
+  "resources.download_error": "فشل التحميل. يرجى المحاولة مرة أخرى.",
+  "resources.downloading": "جارٍ التحميل...",
+  "resources.login_required": "يجب تسجيل الدخول لتحميل هذا الملف.",
 
   },
   fr: {
@@ -565,7 +639,9 @@ It may include: name, email address, country, or any other information you volun
 'nav.site10': 'Ressources',
 'loading.pleaseWait':'Veuillez patienter',
 
-    
+      "register.country": "Pays",
+  "register.phoneNumber": "Numéro de téléphone",
+  "register.countryPlaceholder": "Sélectionnez votre pays",
     // Hero Section
     'hero.title': 'Afaq',
     'hero.titleHighlight': 'Gulf-',
@@ -585,7 +661,7 @@ It may include: name, email address, country, or any other information you volun
 'nav.site5': 'Département des affaires économiques et sociales des Nations Unies',
 
 
-
+ 
     // Blog Section
     'blog.title': 'Dernièrs Articles',
     'blog.subtitle': 'Restez informé des dernières tendances, histoires de succès et perspectives d\'experts du mouvement coopératif du Golfe.',
@@ -713,7 +789,10 @@ It may include: name, email address, country, or any other information you volun
     'resources.filter.finance': 'Finance',
     'resources.filter.governance': 'Gouvernance',
     'resources.filter.caseStudies': 'Études de Cas',
-    
+      "resources.download_success": "Téléchargement terminé avec succès.",
+  "resources.download_error": "Échec du téléchargement. Veuillez réessayer.",
+  "resources.downloading": "Téléchargement en cours...",
+  "resources.login_required": "Vous devez vous connecter pour télécharger ce fichier.",
     // Contact Page
     'contact.title': 'Contactez-nous',
     'contact.subtitle': 'Contactez Notre Équipe',
@@ -735,6 +814,8 @@ It may include: name, email address, country, or any other information you volun
 "footer.subscribeError": "Échec de l'inscription.",
 "footer.invalidEmail": "Veuillez entrer une adresse e-mail valide.",
 'footer.sitemap': 'Plan du site',
+"footer.loading": "Abonnement en cours...",
+
     'sitemap.title': 'Plan du site',
     'sitemap.mainPages': 'Pages principales du site',
     'sitemap.externalResources': 'Ressources externes',
@@ -750,6 +831,24 @@ It may include: name, email address, country, or any other information you volun
     'login.submit': 'Se connecter',
     'login.switchToRegister': 'Vous n’avez pas de compte ? Inscrivez-vous',
     'login.forgotPassword': 'Mot de passe oublié ?',
+
+    "login.error.invalidEmail": "Veuillez saisir une adresse e-mail valide.",
+  "login.error.invalidPassword": "Le mot de passe doit contenir au moins 6 caractères.",
+  "login.error.invalid": "E-mail ou mot de passe invalide.",
+  "login.error.banned": "Votre compte a été banni.",
+  "login.error.tooManyAttempts": "Trop de tentatives échouées. Réessayez plus tard.",
+  "login.error.generic": "Une erreur s’est produite lors de la connexion. Veuillez réessayer.",
+  "login.success": "Connexion réussie !",
+
+  "register.error.invalidFullName": "Veuillez saisir votre nom complet.",
+  "register.error.invalidEmail": "Veuillez saisir une adresse e-mail valide.",
+  "register.error.invalidPassword": "Le mot de passe doit contenir au moins 6 caractères.",
+  "register.error.passwordMismatch": "Les mots de passe ne correspondent pas.",
+  "register.error.acceptPrivacy": "Vous devez accepter la politique de confidentialité.",
+  "register.error.invalidCountry": "Veuillez sélectionner votre pays.",
+  "register.error.invalidPhone": "Veuillez saisir votre numéro de téléphone.",
+  "register.error.generic": "Une erreur s’est produite lors de l’inscription. Veuillez réessayer.",
+  "register.success": "Inscription réussie !",
 'register.title': 'Inscription',
 'register.subtitle': 'Veuillez créer un compte pour continuer.',
 'register.fullName': 'Nom complet',
@@ -776,15 +875,24 @@ It may include: name, email address, country, or any other information you volun
   "forgotPassword.passwordMismatch": "Les mots de passe ne correspondent pas.",
   "forgotPassword.switchToLogin": "Vous vous souvenez de votre mot de passe ? Connectez-vous",
 
+// Commentaires
+'comments.title': 'Commentaires',
+'comments.leaveComment': 'Laisser un commentaire',
+'comments.comment': 'Commentaire',
+'comments.submit': 'Envoyer',
+'comments.noComments': 'Aucun commentaire approuvé pour le moment.',
+'comments.success': 'Commentaire envoyé ! Il apparaîtra après validation.',
+'comments.error': 'Veuillez écrire un commentaire.',
+'comments.loginRequired': 'Vous devez vous connecter pour commenter',
 
 'aboutAuthor': 'À propos de l’auteur',
 'authorDescription': 'est un expert en développement coopératif et en pratiques commerciales durables dans la région du Golfe',
 
+"minRead": "min de lecture",
 
 
 "register.accept": "J'accepte la",
 "register.privacyPolicy": "Politique de confidentialité",
-"register.error.acceptPrivacy": "Vous devez accepter la politique de confidentialité",
 
 'privacy.title': 'Politique de confidentialité',
   'privacy.lastUpdated': 'Dernière mise à jour : Juin 2025',
@@ -806,7 +914,10 @@ It may include: name, email address, country, or any other information you volun
   'privacy.changes.title': '8. Modifications de la politique de confidentialité',
   'privacy.changes.content': 'Cette politique peut être mise à jour périodiquement. Les mises à jour seront publiées sur cette page avec la date de révision. Nous recommandons de la consulter régulièrement.',
   'privacy.contact': 'Pour toute question relative à la confidentialité, veuillez nous contacter à : Contact-gulfcoop-horizons@......ae'
-,'privacy.contactTitle':'Contact'
+,'privacy.contactTitle':'Contact',
+
+"footer.successMessage": "Vous vous êtes abonné avec succès !",
+"footer.errorMessage": "Échec de l'abonnement. Veuillez réessayer.",
 
 
 

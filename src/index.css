@@ -2,6 +2,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import 'react-phone-input-2/lib/style.css';
 
 /* Gulf-inspired design system with refined color palette */
 

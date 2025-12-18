@@ -24,13 +24,27 @@ const ArticleDetail = () => {
   const [error, setError] = useState<string | null>(null);
   const [commentError, setCommentError] = useState<string | null>(null);
   const [commentSuccess, setCommentSuccess] = useState(false);
+const calculateReadTime = (htmlContent: string) => {
+  if (!htmlContent) return 1;
+
+  // Remove HTML tags
+  const text = htmlContent.replace(/<[^>]*>/g, ' ');
+
+  // Count words
+  const words = text.trim().split(/\s+/).length;
+
+  // Average reading speed
+  const wordsPerMinute = 220;
+
+  return Math.max(1, Math.ceil(words / wordsPerMinute));
+};
 
   useEffect(() => {
     const fetchArticle = async () => {
       try {
         const [articleResponse, commentsResponse] = await Promise.all([
-          axios.get(`${import.meta.env.VITE_API_URL}/api/articles/${id}`),
-          axios.get(`${import.meta.env.VITE_API_URL}/api/comments/article/${id}`)
+          axios.get(`${import.meta.env.VITE_API_URL}/articles/${id}`),
+          axios.get(`${import.meta.env.VITE_API_URL}/comments/article/${id}`)
         ]);
 
         const data = articleResponse.data;
@@ -43,7 +57,7 @@ const ArticleDetail = () => {
           date: data.createdAt.split('T')[0],
           category: data.type,
           image: data.imageUrl,
-          readTime: Math.ceil(data.contenu.length / 200) || 4,
+          readTime: calculateReadTime(data.contenu),
           tags: [data.type],
         };
 
@@ -85,7 +99,7 @@ const ArticleDetail = () => {
     try {
       const token = localStorage.getItem('token');
       await axios.post(
-        `${import.meta.env.VITE_API_URL}/api/comments`,
+        `${import.meta.env.VITE_API_URL}/comments`,
         { articleId: id, content: newComment },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -94,7 +108,7 @@ const ArticleDetail = () => {
       setCommentError(null);
       setTimeout(() => setCommentSuccess(false), 3000);
     } catch (err: any) {
-      setCommentError('You must login to comment');
+      setCommentError(t('comments.loginRequired'));
       console.error('Error submitting comment:', err);
     }
   };
@@ -185,7 +199,7 @@ const ArticleDetail = () => {
                 </div>
                 <div className="flex items-center">
                   <Clock className="w-4 h-4 mr-2" />
-                  <span>{article.readTime} {t('minRead')}</span>
+                  <span>{article.readTime} {t('blog.readTime')}</span>
                 </div>
               </div>
               <img
@@ -221,58 +235,67 @@ const ArticleDetail = () => {
               </div>
 
               {/* Comment Form */}
-              <div className="mt-12 p-6 bg-gulf-secondary/20 rounded-2xl">
-                <h3 className="text-xl font-bold text-gulf-dark mb-4">Leave a Comment</h3>
-                <form onSubmit={handleCommentSubmit} className="space-y-4">
-                  <div>
-                    <label htmlFor="comment" className="block text-sm font-medium text-gulf-dark/70">Comment</label>
-                    <textarea
-                      id="comment"
-                      value={newComment}
-                      onChange={(e) => setNewComment(e.target.value)}
-                      className="mt-1 block w-full rounded-md border-gulf-light shadow-sm focus:border-gulf-primary focus:ring focus:ring-gulf-primary focus:ring-opacity-50"
-                      rows={4}
-                      required
-                    />
-                  </div>
-                  {commentError && <p className="text-red-500 text-sm">{commentError}</p>}
-                  {commentSuccess && <p className="text-green-500 text-sm">Comment submitted! It will appear after approval.</p>}
-                  <button
-                    type="submit"
-                    className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-gulf-primary hover:bg-gulf-primary/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gulf-primary"
-                  >
-                    Submit Comment
-                  </button>
-                </form>
-              </div>
+          <div className="mt-12 p-6 bg-gulf-secondary/20 rounded-2xl">
+  <h3 className="text-xl font-bold text-gulf-dark mb-4">
+    {t('comments.leaveComment')}
+  </h3>
 
-              {/* Comments */}
-              <div className="mt-12">
-                <h3 className="text-xl font-bold text-gulf-dark mb-4">Comments</h3>
-                {comments.length === 0 ? (
-                  <p className="text-gulf-dark/70">No approved comments yet.</p>
-                ) : (
-                  <div className="space-y-6">
-                    {comments.map((comment) => (
-                      <div key={comment.id} className="p-4 bg-gulf-secondary/10 rounded-lg">
-                        <div className="flex items-center justify-between mb-2">
-                          <span className="font-medium text-gulf-dark">{comment.author}</span>
-                          <span className="text-sm text-gulf-dark/70">{new Date(comment.createdAt).toLocaleDateString()}</span>
-                        </div>
-                        <p className="text-gulf-dark/90">{comment.content}</p>
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </div>
+  <form onSubmit={handleCommentSubmit} className="space-y-4">
+    <div>
+      <label
+        htmlFor="comment"
+        className="block text-sm font-medium text-gulf-dark/70"
+      >
+        {t('comments.comment')}
+      </label>
 
-              {/* Author Info */}
-              <div className="mt-8 p-6 bg-gulf-secondary/20 rounded-2xl">
-                <h3 className="text-xl font-bold text-gulf-dark mb-2">{t('aboutAuthor')}</h3>
-                <p className="text-gulf-dark/70 break-words">
-                  <strong>{article.author}</strong> {t('authorDescription')}
-                </p>
-              </div>
+      <textarea
+        id="comment"
+        value={newComment}
+        onChange={(e) => setNewComment(e.target.value)}
+        className="mt-1 block w-full rounded-md border-gulf-light shadow-sm focus:border-gulf-primary focus:ring focus:ring-gulf-primary focus:ring-opacity-50"
+        rows={4}
+        required
+      />
+    </div>
+
+    {commentError && (
+      <p className="text-red-500 text-sm">{commentError}</p>
+    )}
+
+    {commentSuccess && (
+      <p className="text-green-500 text-sm">
+        {t('comments.success')}
+      </p>
+    )}
+
+    <button
+      type="submit"
+      className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-gulf-primary hover:bg-gulf-primary/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gulf-primary"
+    >
+      {t('comments.submit')}
+    </button>
+  </form>
+</div>
+
+
+      <h3 className="text-xl font-bold text-gulf-dark mb-4">{t('comments.title')}</h3>
+{comments.length === 0 ? (
+  <p className="text-gulf-dark/70">{t('comments.noComments')}</p>
+) : (
+  <div className="space-y-6">
+    {comments.map((comment) => (
+      <div key={comment.id} className="p-4 bg-gulf-secondary/10 rounded-lg">
+        <div className="flex items-center justify-between mb-2">
+          <span className="font-medium text-gulf-dark">{comment.author}</span>
+          <span className="text-sm text-gulf-dark/70">{new Date(comment.createdAt).toLocaleDateString()}</span>
+        </div>
+        <p className="text-gulf-dark/90">{comment.content}</p>
+      </div>
+    ))}
+  </div>
+)}
+
             </div>
           </div>
         </section>

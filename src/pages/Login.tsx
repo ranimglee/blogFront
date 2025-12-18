@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { useLanguage } from '../contexts/LanguageContext';
@@ -8,6 +8,10 @@ import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Select from 'react-select';
+import countryList from 'react-select-country-list';
+import PhoneInput from 'react-phone-input-2';
+import 'react-phone-input-2/lib/style.css'; 
 
 const Login = () => {
   const { t } = useLanguage();
@@ -19,11 +23,18 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [fullName, setFullName] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [country, setCountry] = useState<any>(null);
+
+  const options = useMemo(() => countryList().getData(), []);
 
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (token) navigate('/admin');
   }, [navigate]);
+
+  const [firstname, ...rest] = fullName.trim().split(' ');
+  const lastname = rest.join(' ');
 
   const validateEmail = (email: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   const validatePassword = (password: string) => password.length >= 6;
@@ -41,6 +52,8 @@ const Login = () => {
       if (!password || !validatePassword(password)) errors.push(t('register.error.invalidPassword'));
       if (!confirmPassword || password !== confirmPassword) errors.push(t('register.error.passwordMismatch'));
       if (!acceptedPrivacy) errors.push(t('register.error.acceptPrivacy'));
+      if (!country) errors.push(t('register.error.invalidCountry'));
+      if (!phoneNumber) errors.push(t('register.error.invalidPhone'));
     }
 
     if (errors.length > 0) {
@@ -58,7 +71,14 @@ const Login = () => {
         toast.success(t('login.success'));
         navigate('/');
       } else {
-        await axios.post(`${import.meta.env.VITE_API_URL}/auth/register`, { fullName, email, password });
+        await axios.post(`${import.meta.env.VITE_API_URL}/auth/register`, {
+          firstname,
+          lastname,
+          email,
+          password,
+          country: country.label,
+          phoneNumber,
+        });
         toast.success(t('register.success'));
         setIsLogin(true);
         setAcceptedPrivacy(false);
@@ -116,6 +136,57 @@ const Login = () => {
                   />
                 </div>
 
+                {!isLogin && (
+                  <>
+                    <div>
+                      <label className="block text-sm font-medium text-gulf-dark mb-2">
+                        {t('register.country')}
+                      </label>
+                      <Select
+                        options={options}
+                        value={country}
+                        onChange={(value) => setCountry(value)}
+                        placeholder={t('register.countryPlaceholder')}
+                        className="text-sm"
+                      />
+                    </div>
+
+                    <div>
+  <label className="block text-sm font-medium text-gulf-dark mb-2">
+    {t('register.phoneNumber')}
+  </label>
+  <PhoneInput
+    country={'tn'} // Default: Tunisia
+    value={phoneNumber}
+    onChange={(value) => setPhoneNumber(value)}
+    enableSearch={true} // Adds search in country dropdown
+    disableDropdown={false}
+    inputStyle={{
+      width: '100%',
+      height: '42px',
+      fontSize: '14px',
+      borderRadius: '0.5rem',
+      border: '1px solid #d1d5db',
+      paddingLeft: '50px',
+      color: '#1f2937',
+      backgroundColor: '#fff',
+    }}
+    buttonStyle={{
+      border: '1px solid #d1d5db',
+      borderRight: 'none',
+      backgroundColor: '#fff',
+      borderRadius: '0.5rem 0 0 0.5rem',
+    }}
+    dropdownStyle={{
+      zIndex: 9999,
+      maxHeight: '200px',
+      overflowY: 'auto',
+    }}
+  />
+                    </div>
+                  </>
+                )}
+
                 <div>
                   <label className="block text-sm font-medium text-gulf-dark mb-2">
                     {t('login.password')}
@@ -143,26 +214,25 @@ const Login = () => {
                     </div>
 
                     <div className="flex items-start gap-2 text-sm text-gulf-dark">
-  <input
-    id="privacy"
-    type="checkbox"
-    checked={acceptedPrivacy}
-    onChange={(e) => setAcceptedPrivacy(e.target.checked)}
-    className="mt-1"
-  />
-  <label htmlFor="privacy">
-    {t('register.accept')}{' '}
-    <a
-      href="/privacy"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="text-gulf-primary hover:underline"
-    >
-      {t('register.privacyPolicy')}
-    </a>
-  </label>
-</div>
-
+                      <input
+                        id="privacy"
+                        type="checkbox"
+                        checked={acceptedPrivacy}
+                        onChange={(e) => setAcceptedPrivacy(e.target.checked)}
+                        className="mt-1"
+                      />
+                      <label htmlFor="privacy">
+                        {t('register.accept')}{' '}
+                        <a
+                          href="/privacy"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-gulf-primary hover:underline"
+                        >
+                          {t('register.privacyPolicy')}
+                        </a>
+                      </label>
+                    </div>
                   </>
                 )}
 

@@ -21,13 +21,26 @@ const BlogPage = () => {
     en: 'ENGLISH',
     fr: 'FRENCH',
   };
+const calculateReadTime = (htmlContent: string) => {
+  if (!htmlContent) return 1;
 
+  // Remove HTML tags
+  const text = htmlContent.replace(/<[^>]*>/g, ' ');
+
+  // Count words
+  const words = text.trim().split(/\s+/).length;
+
+  // Average reading speed
+  const wordsPerMinute = 220;
+
+  return Math.max(1, Math.ceil(words / wordsPerMinute));
+};
   useEffect(() => {
     const fetchArticles = async () => {
       setLoading(true);
       setError(null);
       try {
-        const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/articles`, {
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/articles`, {
           params: { lang: languageMap[language] },
         });
 
@@ -41,7 +54,7 @@ const BlogPage = () => {
             date: article.createdAt?.split('T')[0] || 'N/A',
             category: article.type,
             image: article.imageUrl || DEFAULT_IMAGE,
-            readTime: Math.ceil(article.contenu.length / 200) || 4,
+          readTime: calculateReadTime(article.contenu),
           }));
 
         setArticles(fetchedArticles);

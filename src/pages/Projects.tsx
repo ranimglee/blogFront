@@ -27,7 +27,7 @@ const Projects = () => {
       setLoading(true);
       setError(null);
       try {
-        const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/initiatives`, {
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/initiatives`, {
           params: { lang: languageMap[language] },
         });
 

@@ -7,6 +7,8 @@ import axios from 'axios';
 import 'react-toastify/dist/ReactToastify.css';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import { useNavigate } from 'react-router-dom';
+
 const ForgotPassword = () => {
   const { t } = useLanguage();
   const [step, setStep] = useState(1); // Step 1 = request code, Step 2 = reset password
@@ -14,10 +16,11 @@ const ForgotPassword = () => {
   const [code, setCode] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [confirmNewPassword, setConfirmNewPassword] = useState('');
+  const navigate = useNavigate();
 
   const handleRequestReset = async () => {
     try {
-      await axios.post(`${import.meta.env.VITE_API_URL}/auth/request-reset`, { email });
+      await axios.post(`${import.meta.env.VITE_API_URL}/public/request-reset`, { email });
       toast.success(t('forgotPassword.codeSent'));
       setStep(2);
     } catch (err: any) {
@@ -32,13 +35,18 @@ const ForgotPassword = () => {
     }
 
     try {
-      await axios.post(`${import.meta.env.VITE_API_URL}/auth/reset-password`, {
+      await axios.post(`${import.meta.env.VITE_API_URL}/public/reset-password`, {
         email,
         code,
         newPassword,
       });
       toast.success(t('forgotPassword.successReset'));
       setStep(1);
+
+        // Redirect to login after short delay (so the user sees the success message)
+      setTimeout(() => {
+        navigate('/login');
+      }, 2000);
     } catch (err: any) {
       toast.error(err.response?.data?.message || t('forgotPassword.errorReset'));
     }
