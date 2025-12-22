@@ -187,6 +187,8 @@ const translations = {
     'about.contact.feedback': 'Provide feedback',
     'about.contact.btn': 'Contact Us',
     'about.contact.legal': 'Legal Notice',
+    'about.contact.leg': 'Legal Notice',
+
     
     // Projects Page
     'projects.title': 'Initiatives',
