@@ -84,12 +84,46 @@ const Login = () => {
         setAcceptedPrivacy(false);
       }
     } catch (err: any) {
-      const msg = err.response?.data?.message;
-      if (msg === 'Invalid email or password!') toast.error(t('login.error.invalid'));
-      else if (msg === 'Your account is banned.') toast.error(t('login.error.banned'));
-      else if (msg === 'Too many failed attempts. Try again later.') toast.error(t('login.error.tooManyAttempts'));
-      else toast.error(isLogin ? t('login.error.generic') : t('register.error.generic'));
+  const errorCode = err.response?.data?.errorCode;
+
+  if (isLogin) {
+    switch (errorCode) {
+      case 'INVALID_CREDENTIALS':
+        toast.error(t('login.error.invalid'));
+        break;
+
+      case 'ACCOUNT_BANNED':
+        toast.error(t('login.error.banned'));
+        break;
+
+      case 'ACCOUNT_LOCKED':
+        toast.error(t('login.error.tooManyAttempts'));
+        break;
+
+      case 'ACCOUNT_NOT_ACTIVE':
+        toast.error(t('login.error.notActive'));
+        break;
+
+      default:
+        toast.error(t('login.error.generic'));
     }
+  } else {
+    // 🔹 REGISTER ERRORS
+    switch (errorCode) {
+      case 'EMAIL_ALREADY_EXISTS':
+        toast.error(t('register.error.emailExists'));
+        break;
+
+      case 'PHONE_ALREADY_EXISTS':
+        toast.error(t('register.error.phoneExists'));
+        break;
+
+      default:
+        toast.error(t('register.error.generic'));
+    }
+  }
+}
+
   };
 
   return (

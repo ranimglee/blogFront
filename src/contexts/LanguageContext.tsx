@@ -189,6 +189,7 @@ const translations = {
     'about.contact.legal': 'Legal Notice',
     'about.contact.leg': 'Legal Notice',
 
+  
     
     // Projects Page
     'projects.title': 'Initiatives',
@@ -313,6 +314,8 @@ It may include: name, email address, country, or any other information you volun
   'privacy.changes.content': 'This policy may be updated from time to time. Any changes will be posted on this page along with the update date. We recommend reviewing it regularly.',
   'privacy.contact': 'For any privacy-related inquiries, please contact us at: gulfcoopafaq@gmail.com',
 'privacy.contactTitle':'Contact details',
+"register.error.emailExists": "This email is already in use",
+"register.error.phoneExists": "This phone number is already in use",
 
   "footer.successMessage": "You have successfully subscribed!",
   "footer.errorMessage": "Subscription failed. Please try again."
@@ -332,6 +335,8 @@ It may include: name, email address, country, or any other information you volun
     'loading.pleaseWait':'يرجى الانتظار',
 
 "comments.loginRequired": "يجب تسجيل الدخول لإضافة تعليق.",
+"register.error.emailExists": "هذا البريد الإلكتروني مستخدم بالفعل",
+"register.error.phoneExists": "رقم الهاتف هذا مستخدم بالفعل",
 
 
     'nav.site1': 'مجلس التعاون لدول الخليج العربية',
@@ -640,7 +645,8 @@ It may include: name, email address, country, or any other information you volun
 'nav.site9': 'Initiatives',
 'nav.site10': 'Ressources',
 'loading.pleaseWait':'Veuillez patienter',
-
+  "register.error.emailExists": "Cet email est déjà utilisé",
+    "register.error.phoneExists": "Ce numéro de téléphone est déjà utilisé",
       "register.country": "Pays",
   "register.phoneNumber": "Numéro de téléphone",
   "register.countryPlaceholder": "Sélectionnez votre pays",
