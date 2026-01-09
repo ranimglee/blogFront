@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { useLanguage } from '../contexts/LanguageContext';
-import { Download, FileText, BookOpen, Video } from 'lucide-react';
+import { Download, FileText, BookOpen, Video, ArrowLeft, ArrowRight } from 'lucide-react';
 import axios from 'axios';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -17,7 +17,7 @@ const Resources = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [downloadingId, setDownloadingId] = useState<string | null>(null);
 
-  const postsPerPage = 6;
+  const postsPerPage = 3;
 
   const getIconForType = (type: string | undefined): React.ReactNode => {
     switch (type) {
@@ -143,12 +143,13 @@ const Resources = () => {
     { key: 'resources.filter.caseStudies', value: 'Case Studies' },
   ];
 
-  const categoryMap: { [key: string]: string } = {
-    JURIDIQUE: 'Legal',
-    FINANCE: 'Finance',
-    GOVERNANCE: 'Governance',
-    CASESTUDIES: 'Case Studies',
-  };
+const categoryMap: Record<string, string> = {
+  JURIDIQUE: 'Legal',
+  FINANCE: 'Finance',
+  GOUVERNANCE: 'Governance',
+  ETUDE_DE_CAS: 'Case Studies',
+};
+
 
   const filteredResources =
     selectedCategory === 'All'
@@ -221,9 +222,11 @@ const Resources = () => {
             <h1 className="text-5xl font-bold text-gulf-dark mb-4">{t('resources.title')}</h1>
           </div>
         </section>
-
+  <div className="mt-8 px-4">
+     <div className="max-w-4xl mx-auto">
         {/* Filter */}
-        <section className="py-8 border-b border-gulf-secondary/30 text-center">
+        <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl shadow-xl border border-blue-200 p-6">
+
           <div className="flex flex-wrap justify-center gap-4">
             {categories.map((c) => (
               <button
@@ -239,8 +242,9 @@ const Resources = () => {
               </button>
             ))}
           </div>
-        </section>
-
+        </div>
+</div>
+</div>
         {/* Resources List */}
         <section className="py-20">
           <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -319,24 +323,51 @@ const Resources = () => {
             )}
           </div>
 
-          {/* Pagination */}
-          {totalPages > 1 && (
-            <div className="flex justify-center space-x-2 mt-10">
-              {Array.from({ length: totalPages }, (_, index) => (
-                <button
-                  key={index + 1}
-                  onClick={() => handlePageChange(index + 1)}
-                  className={`px-4 py-2 rounded-full border ${
-                    currentPage === index + 1
-                      ? 'bg-gulf-primary text-white'
-                      : 'bg-white text-gulf-dark hover:bg-gulf-light'
-                  }`}
-                >
-                  {index + 1}
-                </button>
-              ))}
-            </div>
-          )}
+         {/* Pagination with Arrows */}
+{totalPages > 1 && (
+  <div className="flex justify-center items-center space-x-2 mt-10">
+    {/* Previous Button */}
+    <button
+      onClick={() => currentPage > 1 && handlePageChange(currentPage - 1)}
+      disabled={currentPage === 1}
+      className={`px-3 py-2 rounded-full border flex items-center justify-center ${
+        currentPage === 1
+          ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
+          : 'bg-white text-gulf-dark hover:bg-gulf-light'
+      } transition-colors`}
+    >
+      {language === 'ar' ? <ArrowRight className="w-4 h-4" /> : <ArrowLeft className="w-4 h-4" />}
+    </button>
+
+    {/* Page Numbers */}
+    {Array.from({ length: totalPages }, (_, index) => (
+      <button
+        key={index + 1}
+        onClick={() => handlePageChange(index + 1)}
+        className={`px-4 py-2 rounded-full border ${
+          currentPage === index + 1
+            ? 'bg-gulf-primary text-white'
+            : 'bg-white text-gulf-dark hover:bg-gulf-light'
+        } transition-colors`}
+      >
+        {index + 1}
+      </button>
+    ))}
+
+    {/* Next Button */}
+    <button
+      onClick={() => currentPage < totalPages && handlePageChange(currentPage + 1)}
+      disabled={currentPage === totalPages}
+      className={`px-3 py-2 rounded-full border flex items-center justify-center ${
+        currentPage === totalPages
+          ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
+          : 'bg-white text-gulf-dark hover:bg-gulf-light'
+      } transition-colors`}
+    >
+      {language === 'ar' ? <ArrowLeft className="w-4 h-4" /> : <ArrowRight className="w-4 h-4" />}
+    </button>
+  </div>
+)}
         </section>
       </main>
 
