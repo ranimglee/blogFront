@@ -252,6 +252,8 @@ const translations = {
   "login.error.invalid": "Invalid email or password.",
   "login.error.banned": "Your account has been banned.",
   "login.error.tooManyAttempts": "Too many failed attempts. Try again later.",
+    "login.error.notActive": "Your account is not active yet.",
+
   "login.error.generic": "An error occurred during login. Please try again.",
   "login.success": "Login successful!",
 
@@ -312,7 +314,7 @@ It may include: name, email address, country, or any other information you volun
   'privacy.rights.content': 'You have the right, at any time, to request access, correction, or deletion of your data, or withdraw consent for communications. Contact us at: gulfcoopafaq@gmail.com',
   'privacy.law.title': '7. Applicable Law',
   'privacy.law.content': 'This policy is governed by the laws of the United Arab Emirates, specifically Federal Decree-Law No. 34 of 2021 on Combating Rumors and Cybercrime, and Federal Decree-Law No. 55 of 2023 on Media Regulation.',
-  'privacy.changes.title': '8. Changes to the Privacy Policy',
+  'privacy.changes.title': '7. Changes to the Privacy Policy',
   'privacy.changes.content': 'This policy may be updated from time to time. Any changes will be posted on this page along with the update date. We recommend reviewing it regularly.',
   'privacy.contact': 'For any privacy-related inquiries, please contact us at: gulfcoopafaq@gmail.com',
 'privacy.contactTitle':'Contact details',
@@ -323,7 +325,11 @@ It may include: name, email address, country, or any other information you volun
     'projects.activeSearch':'Search',
 
   "footer.successMessage": "You have successfully subscribed!",
-  "footer.errorMessage": "Subscription failed. Please try again."
+  "footer.errorMessage": "Subscription failed. Please try again.",
+// EN
+"footer.alreadySubscribed": "This email is already subscribed"
+
+
 
   },
   ar: {
@@ -343,6 +349,9 @@ It may include: name, email address, country, or any other information you volun
 "register.error.emailExists": "هذا البريد الإلكتروني مستخدم بالفعل",
 "register.error.phoneExists": "رقم الهاتف هذا مستخدم بالفعل",
 
+
+// AR
+"footer.alreadySubscribed": "هذا البريد الإلكتروني مشترك بالفعل",
 
     'nav.site1': 'مجلس التعاون لدول الخليج العربية',
     'nav.site2': 'اتحاد الجمعيات التعاونية الاستهلاكية بدولة الكويت',
@@ -547,6 +556,7 @@ It may include: name, email address, country, or any other information you volun
   "login.error.tooManyAttempts": "عدد كبير جدًا من المحاولات الفاشلة. حاول لاحقًا.",
   "login.error.generic": "حدث خطأ أثناء تسجيل الدخول. حاول مرة أخرى.",
   "login.success": "تم تسجيل الدخول بنجاح!",
+    "login.error.notActive": "حسابك غير مُفعل بعد.",
 
   "register.error.invalidFullName": "يرجى إدخال الاسم الكامل.",
   "register.error.invalidEmail": "يرجى إدخال بريد إلكتروني صالح.",
@@ -604,7 +614,7 @@ It may include: name, email address, country, or any other information you volun
   'privacy.rights.content': 'يحق لك في أي وقت طلب الوصول إلى بياناتك، تصحيحها، حذفها، أو سحب موافقتك على تلقي الرسائل. مراسلتنا على: gulfcoopafaq@gmail.com',
   'privacy.law.title': '7. القانون الواجب التطبيق',
   'privacy.law.content': 'تخضع هذه السياسة لقوانين دولة الإمارات العربية المتحدة، خصوصًا المرسوم بقانون اتحادي رقم 34 لسنة 2021 بشأن مكافحة الشائعات والجرائم الإلكترونية، والمرسوم بقانون رقم 55 لسنة 2023 بشأن تنظيم الإعلام.',
-  'privacy.changes.title': '8. التعديلات على سياسة الخصوصية',
+  'privacy.changes.title': '7. التعديلات على سياسة الخصوصية',
   'privacy.changes.content': 'قد نقوم بتحديث هذه السياسة من وقت إلى آخر. سيتم نشر التحديثات على هذه الصفحة مع تاريخ التعديل. نوصيك بمراجعتها دوريًا.',
   'privacy.contact': '📬 للاتصال بنا: gulfcoopafaq@gmail.com',
 'privacy.contactTitle':'للاتصال',
@@ -864,6 +874,7 @@ It may include: name, email address, country, or any other information you volun
   "login.error.tooManyAttempts": "Trop de tentatives échouées. Réessayez plus tard.",
   "login.error.generic": "Une erreur s’est produite lors de la connexion. Veuillez réessayer.",
   "login.success": "Connexion réussie !",
+    "login.error.notActive": "Votre compte n’est pas encore activé.",
 
   "register.error.invalidFullName": "Veuillez saisir votre nom complet.",
   "register.error.invalidEmail": "Veuillez saisir une adresse e-mail valide.",
@@ -939,7 +950,7 @@ It may include: name, email address, country, or any other information you volun
   'privacy.rights.content': 'Vous avez le droit d’accéder à vos données, de les corriger, de demander leur suppression et de retirer votre consentement pour recevoir des communications. Contact : gulfcoopafaq@gmail.com',
   'privacy.law.title': '7. Droit applicable',
   'privacy.law.content': 'Cette politique est régie par les lois des Émirats arabes unis, y compris le décret-loi fédéral n°34/2021 sur la cybercriminalité et le décret n°55/2023 sur la régulation des médias.',
-  'privacy.changes.title': '8. Modifications de la politique de confidentialité',
+  'privacy.changes.title': '7. Modifications de la politique de confidentialité',
   'privacy.changes.content': 'Cette politique peut être mise à jour périodiquement. Les mises à jour seront publiées sur cette page avec la date de révision. Nous recommandons de la consulter régulièrement.',
   'privacy.contact': 'Pour toute question relative à la confidentialité, veuillez nous contacter à : gulfcoopafaq@gmail.com'
 ,'privacy.contactTitle':'Contact',
@@ -947,7 +958,8 @@ It may include: name, email address, country, or any other information you volun
 "footer.successMessage": "Vous vous êtes abonné avec succès !",
 "footer.errorMessage": "Échec de l'abonnement. Veuillez réessayer.",
 
-
+// FR
+"footer.alreadySubscribed": "Cet email est déjà inscrit"
 
 
   },

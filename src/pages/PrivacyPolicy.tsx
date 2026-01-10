@@ -39,7 +39,6 @@ const PrivacyPolicy = () => {
                   { title: t('privacy.protection.title'), content: t('privacy.protection.content') },
                   { title: t('privacy.links.title'), content: t('privacy.links.content') },
                   { title: t('privacy.rights.title'), content: t('privacy.rights.content') },
-                  { title: t('privacy.law.title'), content: t('privacy.law.content') },
                   { title: t('privacy.changes.title'), content: t('privacy.changes.content') },
                 ].map((section, index) => (
                   <motion.div

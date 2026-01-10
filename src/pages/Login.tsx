@@ -20,6 +20,7 @@ const Login = () => {
   const [isLogin, setIsLogin] = useState(true);
   const [loading, setLoading] = useState(false);
 
+
   const [loginData, setLoginData] = useState({
     email: '',
     password: '',
@@ -39,7 +40,7 @@ const Login = () => {
 
   useEffect(() => {
     const token = localStorage.getItem('token');
-    if (token) navigate('/admin');
+    if (token) navigate('/login');
   }, [navigate]);
 
   const validateEmail = (email: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
