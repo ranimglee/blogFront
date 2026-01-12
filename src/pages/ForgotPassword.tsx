@@ -20,7 +20,7 @@ const ForgotPassword = () => {
 
   const handleRequestReset = async () => {
     try {
-      await axios.post(`${import.meta.env.VITE_API_URL}/public/request-reset`, { email });
+      await axios.post(`${import.meta.env.VITE_API_BASE_URL}/public/request-reset`, { email });
       toast.success(t('forgotPassword.codeSent'));
       setStep(2);
     } catch (err: any) {
@@ -35,7 +35,7 @@ const ForgotPassword = () => {
     }
 
     try {
-      await axios.post(`${import.meta.env.VITE_API_URL}/public/reset-password`, {
+      await axios.post(`${import.meta.env.VITE_API_BASE_URL}/public/reset-password`, {
         email,
         code,
         newPassword,

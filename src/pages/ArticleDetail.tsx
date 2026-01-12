@@ -43,8 +43,8 @@ const calculateReadTime = (htmlContent: string) => {
     const fetchArticle = async () => {
       try {
         const [articleResponse, commentsResponse] = await Promise.all([
-          axios.get(`${import.meta.env.VITE_API_URL}/articles/${id}`),
-          axios.get(`${import.meta.env.VITE_API_URL}/comments/article/${id}`)
+          axios.get(`${import.meta.env.VITE_API_BASE_URL}/articles/${id}`),
+          axios.get(`${import.meta.env.VITE_API_BASE_URL}/comments/article/${id}`)
         ]);
 
         const data = articleResponse.data;
@@ -99,7 +99,7 @@ const calculateReadTime = (htmlContent: string) => {
     try {
       const token = localStorage.getItem('token');
       await axios.post(
-        `${import.meta.env.VITE_API_URL}/comments`,
+        `${import.meta.env.VITE_API_BASE_URL}/comments`,
         { articleId: id, content: newComment },
         { headers: { Authorization: `Bearer ${token}` } }
       );

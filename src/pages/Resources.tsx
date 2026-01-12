@@ -48,7 +48,7 @@ const Resources = () => {
       setLoading(true);
       setError(null);
       try {
-        const response = await axios.get(`${import.meta.env.VITE_API_URL}/ressources`, {
+        const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/ressources`, {
           params: { lang: languageMap[language] },
         });
 
@@ -98,7 +98,7 @@ const Resources = () => {
 
     try {
       const response = await axios.get(
-        `${import.meta.env.VITE_API_URL}/ressources/download/${ressourceId}`,
+        `${import.meta.env.VITE_API_BASE_URL}/ressources/download/${ressourceId}`,
         {
           responseType: 'blob',
           headers: {

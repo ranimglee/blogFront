@@ -16,7 +16,7 @@ const ProjectDetail = () => {
   useEffect(() => {
     const fetchProject = async () => {
       try {
-        const response = await axios.get(`${import.meta.env.VITE_API_URL}/initiatives/get-initiative-by/${id}`);
+        const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/initiatives/get-initiative-by/${id}`);
         const data = response.data;
 
         const mappedProject = {

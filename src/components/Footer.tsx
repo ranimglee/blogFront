@@ -42,7 +42,7 @@ const handleSubscribe = async () => {
     setStatus(null);
 
     const response = await fetch(
-      `${import.meta.env.VITE_API_URL || ''}/public/newsletter/subscribe`,
+      `${import.meta.env.VITE_API_BASE_URL || ''}/public/newsletter/subscribe`,
       {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

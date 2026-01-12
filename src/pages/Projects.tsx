@@ -33,7 +33,7 @@ useEffect(() => {
       setLoading(true);
       setError(null);
       try {
-        const response = await axios.get(`${import.meta.env.VITE_API_URL}/initiatives`, {
+        const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/initiatives`, {
           params: { lang: languageMap[language] },
         });
 

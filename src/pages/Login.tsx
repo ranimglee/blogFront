@@ -74,7 +74,7 @@ const Login = () => {
 
     try {
       if (isLogin) {
-        const res = await axios.post(`${import.meta.env.VITE_API_URL}/auth/login`, loginData);
+        const res = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/auth/login`, loginData);
         const { token, refreshToken, role } = res.data;
         localStorage.setItem('token', token);
         localStorage.setItem('refreshToken', refreshToken);
@@ -86,7 +86,7 @@ const Login = () => {
         const [firstname, ...rest] = fullName.trim().split(' ');
         const lastname = rest.join(' ');
 
-        await axios.post(`${import.meta.env.VITE_API_URL}/auth/register`, {
+        await axios.post(`${import.meta.env.VITE_API_BASE_URL}/auth/register`, {
           firstname,
           lastname,
           email,

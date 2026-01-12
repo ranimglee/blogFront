@@ -22,7 +22,7 @@ const NewProjectsCarousel = () => {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const response = await axios.get(`${import.meta.env.VITE_API_URL}/initiatives/get-all-initiatives`);
+        const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/initiatives/get-all-initiatives`);
         const latestProjects = response.data
           .sort((a: any, b: any) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
           .slice(0, 6) // only latest 6

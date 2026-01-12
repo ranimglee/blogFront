@@ -36,7 +36,7 @@ const BlogPage = () => {
       setLoading(true);
       setError(null);
       try {
-        const response = await axios.get(`${import.meta.env.VITE_API_URL}/articles`, {
+        const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/articles`, {
           params: { lang: languageMap[language] },
         });
 

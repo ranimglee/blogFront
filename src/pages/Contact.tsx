@@ -31,7 +31,7 @@ const [loading, setLoading] = useState(false);
     e.preventDefault();
     setLoading(true);
     try {
-      await axios.post(`${import.meta.env.VITE_API_URL}/public/send-message`, formData);
+      await axios.post(`${import.meta.env.VITE_API_BASE_URL}/public/send-message`, formData);
       toast.success(t('contact.successMessage') || 'Message sent successfully!');
       setFormData({ fullName: '', email: '', subject: '', message: '' });
     } catch (error) {
