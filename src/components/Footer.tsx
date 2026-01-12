@@ -50,15 +50,23 @@ const handleSubscribe = async () => {
       }
     );
 
-    if (!response.ok) {
-      // Try to extract the backend error message
-      const errorText = await response.text();
-      setStatus({
-        type: 'error',
-        message: errorText || t('footer.errorMessage'),
-      });
-      return;
-    }
+  if (!response.ok) {
+  const errorText = await response.text();
+
+  if (errorText === 'EMAIL_ALREADY_SUBSCRIBED') {
+    setStatus({
+      type: 'error',
+      message: t('footer.alreadySubscribed'),
+    });
+  } else {
+    setStatus({
+      type: 'error',
+      message: t('footer.errorMessage'),
+    });
+  }
+  return;
+}
+
 
     setStatus({ type: 'success', message: t('footer.successMessage') });
     setEmail('');

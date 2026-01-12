@@ -16,7 +16,12 @@ const BlogCarousel = () => {
 
   const DEFAULT_IMAGE = '/images/no-content.jpg';
   const languageMap: Record<string, string> = { ar: 'ARABIC', en: 'ENGLISH', fr: 'FRENCH' };
-
+ const calculateReadTime = (htmlContent: string) => {
+    if (!htmlContent) return 1;
+    const text = htmlContent.replace(/<[^>]*>/g, ' ');
+    const words = text.trim().split(/\s+/).length;
+    return Math.max(1, Math.ceil(words / 220));
+  };
   // 🧠 Fetch articles
   useEffect(() => {
     const fetchArticles = async () => {
@@ -38,7 +43,7 @@ const BlogCarousel = () => {
             date: article.createdAt.split('T')[0],
             category: article.type,
             image: article.imageUrl || DEFAULT_IMAGE,
-            readTime: Math.ceil(article.contenu.length / 200) || 4,
+readTime: calculateReadTime(article.contenu),
           }));
 
         setBlogPosts(latestArticles);
