@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import LanguageSelector from './LanguageSelector';
 import { useLanguage } from '../contexts/LanguageContext';
 import axios from 'axios';
+import SearchModal from '@/pages/SearchModal';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -11,7 +12,8 @@ const Header = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
- 
+ const [isSearchOpen, setIsSearchOpen] = useState(false);
+
   useEffect(() => {
     const token = localStorage.getItem('token');
     setIsAuthenticated(!!token);
@@ -75,7 +77,13 @@ const Header = () => {
 
           {/* Right Section */}
           <div className="flex items-center space-x-2 sm:space-x-3">
-            
+            <button
+  onClick={() => setIsSearchOpen(true)}
+  className="p-2 hover:bg-white/10 rounded-lg transition-colors"
+>
+  <Search className="w-5 h-5 text-white" />
+</button>
+
             <LanguageSelector />
             
             {/* Desktop Login/Logout */}
@@ -155,6 +163,13 @@ const Header = () => {
 )}
 
       </div>
+   <SearchModal
+  isOpen={isSearchOpen}
+  onClose={() => setIsSearchOpen(false)}
+/>
+
+
+
     </header>
   );
 };

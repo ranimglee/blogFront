@@ -172,7 +172,7 @@ const handleContactClick = () => {
       {t('about.contact.title')}
     </h2>
     <p className="text-lg text-gulf-dark/70 mb-10">
-      📧 {t('about.contact.email')}
+       {t('about.contact.email')}
     </p>
 
     {/* Contact options as cards */}

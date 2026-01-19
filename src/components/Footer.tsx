@@ -3,10 +3,11 @@ import {
   Mail,
   Link as LinkIcon,
   Linkedin,
-  Twitter,
   Facebook,
   Instagram,
 } from 'lucide-react';
+
+
 import { useLanguage } from '../contexts/LanguageContext';
 import { Link as RouterLink } from 'react-router-dom';
 import React, { useState } from 'react';
@@ -24,6 +25,16 @@ const Footer = () => {
     { key: 'nav.projects', href: '/projects' },
     { key: 'nav.contact', href: '/contact' },
   ];
+const XIcon = ({ className }) => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    className={className}
+    aria-hidden="true"
+  >
+    <path d="M18.244 2H21.552L14.345 10.193L22.828 22H16.172L10.955 14.809L4.689 22H1.379L9.041 13.2L0.828 2H7.656L12.355 8.633L18.244 2ZM17.082 20.02H18.914L6.664 3.879H4.694L17.082 20.02Z"/>
+  </svg>
+);
 
   const footerLinks = [
     { key: 'nav.site1', href: 'https://www.gcc-sg.org/' },
@@ -96,15 +107,24 @@ const handleSubscribe = async () => {
           {t('footer.description')}
         </p>
         <div className="flex space-x-3 rtl:space-x-reverse">
-          {[Linkedin, Twitter, Facebook, Instagram].map((Icon, index) => (
-            <a
-              key={index}
-              href="#"
-              className="w-8 h-8 bg-white/10 rounded-lg flex items-center justify-center hover:bg-white/20 transition-colors"
-            >
-              <Icon className="w-4 h-4" />
-            </a>
-          ))}
+        {[
+  { icon: Linkedin, href: '#' },
+  { icon: XIcon, href: 'https://x.com' },
+  { icon: Facebook, href: '#' },
+  { icon: Instagram, href: '#' },
+].map(({ icon: Icon, href }, index) => (
+  <a
+    key={index}
+    href={href}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="w-8 h-8 bg-white/10 rounded-lg flex items-center justify-center hover:bg-white/20 transition-colors"
+  >
+    <Icon className="w-4 h-4" />
+  </a>
+))}
+
+       
         </div>
       </div>
 
@@ -178,7 +198,6 @@ const handleSubscribe = async () => {
           </div>
         </div>
 
-
     {/* Bottom Bar */}
     <div className="border-t border-white/20 pt-8 mt-8">
       <div className="flex flex-col md:flex-row justify-between items-center">
@@ -201,6 +220,16 @@ const handleSubscribe = async () => {
           >
             {t('footer.sitemap')}
           </RouterLink>
+
+            <span className="text-white/40">|</span>
+
+  <RouterLink
+    to="/terms"
+    className="text-white/60 hover:text-white transition-colors text-sm"
+  >
+    {t('footer.terms')}
+  </RouterLink>
+
         </div>
       </div>
     </div>

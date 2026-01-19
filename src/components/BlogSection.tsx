@@ -101,7 +101,7 @@ readTime: calculateReadTime(article.contenu),
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-4xl font-bold text-gulf-dark text-center mb-12">
-          {t('blog.title')}
+          {t('blog.title.latest')}
         </h2>
 
         {blogPosts.length > 0 ? (

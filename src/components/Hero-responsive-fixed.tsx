@@ -45,7 +45,7 @@ const Hero = () => {
           {/* Stats - Fixed for Arabic */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-8 max-w-3xl mx-auto">
             <div className="text-center">
-              <div className="text-2xl sm:text-3xl font-bold text-gulf-primary mb-1 sm:mb-2">500+</div>
+              <div className="text-2xl sm:text-3xl font-bold text-gulf-primary mb-1 sm:mb-2">600+</div>
               <div className="text-gulf-dark/70 text-sm sm:text-base">{t('hero.stats.cooperatives')}</div>
             </div>
             <div className="text-center">
@@ -53,7 +53,7 @@ const Hero = () => {
               <div className="text-gulf-dark/70 text-sm sm:text-base">{t('hero.stats.countries')}</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl sm:text-3xl font-bold text-gulf-coral mb-1 sm:mb-2">50K+</div>
+              <div className="text-2xl sm:text-3xl font-bold text-gulf-coral mb-1 sm:mb-2">600k+</div>
               <div className="text-gulf-dark/70 text-sm sm:text-base">{t('hero.stats.members')}</div>
             </div>
           </div>

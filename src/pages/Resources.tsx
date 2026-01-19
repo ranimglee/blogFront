@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { useLanguage } from '../contexts/LanguageContext';
-import { Download, FileText, BookOpen, Video, ArrowLeft, ArrowRight } from 'lucide-react';
+import { Download, FileText, BookOpen, Video, ArrowLeft, ArrowRight, Search } from 'lucide-react';
 import axios from 'axios';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -16,6 +16,7 @@ const Resources = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [downloadingId, setDownloadingId] = useState<string | null>(null);
+const [searchQuery, setSearchQuery] = useState('');
 
   const postsPerPage = 3;
 
@@ -151,17 +152,21 @@ const categoryMap: Record<string, string> = {
 };
 
 
-  const filteredResources =
-    selectedCategory === 'All'
-      ? resources
-      : resources.filter(
-          (r) => categoryMap[r.category?.toUpperCase()] === selectedCategory
-        );
+const filteredResources =
+  (selectedCategory === 'All'
+    ? resources
+    : resources.filter(
+        (r) => categoryMap[r.category?.toUpperCase()] === selectedCategory
+      )
+  ).filter((r) =>
+    r.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    r.description.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
-  const indexOfLastPost = currentPage * postsPerPage;
-  const indexOfFirstPost = indexOfLastPost - postsPerPage;
-  const currentResources = filteredResources.slice(indexOfFirstPost, indexOfLastPost);
-  const totalPages = Math.ceil(filteredResources.length / postsPerPage);
+const indexOfLastPost = currentPage * postsPerPage;
+const indexOfFirstPost = indexOfLastPost - postsPerPage;
+const currentResources = filteredResources.slice(indexOfFirstPost, indexOfLastPost);
+const totalPages = Math.ceil(filteredResources.length / postsPerPage);
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
@@ -222,29 +227,48 @@ const categoryMap: Record<string, string> = {
             <h1 className="text-5xl font-bold text-gulf-dark mb-4">{t('resources.title')}</h1>
           </div>
         </section>
-  <div className="mt-8 px-4">
-     <div className="max-w-4xl mx-auto">
-        {/* Filter */}
-        <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl shadow-xl border border-blue-200 p-6">
 
-          <div className="flex flex-wrap justify-center gap-4">
-            {categories.map((c) => (
-              <button
-                key={c.value}
-                onClick={() => setSelectedCategory(c.value)}
-                className={`px-6 py-2 rounded-full transition-colors ${
-                  selectedCategory === c.value
-                    ? 'bg-gulf-primary text-white'
-                    : 'hover:bg-gulf-primary hover:text-white'
-                }`}
-              >
-                {t(c.key)}
-              </button>
-            ))}
-          </div>
+        <div className="mt-8 px-4">
+  <div className="max-w-4xl mx-auto">
+    <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl shadow-xl border border-blue-200 p-6">
+      
+      {/* Search Input */}
+      <div className="relative mb-4">
+        <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+          <Search className="h-5 w-5 text-indigo-500" />
         </div>
+        <input
+          type="text"
+          placeholder={t('resources.searchPlaceholder') || 'Search resources...'}
+          className="w-full pl-12 pr-4 py-3 border-2 border-indigo-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all outline-none bg-white hover:border-indigo-300"
+          value={searchQuery}
+          onChange={(e) => {
+            setSearchQuery(e.target.value);
+            setCurrentPage(1);
+          }}
+        />
+      </div>
+
+      {/* Category Filter */}
+      <div className="flex flex-wrap justify-center gap-4">
+        {categories.map((c) => (
+          <button
+            key={c.value}
+            onClick={() => setSelectedCategory(c.value)}
+            className={`px-6 py-2 rounded-full transition-colors ${
+              selectedCategory === c.value
+                ? 'bg-gulf-primary text-white'
+                : 'hover:bg-gulf-primary hover:text-white'
+            }`}
+          >
+            {t(c.key)}
+          </button>
+        ))}
+      </div>
+    </div>
+  </div>
 </div>
-</div>
+
         {/* Resources List */}
         <section className="py-20">
           <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-8">

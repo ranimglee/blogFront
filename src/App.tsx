@@ -18,6 +18,8 @@ import Blog from "./pages/Blog";
 import ForgotPassword from "./pages/ForgotPassword";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import Sitemap from "./pages/Sitemap";
+import { TerminalSquareIcon } from "lucide-react";
+import TermsOfUse from "./pages/TermsOfUse";
 
 const queryClient = new QueryClient();
 
@@ -38,6 +40,7 @@ const App = () => (
             <Route path="/projects" element={<Projects />} />
             <Route path="/privacy" element={<PrivacyPolicy />} />
             <Route path="/sitemap" element={<Sitemap />} />
+             <Route path="/terms" element={<TermsOfUse/>} />
 
 
             <Route path="/projects/:id" element={<ProjectDetail />} />

@@ -31,7 +31,7 @@ const translations = {
   "register.countryPlaceholder": "Select your country",
     'nav.login':'Login',
     'nav.logout':'Logout',
-
+'resources.searchPlaceholder':'type to search',
     'nav.site6': 'Home',
     'nav.site7': 'About',
     'nav.site8': 'Articles',
@@ -65,9 +65,9 @@ const translations = {
     'hero.description': 'Explore the cooperative movement in the Arab Gulf countries, discover innovations and experiences on a global scale, connect stakeholders, experts, and all those interested in cooperatives, look to the future, and promote positive change.',
     'hero.exploreBtn': 'Explore Cooperatives',
     'hero.learnBtn': 'Learn More',
-    'hero.stats.cooperatives': 'Active Cooperatives',
+    'hero.stats.cooperatives': 'Cooperatives',
     'hero.stats.countries': 'Gulf Countries',
-    'hero.stats.members': 'Community Members',
+    'hero.stats.members': 'Cooperative Members',
     // Comments
 'comments.title': 'Comments',
 'comments.leaveComment': 'Leave a Comment',
@@ -79,7 +79,8 @@ const translations = {
 'comments.loginRequired': 'You must login to comment',
 'blog.searchPlaceholder':'Search',
     // Blog Section
-    'blog.title': 'Latest Articles',
+    'blog.title': 'Articles',
+    'blog.title.latest': 'Latest Publications',
     'blog.subtitle': 'Stay updated with the latest trends, success stories, and expert insights from the Gulf cooperative movement.',
     'blog.readMore': 'Read More',
     'blog.viewAll': 'View All Articles',
@@ -122,7 +123,7 @@ const translations = {
     "register.loading": "Signing up...",
     // Footer
     'footer.description': 'For Sustainable Development and Just Societies: Explore, Connect, and transform.',
-    'footer.quickLinks': 'Quick Links',
+    'footer.quickLinks': 'Quick Access',
     'footer.usefullLinks': 'Usefull Links ',
 
     'footer.gulfRegion': 'Gulf Region',
@@ -132,7 +133,7 @@ const translations = {
     'footer.subscribe': 'Subscribe',
     'footer.copyright': '© 2025 Afaq - Afaq-Gulf cooperatives blog. All rights reserved.',
     'footer.privacy': 'Privacy Policy',
-    'footer.terms': 'Terms of Service',
+    'footer.terms': 'Terms of Use',
     'footer.cookies': 'Cookies',
     'footer.address': 'Address',
     'footer.email': 'Email',
@@ -162,7 +163,7 @@ const translations = {
     'about.mission.point3': 'Continuously promoting the elements of cooperative identity to support better integration into the global cooperative movement.',
     'about.mission.point4': 'Conduct active monitoring and expert analysis of changes in cooperatives\' working environments.',
     'about.mission.point5': 'Actively support social and sustainable entrepreneurship initiatives to promote personal growth and the well-being of fair and inclusive communities.',
-    'about.offer.title': 'What We Offer',
+    'about.offer.title': 'Content',
     'about.offer.texts': 'Explanatory Texts & Articles',
     'about.offer.textsDesc': 'Analytical articles on cooperative work',
     'about.offer.studies': 'Studies & Research',
@@ -174,10 +175,10 @@ const translations = {
     'about.offer.news': 'News Coverage',
     'about.offer.newsDesc': 'Cooperative sector news updates',
     'about.scope.title': 'Scope',
-    'about.scope.text': 'Our content covers the six member states of the Gulf Cooperation Council (GCC), while also reaching out to other Arab countries and international contexts.',
+    'about.scope.text': 'Our content covers the six member states of the Gulf Cooperation Council, while also reaching out to other Arab countries and international contexts.',
     'about.scope.sources': 'Based on official and reliable sources, following an objective editorial line aligned with cooperative work institutions.',
     'about.team.title': 'Our Team',
-    'about.team.text': 'Our team is passionate about cooperative work, deeply rooted in the values and principles of the cooperative identity, and fully aware of its strong human dimension. The team is fluent in Arabic, French, and English, and has a solid understanding of the cultural specificities of local communities. ',
+    'about.team.text': 'Our team is passionate about cooperative work, deeply committed to the values and principles of the cooperative identity, and fully aware of its strong human dimension. We understand the unique needs and cultural nuances of local communities and recognize the important economic impact that cooperatives have in empowering local economies. Fluent in Arabic, English, and French, we are committed to precision and professionalism to deliver meaningful, impactful work. ',
     'about.team.experience': 'Professional experience since 2016 in Kuwait',
     'about.team.diversity': 'Diverse cultural backgrounds and expertise',
     'about.team.mission': 'The blog content helps make resources and knowledge easily accessible, share updates, initiatives, and contributions from the Gulf countries as well as from the regional and international levels, and develop partnerships with various stakeholders to support the vision and mission.',
@@ -204,7 +205,7 @@ const translations = {
     'projects.status.inProgress': 'In Progress',
     
     // Resources Page
-    'resources.title': 'Resources & Downloads',
+    'resources.title': 'Resources ',
     'resources.subtitle': 'Essential Tools and Guides for Cooperative Success',
     'resources.download': 'Download',
     'resources.viewAll': 'View All Resources',
@@ -327,7 +328,49 @@ It may include: name, email address, country, or any other information you volun
   "footer.successMessage": "You have successfully subscribed!",
   "footer.errorMessage": "Subscription failed. Please try again.",
 // EN
-"footer.alreadySubscribed": "This email is already subscribed"
+"footer.alreadySubscribed": "This email is already subscribed",
+  "terms.title": "Terms of Use",
+
+    "title": "Terms of Use",
+    "terms.lastUpdated": "Last updated: January 2026",
+    "terms.intro": "These terms govern the use of the Afaq Gulf Cooperatives website.",
+
+      "terms.status.title": "1. Site Status",
+      "terms.status.content": "The Afaq Gulf Cooperatives website is registered as a published work under intellectual property laws in Kuwait, owned by Ali Abassi...\n\nThe owner manages and edits the site with the assistance of a qualified editorial team.\n\nContributions from third-party authors are published under their full responsibility and are clearly identified.",
+    
+      "terms.content.title": "2. Nature of Published Content",
+      "terms.content.content": "The website may include:\n• Official legal texts...\n• Documents from international organizations...\n• Original articles and analyses...\n\nContent does not constitute legal or professional advice.",
+    
+
+   
+      "terms.sources.title": "3. Sources and Reproduction Rights",
+      "terms.sources.content": "Documents are sourced from official public institutions...\n\nUnless stated otherwise, content may be shared provided that the source Afaq – Gulf Cooperatives is mentioned and the meaning is not altered."
+    ,
+
+    
+      "terms.translations.title": "4. Translations",
+      "terms.translations.content": "Translations provided are personal and unofficial...\n\nOnly the original version is authoritative."
+    ,
+
+   
+      "terms.methodology.title": "5. Editorial Methodology",
+      "terms.methodology.content": "Clear distinction between documents and editorial content...\nNeutral and informative presentation."
+    ,
+
+  
+      "terms.responsibility.title": "6. Responsibility",
+      "terms.responsibility.content": "The site does not guarantee completeness...\nUse of content is at the reader’s own responsibility."
+    ,
+
+   
+      "terms.law.title": "7. Applicable Law",
+      "terms.law.content": "The site is subject to Kuwaiti intellectual property law...\nInternational law may also apply."
+    ,
+
+
+      "terms.updates.title": "8. Updates",
+      "terms.updates.content": "These terms may evolve to accommodate site development and legal changes."
+
 
 
 
@@ -372,18 +415,19 @@ It may include: name, email address, country, or any other information you volun
 "register.loading": "جارٍ إنشاء الحساب...",
     // Hero Section
     'hero.title': 'آفاق',
-    'hero.titleHighlight': 'التعاونيات',
-    'hero.titleEnd': 'في الخليج',
+    'hero.titleHighlight': 'تعاونيات',
+    'hero.titleEnd': ' الخليج',
     'hero.subtitle': 'من أجل تنمية مستدامة ومجتمعات عادلة: نستكشف، نتواصل، نطوّر',
     'hero.description': 'استكشاف الحركة التعاونية في دول الخليج العربية، التعرّف على المستجدات والتجارب على المستوى العالمي، ربط العلاقة مع الفاعلين والخبراء وجميع المهتمين بالعمل التعاوني، التطلع إلى التغيير الإيجابي من أجل مستقبل أفضل.',
     'hero.exploreBtn': 'استكشف التعاونيات',
     'hero.learnBtn': 'اعرف المزيد',
-    'hero.stats.cooperatives': 'التعاونيات النشطة',
+    'hero.stats.cooperatives': 'تعاونيات ',
     'hero.stats.countries': 'مجلس التعاون لدول الخليج العربية',
-    'hero.stats.members': 'الأعضاء المساهمين',
+    'hero.stats.members': 'أعضاء مساهمين',
     
     // Blog Section
     'blog.title':' المقالات ',
+    'blog.title.latest': 'أحدث المنشورات',
     'blog.subtitle': 'ابق مطلعاً على أحدث الاتجاهات وقصص النجاح والرؤى المتخصصة من حركة التعاونيات الخليجية.',
     'blog.readMore': 'اقرأ المزيد',
     'blog.viewAll': 'عرض جميع المقالات',
@@ -424,7 +468,7 @@ It may include: name, email address, country, or any other information you volun
     
     // Footer
     'footer.description': 'من أجل تنمية مستدامة ومجتمعات عادلة: نستكشف، نتواصل، نطوّر',
-    'footer.quickLinks': 'روابط سريعة',
+    'footer.quickLinks': 'تصفح سريع',
     'footer.usefullLinks': 'روابط مفيدة',
 
     'footer.gulfRegion': 'منطقة الخليج',
@@ -468,7 +512,7 @@ It may include: name, email address, country, or any other information you volun
     'about.scope.text': 'يشمل المحتوى الدول الست لمجلس التعاون لدول الخليج العربية، كما ينفتح على دول أخرى من المنطقة العربية ومن العالم.',
     'about.scope.sources': 'يعتمد المصادر الرسمية والموثوقة، كما يضمن الصبغة الموضوعية والمتلائمة مع الرؤى الأساسية للجهات المتخصصة في العمل التعاوني.',
     'about.team.title': 'فريق العمل',
-    'about.team.text': 'فريق عملنا شغوف بالعمل التعاوني متشبع بقيم ومبادئ الهوية التعاونية ملمّ ببعدها الإنساني الراسخ، يتقن اللغات العربية والفرنسية والانجليزية ويدرك الخصوصيات الثقافية للمجتمعات المحلية ',
+    'about.team.text':'فريقنا شغوف بالعمل التعاوني متشبع بقيم ومبادئ الهوية التعاونية ملمّ ببعدها الإنساني الراسخ. نحن نعي الخصوصيات الثقافية للمجتمعات المحلية كما ندرك الأثر الاقتصادي المهم للتعاونيات في تمكين اقتصاداتها. فريقنا يتقن العربية والإنجليزية والفرنسية، ويعتمد الدقة والاحترافية لتقديم عمل هادف وذي أثر ملموس.',
     'about.team.experience': 'خبرة مهنية منذ سنة 2016 في دولة الكويت',
     'about.team.diversity': 'و يتميّز بأبعاد ثقافية متعدّدة.',
     'about.team.mission': 'يُتيح محتوى المدونة الموارد والمصادر المعرفية بطريقة مبسطة، ويقدّم المستجدات والإسهامات والمبادرات المتنوعة في دول الخليج العربية وعلى المستويين الإقليمي والدولي، ويسعى إلى إنشاء شراكات مع مختلف الفاعلين خدمةً للرؤية والرسالة.',
@@ -649,6 +693,36 @@ It may include: name, email address, country, or any other information you volun
   "resources.login_required": "يجب تسجيل الدخول لتحميل هذا الملف.",
     'projects.noDescription':'لا يوجد وصف متاح',
 
+  "terms.title": "شروط الاستخدام",
+  "title": "شروط الاستخدام",
+"terms.lastUpdated": "آخر تحديث: يناير 2026",
+  "terms.intro": "تنظم هذه الشروط استخدام موقع آفاق تعاونيات الخليج.",
+  "terms.status.title": "1. حالة الموقع",
+  "terms.status.content": "يُعتبر موقع آفاق تعاونيات الخليج عملًا منشورًا ومسجلًا وفقًا لقوانين الملكية الفكرية في الكويت، باسم المالك علي عباسي، ووفقًا للتشريعات الكويتية السارية المتعلقة بحقوق النشر والملكية الفكرية.\n\nيقوم المالك بتحرير وإدارة الموقع بمساعدة فريق تحرير مؤهل.\n\nالمساهمات التي يقدمها مؤلفون آخرون تُنشر تحت مسؤوليتهم الكاملة وتتم الإشارة إليها بوضوح.",
+
+  "terms.content.title": "2. طبيعة المحتوى المنشور",
+  "terms.content.content": "قد يحتوي الموقع على:\n\nنصوص قانونية رسمية (القوانين، اللوائح، القرارات، التصريحات) من مصادر عامة؛\nمستندات صادرة عن منظمات دولية حكومية؛\nمستندات عامة من منظمات دولية غير حكومية، عند سماح شروط النشر بذلك؛\nترجمات للوثائق الرسمية؛\nمقالات وتحليلات ومساهمات أصلية من إعداد إدارة الموقع أو مؤلفين آخرين؛\nتقارير وعروض لمبادرات مرتبطة بالحركة التعاونية.\n\nلا يشكل محتوى الموقع استشارة أو نصيحة قانونية أو مهنية.",
+
+  "terms.sources.title": "3. المصادر وحقوق النسخ",
+  "terms.sources.content": "3.1 المصادر\n\nيتم الحصول على المستندات المنشورة أو المشار إليها في الموقع، قدر الإمكان، من مصادر رسمية وعامة ومعروفة (الجريدة الرسمية، المواقع المؤسسية، المنظمات الدولية).\n\nيتم ذكر لكل مستند:\n\nمصدره؛\nالمؤلف أو المؤسسة الناشرة؛\nتاريخ النشر، ورقم المرجع الرسمي عند وجوده.\n\n3.2 حقوق النشر وإعادة الاستخدام\n\nالنصوص القانونية الرسمية والمستندات العامة تُستخدم لأغراض إعلامية وتعليمية؛\n\nبعض المستندات قد تكون محمية بحقوق خاصة؛ في هذه الحالة، يتم تقييد النسخ أو تتم الإشارة إلى المصدر الرسمي؛\n\nالمقالات والتحليلات والتقارير المنشورة ملك الموقع ومحمية بموجب حقوق النشر وفقا لشروط الاستخدام.\n\nما لم يُذكر خلاف ذلك صراحة، يمكن مشاركة محتويات الموقع بشرط:\n\nالإشارة بوضوح إلى المصدر آفاق تعاونيات الخليج\nعدم تغيير معنى المحتوى؛\nاحترام سياق وأهداف الموقع الإعلامية وغير التجارية.",
+
+  "terms.translations.title": "4. الترجمات",
+  "terms.translations.content": "4.1 الترجمات الشخصية\n\nعندما يقدم الموقع ترجمة:\n\nفهي شخصية وغير رسمية؛\nتُقدَّم لأغراض إعلامية وتعليمية؛\nالنسخة الأصلية فقط هي المعتمدة.\n\n4.2 الترجمات الرسمية\n\nإذا كانت هناك ترجمة رسمية متاحة ويُسمح بنشرها، فستكون موضحة كمصدر رسمي مع الإشارة إلى المصدر.",
+
+  "terms.methodology.title": "5. المنهجية التحريرية",
+  "terms.methodology.content": "يطبق الموقع المبادئ التالية:\n\nالتمييز بين المستندات الرسمية والترجمات والمحتوى التحريري؛\nالفصل بين النص الأصلي والتعليقات أو التحليلات؛\nالالتزام بمصداقية المصادر وعدم تغيير المعنى؛\nالشفافية حول أصل وطبيعة ووضع المحتوى؛\nالحيادية المعلوماتية في عرض النصوص والبيانات.",
+
+  "terms.responsibility.title": "6. المسؤولية",
+  "terms.responsibility.content": "على الرغم من العناية في اختيار وترجمة وتحديث المحتوى:\n\nلا يضمن الموقع اكتمال أو تحديث المعلومات بشكل دائم؛\nاستخدام المحتوى يتم على مسؤولية القارئ وحده.\n\nالموقع لا يتحمل أي مسؤولية عن استخدام المعلومات المنشورة.",
+
+  "terms.law.title": "7. القانون الواجب التطبيق والإطار القانوني",
+  "terms.law.content": "يخضع موقع آفاق تعاونيات الخليج لقوانين الملكية الفكرية وحقوق النشر الكويتية.\n\nونظرًا للطبيعة الدولية للموقع واستضافته في السحابة، قد تخضع بعض الاستخدامات أيضًا:\n\nلقواعد القانون الدولي المتعلقة بالملكية الفكرية، بما في ذلك الاتفاقيات الدولية المصدق عليها؛\nوإذا لزم الأمر، لتشريعات الدول الأصلية للوثائق الرسمية المنشورة.\n\nفي حال حدوث نزاع، يُنصح باللجوء للتواصل وحل النزاعات وديًا مع مراعاة الطابع الإعلامي وغير التجاري للموقع.",
+"resources.searchPlaceholder": "اكتب للبحث",
+
+  "terms.updates.title": "8. تحديث الشروط",
+  "terms.updates.content": "قد تتغير هذه الشروط ومنهجية التحرير لتتناسب مع:\n\nتطوير الموقع؛\nإضافة أنواع محتوى جديدة؛\nمواكبة التطورات القانونية والمؤسسية."
+
+
   },
   fr: {
     // Navigation
@@ -680,9 +754,9 @@ It may include: name, email address, country, or any other information you volun
     'hero.description': 'Explorer le mouvement coopératif dans les pays arabes du Golfe, découvrir les innovations et les expériences à l\'échelle mondiale, mettre en relation les acteurs, les experts et toutes les personnes intéressées par le travail coopératif, s\'orienter vers l\'avenir et promouvoir un changement positif.',
     'hero.exploreBtn': 'Explorer les Coopératives',
     'hero.learnBtn': 'En savoir plus',
-    'hero.stats.cooperatives': 'Coopératives Actives',
+    'hero.stats.cooperatives': 'Coopératives',
     'hero.stats.countries': 'Pays du Golfe',
-    'hero.stats.members': 'Membres de la Communauté',
+    'hero.stats.members': 'Membres coopérateurs',
     
     'nav.site1': 'Conseil de coopération du Golfe',
 'nav.site2': 'Union des associations coopératives de consommation du Koweït',
@@ -694,7 +768,9 @@ It may include: name, email address, country, or any other information you volun
 
  
     // Blog Section
-    'blog.title': 'Dernièrs Articles',
+    'blog.title': 'Articles',
+    'blog.title.latest': 'Dernières Publications',
+
     'blog.subtitle': 'Restez informé des dernières tendances, histoires de succès et perspectives d\'experts du mouvement coopératif du Golfe.',
     'blog.readMore': 'Lire Plus',
     'blog.viewAll': 'Voir Tous les Articles',
@@ -740,7 +816,7 @@ It may include: name, email address, country, or any other information you volun
 "register.loading": "Inscription en cours...",
     // Footer
     'footer.description': 'Pour un développement durable et des sociétés justes : Explorer, Connecter, transformer.',
-    'footer.quickLinks': 'Liens Rapides',
+    'footer.quickLinks': 'Accès rapide',
     'footer.usefullLinks': 'Liens utiles',
 
     'footer.gulfRegion': 'Région du Golfe',
@@ -761,7 +837,7 @@ It may include: name, email address, country, or any other information you volun
     'about.title': 'À propos d\'AFAQ',
     'about.subtitle': 'Plateforme des Coopératives du Golfe',
     'about.vision.title': 'Vision',
-    'about.vision.text': 'Être une référence fiable et une plateforme influente pour la durabilité et le développement des cooperatives dans les pays arabes du Golfe.',
+    'about.vision.text': 'Être une référence fiable et une plateforme influente pour la durabilité et le développement des coopératives dans les pays arabes du Golfe.',
     'about.mission.title': 'Mission',
     'about.mission.text': 'Notre mission consiste à :',
     'about.mission.point1': 'Diffuser les connaissances, promouvoir la culture coopérative et partager les meilleures pratiques',
@@ -769,7 +845,7 @@ It may include: name, email address, country, or any other information you volun
     'about.mission.point3': 'Divulguer de façon continue les éléments de l\'identité coopérative afin de favoriser une meilleure intégration au sein du mouvement coopératif mondial.',
     'about.mission.point4': 'Assurer une veille active et une analyse spécialisée des évolutions de l’environnement de travail des coopératives.',
     'about.mission.point5': 'Interagir positivement avec les initiatives d’entrepreneuriat social et durable pour promouvoir l’épanouissement des individus et la cohésion de communautés équitables. ',
-    'about.offer.title': 'Ce que nous proposons',
+    'about.offer.title': 'Contenu',
     'about.offer.texts': 'Textes explicatifs et articles d\'analyse',
     'about.offer.textsDesc': 'Articles analytiques sur le travail coopératif',
     'about.offer.studies': 'Études et travaux de recherche',
@@ -781,10 +857,10 @@ It may include: name, email address, country, or any other information you volun
     'about.offer.news': 'Couvertures de l\'actualité coopérative',
     'about.offer.newsDesc': 'Mises à jour des nouvelles du secteur coopératif',
     'about.scope.title': 'Périmètre',
-    'about.scope.text': 'Le contenu couvre les six pays membres du Conseil de coopération des États arabes du Golfe (CCEAG), tout en s\'ouvrant à d\'autres pays du monde arabe et au niveau international.',
+    'about.scope.text': 'Le contenu couvre les six pays membres du Conseil de coopération des États arabes du Golfe, tout en s\'ouvrant à d\'autres pays du monde arabe et au niveau international.',
     'about.scope.sources': 'Il s\'appuie sur des sources officielles et fiables, tout en respectant une ligne éditoriale objective et alignée avec les visions fondamentales des institutions spécialisées dans le domaine coopératif.',
     'about.team.title': 'Équipe',
-    'about.team.text': 'Notre équipe est passionnée par le travail coopératif, imprégnée des valeurs et des principes de l’identité coopérative, et profondément consciente de sa dimension humaine. Elle maîtrise l’arabe, le français et l’anglais, et comprend les spécificités culturelles des communautés locales. ',
+    'about.team.text': 'Notre équipe est passionnée par le travail coopératif, profondément engagée dans les valeurs et les principes de l’identité coopérative, et pleinement consciente de sa forte dimension humaine. Nous comprenons les besoins spécifiques et les nuances culturelles des communautés locales et reconnaissons l’importance de l’impact économique des coopératives dans le renforcement des économies locales. Maîtrisant l’arabe, l’anglais et le français, nous nous engageons à faire preuve de rigueur et professionnalisme pour réaliser un travail significatif et impactant.',
     'about.team.experience': 'Expérience professionnelle depuis 2016 au Koweït',
     'about.team.diversity': 'Dotée d\'une richesse culturelle variée',
     'about.team.mission': 'Le contenu du blog permet de rendre les ressources et les connaissances faciles d’accès, de partager les nouveautés, les initiatives et les contributions dans les pays du Golfe, ainsi qu’au niveau régional et international, et de développer des partenariats avec différents acteurs pour soutenir la vision et la mission.',
@@ -815,7 +891,7 @@ It may include: name, email address, country, or any other information you volun
     'backToArticles': 'Retour aux initiatives',
 
     // Resources Page
-    'resources.title': 'Ressources et Téléchargements',
+    'resources.title': 'Ressources ',
     'resources.subtitle': 'Outils et Guides Essentiels pour le Succès Coopératif',
     'resources.download': 'Télécharger',
     'resources.viewAll': 'Voir Toutes les Ressources',
@@ -959,8 +1035,38 @@ It may include: name, email address, country, or any other information you volun
 "footer.errorMessage": "Échec de l'abonnement. Veuillez réessayer.",
 
 // FR
-"footer.alreadySubscribed": "Cet email est déjà inscrit"
+"footer.alreadySubscribed": "Cet email est déjà inscrit",
 
+  "terms.lastUpdated": "Dernière mise à jour : Janvier 2026",
+  "terms.intro": "Les présentes conditions régissent l’utilisation du site Afaq Coopératives du Golfe.",
+
+  "terms.title": "Règles et conditions d’utilisation",
+  "title": "Règles et conditions d’utilisation",
+
+  "terms.status.title": "1. Statut du site",
+  "terms.status.content": "Afaq est un site enregistré en tant qu’œuvre et structure de publication au titre de la propriété intellectuelle au Koweït, au nom de son propriétaire Ali Abassi, conformément à la législation koweïtienne en vigueur relative au droit d’auteur et à la propriété intellectuelle.\n\nLe propriétaire assure l’édition et l’administration du blog avec l’appui d’une équipe éditoriale qualifiée.\n\nLes contributions d’auteurs tiers sont publiées sous leur entière responsabilité et font l’objet d’une identification explicite.",
+
+  "terms.content.title": "2. Nature des contenus publiés",
+  "terms.content.content": "Le site peut notamment contenir :\n\ndes textes juridiques officiels (lois, règlements, décisions, déclarations) issus de sources publiques ;\ndes documents émanant d’organisations internationales gouvernementales ;\ndes documents publics d’organisations internationales non gouvernementales, lorsque les conditions de diffusion le permettent ;\ndes traductions de documents officiels ;\ndes articles, analyses et contributions originales rédigés par l’administrateur du site ou par d’autres auteurs ;\ndes reportages et présentations d’initiatives liées au mouvement coopératif.\n\nLes contenus publiés sur le site ne constituent en aucun cas un conseil juridique, institutionnel ou professionnel.",
+
+  "terms.sources.title": "3. Sources et droits de reproduction",
+  "terms.sources.content": "3.1 Sources\n\nLes documents reproduits ou cités sur le site proviennent, dans la mesure du possible, de sources officielles, publiques et identifiées (journaux officiels, sites institutionnels, organisations internationales, etc.).\n\nChaque document mentionne, lorsque cela est possible :\n\nsa source ;\nson auteur ou l’institution émettrice ;\nsa date de publication et, le cas échéant, sa référence officielle.\n\n3.2 Droit d’auteur et réutilisation\n\nLes textes juridiques officiels et documents publics sont reproduits à des fins d’information et d’éducation.\n\nCertains documents peuvent rester soumis à des droits institutionnels spécifiques ; dans ce cas, leur reproduction est limitée ou remplacée par un lien vers la source officielle.\n\nLes articles, analyses et reportages originaux publiés sur le site sont protégés par le droit d’auteur.\n\nSauf indication contraire explicite, les contenus du site peuvent être partagés à condition de :\n\nmentionner clairement la source Afaq – Gulf cooperatives ;\nne pas altérer le sens du contenu ;\nrespecter le contexte et l’objectif informatif et non commercial du site.",
+
+  "terms.translations.title": "4. Traductions",
+  "terms.translations.content": "4.1 Traductions personnelles\n\nLorsque le site propose une traduction :\n\ncelle-ci est personnelle et non officielle ;\nelle est fournie à titre informatif et pédagogique ;\nseule la version originale fait foi.\n\nChaque traduction est accompagnée d’une mention explicite indiquant son caractère non officiel.\n\n4.2 Traductions officielles\n\nLorsqu’une traduction officielle existe et que sa reproduction est autorisée, elle est clairement signalée comme telle et accompagnée de sa source.",
+
+  "terms.methodology.title": "5. Méthodologie éditoriale",
+  "terms.methodology.content": "Le site applique les principes suivants :\n\ndistinction claire entre documents officiels, traductions et contenus éditoriaux ;\nséparation entre le texte original et les commentaires ou analyses ;\nfidélité aux sources, sans modification du sens des documents ;\ntransparence quant à l’origine, la nature et le statut des contenus ;\nneutralité informative dans la présentation des textes et des données.",
+
+  "terms.responsibility.title": "6. Responsabilité",
+  "terms.responsibility.content": "Malgré le soin apporté à la sélection, à la traduction et à la mise à jour des contenus :\n\nle site ne garantit pas l’exhaustivité ni l’actualisation permanente des informations ;\nl’utilisation des contenus se fait sous la responsabilité exclusive du lecteur.\n\nLe site décline toute responsabilité quant à l’usage qui pourrait être fait des informations publiées.",
+
+  "terms.law.title": "7. Loi applicable et cadre juridique",
+  "terms.law.content": "Le site Afaq Gulf Coop est enregistré au Koweït et relève, en tant que structure de publication, de la législation koweïtienne relative à la propriété intellectuelle, au droit d’auteur et aux publications.\n\nEn raison de la nature internationale du site, de son hébergement dans le cloud et de la diversité de l’origine des contenus publiés, certaines utilisations peuvent également être soumises :\n\naux règles du droit international applicables en matière de propriété intellectuelle, notamment les conventions internationales ratifiées ;\net, le cas échéant, aux législations des pays d’origine des documents officiels reproduits.\n\nEn cas de difficulté ou de contestation, les parties sont invitées à privilégier une approche de dialogue et de résolution amiable, dans le respect du caractère informatif et non commercial du site.",
+
+  "terms.updates.title": "8. Évolution du cadre",
+  "terms.updates.content": "Les présentes conditions d’utilisation et la méthodologie éditoriale sont susceptibles d’évoluer afin de :\n\naccompagner le développement du site ;\nintégrer de nouveaux types de contenus ;\ntenir compte des évolutions juridiques et institutionnelles.",
+"resources.searchPlaceholder": "Tapez pour rechercher",
 
   },
 };

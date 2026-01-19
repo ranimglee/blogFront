@@ -16,11 +16,11 @@ const Sitemap = () => {
     { key: 'nav.contact', href: '/contact' },
     { key: 'nav.login', href: '/login' },
     { key: 'footer.privacy', href: '/privacy' },
+     { key: 'footer.terms', href: '/terms' },
   ];
 
   const externalLinks = [
     { key: 'nav.site1', href: 'https://www.gcc-sg.org/' },
-    { key: 'nav.site2', href: 'https://kuccs.com.kw/Portal/' },
     { key: 'nav.site3', href: 'https://ica.coop' },
     { key: 'nav.site4', href: 'https://www.ilo.org/topics/cooperatives' },
     { key: 'nav.site5', href: 'https://social.desa.un.org/issues/cooperatives' },
