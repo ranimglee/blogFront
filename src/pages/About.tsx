@@ -1,21 +1,28 @@
-
 import React from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { useLanguage } from '../contexts/LanguageContext';
-import { Users, Target, Lightbulb, Shield, Compass, Globe, Award, Building2, Handshake, Zap, Heart, Rocket, TreePine, Mail, FileText, Video, BookOpen, Scale, Newspaper, MessageSquare } from 'lucide-react';
+import {
+  Users,
+  Target,
+  Lightbulb,
+  Compass,
+  Zap,
+  Heart,
+  Mail,
+  FileText,
+  MessageSquare,
+  BookOpen
+} from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 const About = () => {
   const { t } = useLanguage();
+  const navigate = useNavigate();
 
- 
-const navigate = useNavigate();
-
-const handleContactClick = () => {
-  navigate('/contact');
-};
-
+  const handleContactClick = () => {
+    navigate('/contact');
+  };
 
   const missionPoints = [
     t('about.mission.point1'),
@@ -26,182 +33,166 @@ const handleContactClick = () => {
   ];
 
   const contactItems = [
-    { icon: <Lightbulb className="w-4 h-4" />, text: t('about.contact.suggest') },
-    { icon: <FileText className="w-4 h-4" />, text: t('about.contact.share') },
-    { icon: <MessageSquare className="w-4 h-4" />, text: t('about.contact.questions') },
-    { icon: <Heart className="w-4 h-4" />, text: t('about.contact.feedback') }
+    { icon: <Lightbulb className="w-5 h-5" />, text: t('about.contact.suggest') },
+    { icon: <FileText className="w-5 h-5" />, text: t('about.contact.share') },
+    { icon: <MessageSquare className="w-5 h-5" />, text: t('about.contact.questions') },
+    { icon: <Heart className="w-5 h-5" />, text: t('about.contact.feedback') }
   ];
 
   return (
     <div className="min-h-screen bg-white">
       <Header />
-      
-      <main className="pt-20">
-        {/* Hero Section */}
-<section className="py-10 bg-gradient-to-br from-gulf-secondary/10 to-white">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
-            <div className="text-center max-w-4xl mx-auto">
-              <div className="w-12 h-12 bg-gulf-primary rounded-lg flex items-center justify-center text-white mx-auto mb-6">
-                <Compass className="w-6 h-6" />
-              </div>
-              
-              <h1 className="text-4xl md:text-5xl font-bold text-gulf-dark mb-4">
-                {t('about.title')}
-              </h1>
-             
-              
-              {/* Highlights Grid */}
-          
+
+      <main className="pt-20 space-y-20">
+        {/* Hero */}
+        <section className="py-14 bg-gradient-to-br from-gulf-secondary/10 to-white">
+          <div className="container mx-auto px-4 max-w-5xl text-center space-y-6">
+            <div className="w-14 h-14 bg-gulf-primary rounded-2xl flex items-center justify-center text-white mx-auto shadow-md">
+              <Compass className="w-7 h-7" />
             </div>
+
+            <h1 className="text-4xl md:text-5xl font-bold text-gulf-dark">
+              {t('about.title')}
+            </h1>
           </div>
         </section>
 
-        {/* Vision & Mission - Balanced Layout */}
-        <section className="py-8 bg-white">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8">
-              {/* Vision */}
-              <div className="bg-gulf-gold/10 p-8 rounded-lg border border-gulf-light/50">
-                <div className="flex items-center mb-6">
-                  <div className="w-10 h-10 bg-gulf-primary rounded-lg flex items-center justify-center text-white mr-4">
-                    <Zap className="w-5 h-5" />
+        {/* Vision & Mission */}
+        <section>
+          <div className="container mx-auto px-4 max-w-6xl grid grid-cols-1 md:grid-cols-2 gap-10">
+            {/* Vision */}
+            <div className="group rounded-2xl border border-gulf-light/40 bg-gradient-to-br from-white to-gulf-gold/10 p-7 shadow-sm hover:shadow-lg transition">
+              <div className="flex items-center gap-4 mb-5">
+                <div className="w-11 h-11 bg-gulf-primary rounded-xl flex items-center justify-center text-white shadow-md group-hover:scale-105 transition">
+                  <Zap className="w-5 h-5" />
+                </div>
+                <h2 className="text-2xl font-bold text-gulf-primary">
+                  {t('about.vision.title')}
+                </h2>
+              </div>
+
+              <p className="text-gulf-dark/80 leading-relaxed">
+                {t('about.vision.text')}
+              </p>
+            </div>
+
+            {/* Mission */}
+            <div className="group rounded-2xl border border-gulf-light/40 bg-gradient-to-br from-white to-gulf-gold/10 p-7 shadow-sm hover:shadow-lg transition">
+              <div className="flex items-center gap-4 mb-5">
+                <div className="w-11 h-11 bg-gulf-gold rounded-xl flex items-center justify-center text-gulf-dark shadow-md group-hover:scale-105 transition">
+                  <Target className="w-5 h-5" />
+                </div>
+                <h2 className="text-2xl font-bold text-gulf-gold">
+                  {t('about.mission.title')}
+                </h2>
+              </div>
+
+              <div className="space-y-3">
+                {missionPoints.map((point, index) => (
+                  <div key={index} className="flex items-start gap-3">
+                    <span className="mt-2 w-2 h-2 rounded-full bg-gulf-gold shrink-0" />
+                    <p className="text-sm text-gulf-dark/70 leading-relaxed">
+                      {point}
+                    </p>
                   </div>
-                  <h2 className="text-2xl font-bold text-gulf-primary">{t('about.vision.title')}</h2>
-                </div>
-                <p className="text-gulf-dark/80 leading-relaxed">
-                  {t('about.vision.text')}
-                </p>
-              </div>
-              
-              {/* Mission Overview */}
-              <div className="bg-gulf-gold/10 p-8 rounded-lg border border-gulf-light/50">
-                <div className="flex items-center mb-6">
-                  <div className="w-10 h-10 bg-gulf-gold rounded-lg flex items-center justify-center text-gulf-dark mr-4">
-                    <Target className="w-5 h-5" />
-                  </div>
-                  <h2 className="text-2xl font-bold text-gulf-gold">{t('about.mission.title')}</h2>
-                </div>
-               
-                <div className="space-y-2">
-                  {missionPoints.slice(0, 5).map((point, index) => (
-                    <div key={index} className="flex items-start space-x-2">
-                      <div className="w-1.5 h-1.5 bg-gulf-gold rounded-full mt-2 flex-shrink-0"></div>
-                      <p className="text-gulf-dark/70 text-sm leading-relaxed">{point}</p>
-                    </div>
-                  ))}
-                </div>
-                
+                ))}
               </div>
             </div>
-
-            {/* Additional Mission Points */}
-           
           </div>
         </section>
 
-        {/* What We Offer */}
-        <section className="py-6 bg-gulf-secondary/5">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
-            <div className="text-center mb-4">
-              <div className="w-10 h-10 bg-gulf-coral rounded-lg flex items-center justify-center text-white mx-auto mb-4">
-                <BookOpen className="w-5 h-5" />
-              </div>
-              <h2 className="text-3xl font-bold text-gulf-dark mb-2">{t('about.offer.title')}</h2>
+        {/* Offer */}
+        <section className="py-12 bg-gulf-secondary/5">
+          <div className="container mx-auto px-4 max-w-4xl text-center space-y-4">
+            <div className="w-12 h-12 bg-gulf-coral rounded-xl flex items-center justify-center text-white mx-auto shadow-md">
+              <BookOpen className="w-5 h-5" />
             </div>
-            
-          
+
+            <h2 className="text-3xl font-bold text-gulf-dark">
+              {t('about.offer.title')}
+            </h2>
           </div>
         </section>
 
-        {/* Scope & Team - Balanced Content */}
-        <section className="py-8 bg-white">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
+        {/* Scope & Team */}
+        <section>
+          <div className="container mx-auto px-4 max-w-6xl space-y-10">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              {/* Scope */}
-              <div className="bg-gulf-coral/5 p-8 rounded-lg border border-gulf-light/50">
-                <div className="flex items-center mb-6">
-                 
-                </div>
-                <p className="text-gulf-dark/80 leading-relaxed mb-4">
+              <div className="rounded-2xl border border-gray-100 bg-white p-7 shadow-sm hover:shadow-md transition">
+                <p className="text-gulf-dark/80 leading-relaxed">
                   {t('about.team.mission')}
                 </p>
-               
               </div>
 
-                   <div className="bg-gulf-coral/5 p-8 rounded-lg border border-gulf-light/50">
-                <div className="flex items-center mb-6">
-                 
-                </div>
-                <p className="text-gulf-dark/80 leading-relaxed mb-4">
+              <div className="rounded-2xl border border-gray-100 bg-white p-7 shadow-sm hover:shadow-md transition space-y-3">
+                <p className="text-gulf-dark/80 leading-relaxed">
                   {t('about.scope.text')}
                 </p>
-                <p className="text-gulf-dark/70 text-sm leading-relaxed">
+                <p className="text-sm text-gulf-dark/70">
                   {t('about.scope.sources')}
                 </p>
               </div>
-              
-              {/* Team Summary */}
-              
             </div>
-                <div className="bg-gulf-primary/5 p-8 rounded-lg mt-8 ...">
-                <div className="flex items-center mb-6">
-                  <div className="w-10 h-10 bg-gulf-primary rounded-lg flex items-center justify-center text-white mr-4">
-                    <Users className="w-5 h-5" />
-                  </div>
-                  <h2 className="text-2xl font-bold text-gulf-primary">{t('about.team.title')}</h2>
+
+            <div className="rounded-2xl border border-gulf-light/40 bg-gradient-to-br from-gulf-primary/5 to-white p-7 shadow-sm hover:shadow-lg transition">
+              <div className="flex items-center gap-4 mb-5">
+                <div className="w-11 h-11 bg-gulf-primary rounded-xl flex items-center justify-center text-white shadow-md">
+                  <Users className="w-5 h-5" />
                 </div>
-                <p className="text-gulf-dark/80 leading-relaxed mb-4">
-                  {t('about.team.text')}
-                  {t('about.team.diversity')}
-                </p>
-               
+                <h2 className="text-2xl font-bold text-gulf-primary">
+                  {t('about.team.title')}
+                </h2>
               </div>
-            {/* Extended Team Description */}
-           
+
+              <p className="text-gulf-dark/80 leading-relaxed">
+                {t('about.team.text')}
+              </p>
+            </div>
           </div>
         </section>
 
-  {/* Contact Section */}
-<section className="py-16 bg-white mb-12">
-  <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl text-center">
-    <div className="w-14 h-14 bg-gulf-primary/10 rounded-2xl flex items-center justify-center text-gulf-primary mx-auto mb-6">
-      <Mail className="w-7 h-7" />
-    </div>
+        {/* Contact */}
+        <section className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4 max-w-5xl text-center space-y-10">
+            <div className="w-14 h-14 bg-gulf-primary/10 rounded-2xl flex items-center justify-center text-gulf-primary mx-auto">
+              <Mail className="w-7 h-7" />
+            </div>
 
-    <h2 className="text-3xl font-bold text-gulf-dark mb-4">
-      {t('about.contact.title')}
-    </h2>
-    <p className="text-lg text-gulf-dark/70 mb-10">
-       {t('about.contact.email')}
-    </p>
+            <div className="space-y-3">
+              <h2 className="text-3xl font-bold text-gulf-dark">
+                {t('about.contact.title')}
+              </h2>
+              <p className="text-lg text-gulf-dark/70">
+                {t('about.contact.email')}
+              </p>
+            </div>
 
-    {/* Contact options as cards */}
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mb-12">
-      {contactItems.map((item, index) => (
-        <div
-          key={index}
-          className="bg-white shadow-md border border-gray-100 hover:shadow-lg transition rounded-xl p-6 flex flex-col items-center text-center"
-        >
-          <div className="w-10 h-10 flex items-center justify-center rounded-lg bg-gulf-primary/10 text-gulf-primary mb-3">
-            {item.icon}
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+              {contactItems.map((item, index) => (
+                <div
+                  key={index}
+                  className="group rounded-2xl border border-gray-100 bg-white p-6 shadow-sm hover:shadow-lg transition text-center space-y-4"
+                >
+                  <div className="w-12 h-12 mx-auto flex items-center justify-center rounded-xl bg-gradient-to-br from-gulf-primary/20 to-gulf-primary/5 text-gulf-primary group-hover:scale-105 transition">
+                    {item.icon}
+                  </div>
+
+                  <p className="text-sm text-gulf-dark/80 leading-relaxed">
+                    {item.text}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            <button
+              onClick={handleContactClick}
+              className="inline-flex items-center gap-2 bg-gulf-primary text-white px-8 py-3 rounded-xl font-medium shadow-md hover:shadow-lg hover:scale-[1.02] active:scale-95 transition"
+            >
+              <Mail className="w-4 h-4" />
+              {t('about.contact.btn')}
+            </button>
           </div>
-          <p className="text-sm text-gulf-dark/80">{item.text}</p>
-        </div>
-      ))}
-    </div>
-
-    {/* CTA Button */}
-    <button
-      onClick={handleContactClick}
-className="bg-gulf-primary text-white px-8 py-3 rounded-xl font-medium hover:brightness-90 transition-all flex items-center justify-center gap-2 mx-auto"
-    >
-      <Mail className="w-4 h-4" />
-      {t('about.contact.btn')}
-    </button>
-  </div>
-</section>
-
-
+        </section>
       </main>
 
       <Footer />

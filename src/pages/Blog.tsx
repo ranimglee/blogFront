@@ -143,29 +143,30 @@ const BlogPage = () => {
             <h1 className="text-5xl md:text-6xl font-bold text-gulf-dark mb-6">{t('blog.title')}</h1>
 
             {/* Search Bar */}
-            <div className="mt-8 px-4">
-              <div className="max-w-4xl mx-auto">
-                <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl shadow-xl border border-blue-200 p-6">
-                  <div className="flex flex-col sm:flex-row gap-4">
-                    <div className="flex-1 relative">
-                      <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                        <Search className="h-5 w-5 text-indigo-500" />
-                      </div>
-                      <input
-                        type="text"
-                        placeholder={t('blog.searchPlaceholder') || 'Search articles...'}
-                        className="w-full pl-12 pr-4 py-3 border-2 border-indigo-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all outline-none bg-white hover:border-indigo-300"
-                        value={searchQuery}
-                        onChange={(e) => {
-                          setSearchQuery(e.target.value);
-                          setCurrentPage(1);
-                        }}
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+     <div className="mt-8 px-4 flex justify-center">
+  <div className="w-full sm:w-96">
+    <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl shadow-xl border border-blue-200 p-6">
+      <div className="flex flex-col gap-4">
+        <div className="relative w-full">
+          <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+            <Search className="h-5 w-5 text-indigo-500" />
+          </div>
+          <input
+            type="text"
+            placeholder={t('blog.searchPlaceholder') || 'Search articles...'}
+            className="w-full pl-12 pr-4 py-3 border-2 border-indigo-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all outline-none bg-white hover:border-indigo-300"
+            value={searchQuery}
+            onChange={(e) => {
+              setSearchQuery(e.target.value);
+              setCurrentPage(1);
+            }}
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 
           </div>
         </section>

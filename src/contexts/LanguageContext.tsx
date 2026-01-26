@@ -13,6 +13,8 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 
 const translations = {
   en: {
+    "auth.loginRequiredDownload": "You must log in to download this file.",
+  
     // Navigation
     'nav.home': 'Home',
     'nav.about': 'About',
@@ -87,7 +89,10 @@ const translations = {
     'blog.author': 'By',
     'blog.readTime': 'min read',
    'projects.noDescription':'No description available',
-
+  "resources.category.legal": "Legal",
+  "resources.category.data": "Data",
+  "resources.category.diverse": "Diverse",
+  "resources.category.studies": "Studies",
     // Services Section
     'services.title': 'Our Services',
     'services.subtitle': 'Comprehensive support services designed to empower cooperative growth and success throughout the Gulf region.',
@@ -180,7 +185,7 @@ const translations = {
     'about.team.title': 'Our Team',
     'about.team.text': 'Our team is passionate about cooperative work, deeply committed to the values and principles of the cooperative identity, and fully aware of its strong human dimension. We understand the unique needs and cultural nuances of local communities and recognize the important economic impact that cooperatives have in empowering local economies. Fluent in Arabic, English, and French, we are committed to precision and professionalism to deliver meaningful, impactful work. ',
     'about.team.experience': 'Professional experience since 2016 in Kuwait',
-    'about.team.diversity': 'Diverse cultural backgrounds and expertise',
+    'about.team.diversity': '',
     'about.team.mission': 'The blog content helps make resources and knowledge easily accessible, share updates, initiatives, and contributions from the Gulf countries as well as from the regional and international levels, and develop partnerships with various stakeholders to support the vision and mission.',
     'about.contact.title': 'Contact Us',
     'about.contact.email': 'gulfcoopafaq@gmail.com',
@@ -191,6 +196,8 @@ const translations = {
     'about.contact.btn': 'Contact Us',
     'about.contact.legal': 'Legal Notice',
     'about.contact.leg': 'Legal Notice',
+   'preview.contactTooltip':"Pour signaler un problème ou discuter de ce document, veuillez nous contacter.",
+
 
   
     
@@ -211,9 +218,9 @@ const translations = {
     'resources.viewAll': 'View All Resources',
     'resources.filter.all': 'All',
     'resources.filter.legal': 'Legal',
-    'resources.filter.finance': 'Finance',
-    'resources.filter.governance': 'Governance',
-    'resources.filter.caseStudies': 'Case Studies',
+    'resources.filter.data': 'Finance',
+    'resources.filter.diverse': 'Governance',
+    'resources.filter.studies': 'Case Studies',
  "resources.download_success": "Download completed successfully.",
   "resources.download_error": "Download failed. Please try again.",
   "resources.downloading": "Downloading...",
@@ -357,7 +364,8 @@ It may include: name, email address, country, or any other information you volun
       "terms.methodology.content": "Clear distinction between documents and editorial content...\nNeutral and informative presentation."
     ,
 
-  
+    "resources.preview": "Preview",
+
       "terms.responsibility.title": "6. Responsibility",
       "terms.responsibility.content": "The site does not guarantee completeness...\nUse of content is at the reader’s own responsibility."
     ,
@@ -369,11 +377,25 @@ It may include: name, email address, country, or any other information you volun
 
 
       "terms.updates.title": "8. Updates",
-      "terms.updates.content": "These terms may evolve to accommodate site development and legal changes."
+      "terms.updates.content": "These terms may evolve to accommodate site development and legal changes.",
 
+ "preview.loading": "Loading preview…",
 
+   'resources.subCategory.all':'All',
+  'resources.subCategory.national':'National',
+     'resources.subCategory.international':'International',
+     'resources.subCategory.kuwait':'Kuwait',
+     'resources.subCategory.oman':'Oman',
+     'resources.subCategory.emirates':'Emirates',
 
+     'resources.subCategory.saudi_arabia':'Saudi Arabia',
 
+     'resources.subCategory.bahrain':'Bahrain',
+
+     'resources.subCategory.qatar':'Qatar',
+      'resources.subCategory.opinions':'Opinions',
+      'resources.subCategory.other':'Other',
+       'resources.subCategory.case_law':'Case Law',
   },
   ar: {
     // Navigation
@@ -478,7 +500,7 @@ It may include: name, email address, country, or any other information you volun
     'footer.subscribe': 'اشترك',
     'footer.copyright': '© 2025 آفاق - مدونة التعاونيات لدول الخليج العربية. جميع الحقوق محفوظة.',
     'footer.privacy': 'سياسة الخصوصية',
-    'footer.terms': 'شروط الخدمة',
+    'footer.terms': 'شروط الاستخدام',
     'footer.cookies': 'ملفات تعريف الارتباط',
     'footer.address': 'العنوان',
     'footer.email': 'البريد الإلكتروني',
@@ -512,9 +534,8 @@ It may include: name, email address, country, or any other information you volun
     'about.scope.text': 'يشمل المحتوى الدول الست لمجلس التعاون لدول الخليج العربية، كما ينفتح على دول أخرى من المنطقة العربية ومن العالم.',
     'about.scope.sources': 'يعتمد المصادر الرسمية والموثوقة، كما يضمن الصبغة الموضوعية والمتلائمة مع الرؤى الأساسية للجهات المتخصصة في العمل التعاوني.',
     'about.team.title': 'فريق العمل',
-    'about.team.text':'فريقنا شغوف بالعمل التعاوني متشبع بقيم ومبادئ الهوية التعاونية ملمّ ببعدها الإنساني الراسخ. نحن نعي الخصوصيات الثقافية للمجتمعات المحلية كما ندرك الأثر الاقتصادي المهم للتعاونيات في تمكين اقتصاداتها. فريقنا يتقن العربية والإنجليزية والفرنسية، ويعتمد الدقة والاحترافية لتقديم عمل هادف وذي أثر ملموس.',
+    'about.team.text':'فريقنا شغوف بالعمل التعاوني متشبع بقيم ومبادئ الهوية التعاونية ملمّ ببعدها الإنساني الراسخ. نحن نعي الخصوصيات الثقافية للمجتمعات المحلية كما ندرك الأثر الاقتصادي المهم للتعاونيات في تمكين اقتصاداتها. فريقنا يتقن العربية والإنجليزية والفرنسية، ويعتمد الدقة والاحترافية لتقديم عمل هادف وذي أثر ملموس ويتميّز بأبعاد ثقافية متعدّدة.',
     'about.team.experience': 'خبرة مهنية منذ سنة 2016 في دولة الكويت',
-    'about.team.diversity': 'و يتميّز بأبعاد ثقافية متعدّدة.',
     'about.team.mission': 'يُتيح محتوى المدونة الموارد والمصادر المعرفية بطريقة مبسطة، ويقدّم المستجدات والإسهامات والمبادرات المتنوعة في دول الخليج العربية وعلى المستويين الإقليمي والدولي، ويسعى إلى إنشاء شراكات مع مختلف الفاعلين خدمةً للرؤية والرسالة.',
     'about.contact.title': 'للتواصل معنا',
     'about.contact.email': 'gulfcoopafaq@gmail.com',
@@ -524,7 +545,12 @@ It may include: name, email address, country, or any other information you volun
     'about.contact.feedback': 'تقديم رأي أو طلب تصحيح خطأ',
     'about.contact.btn': 'اتصل بنا',
     'about.contact.legal': 'الإشعارات القانونية',
-    
+     "resources.category.legal": "قانونية",
+      "resources.category.data": "أرقام وبيانات",
+      "resources.category.diverse": "موارد مختلفة",
+      "resources.category.studies": "دراسات",
+
+ 
     // Projects Page
     'projects.title': 'مبادرات',
     'projects.subtitle': 'تحويل المجتمعات من خلال الابتكار التعاوني',
@@ -544,6 +570,7 @@ It may include: name, email address, country, or any other information you volun
 'comments.noComments': 'لا توجد تعليقات معتمدة بعد.',
 'comments.success': 'تم إرسال التعليق! سيظهر بعد الموافقة.',
 'comments.error': 'يرجى كتابة تعليق.',
+    "auth.loginRequiredDownload": "يجب تسجيل الدخول لتحميل هذا الملف.",
 
 "register.accept": "أوافق على",
 "register.privacyPolicy": "سياسة الخصوصية",
@@ -556,10 +583,12 @@ It may include: name, email address, country, or any other information you volun
     'resources.viewAll': 'عرض جميع الموارد',
     'resources.filter.all': 'الكل',
     'resources.filter.legal': 'قانونية',
-    'resources.filter.finance': 'مالية',
-    'resources.filter.governance': 'حوكمة',
-    'resources.filter.caseStudies': 'دراسات حالة',
-    
+    'resources.filter.data': 'أرقام وبيانات',
+    'resources.filter.diverse': 'موارد مختلفة',
+    'resources.filter.studies': 'دراسات',
+      "resources.preview": "معاينة",
+ "preview.loading": "جاري تحميل المعاينة…",
+  
     // Contact Page
     'contact.title': 'اتصل بنا',
     'contact.subtitle': 'تواصل مع فريقنا',
@@ -720,7 +749,23 @@ It may include: name, email address, country, or any other information you volun
 "resources.searchPlaceholder": "اكتب للبحث",
 
   "terms.updates.title": "8. تحديث الشروط",
-  "terms.updates.content": "قد تتغير هذه الشروط ومنهجية التحرير لتتناسب مع:\n\nتطوير الموقع؛\nإضافة أنواع محتوى جديدة؛\nمواكبة التطورات القانونية والمؤسسية."
+  "terms.updates.content": "قد تتغير هذه الشروط ومنهجية التحرير لتتناسب مع:\n\nتطوير الموقع؛\nإضافة أنواع محتوى جديدة؛\nمواكبة التطورات القانونية والمؤسسية.",
+   'preview.contactTooltip':"للإبلاغ عن مشكلة أو مناقشة هذا المستند، يرجى التواصل معنا.",
+
+'resources.subCategory.all': 'الكل',
+'resources.subCategory.national': 'وطنية',
+'resources.subCategory.international': 'دولية',
+'resources.subCategory.emirates': 'الإمارات العربية المتحدة',
+'resources.subCategory.bahrain': 'البحرين',
+'resources.subCategory.saudi_arabia': 'المملكة العربية السعودية',
+'resources.subCategory.oman': 'عُمان',
+'resources.subCategory.qatar': 'قطر',
+'resources.subCategory.kuwait': 'الكويت',
+
+'resources.subCategory.case_law': 'أحكام قضائية',
+'resources.subCategory.opinions': 'آراء وفتاوى',
+'resources.subCategory.other': 'أخرى',
+
 
 
   },
@@ -826,7 +871,7 @@ It may include: name, email address, country, or any other information you volun
     'footer.subscribe': 'S\'abonner',
     'footer.copyright': '© 2025 Afaq - Afaq- blog des cooperatives du Golfe. Tous droits réservés.',
     'footer.privacy': 'Politique de Confidentialité',
-    'footer.terms': 'Conditions de Service',
+    'footer.terms': 'Conditions d’utilisation',
     'footer.cookies': 'Cookies',
     'footer.address': 'Adresse',
     'footer.email': 'Email',
@@ -988,6 +1033,7 @@ It may include: name, email address, country, or any other information you volun
   "forgotPassword.switchToLogin": "Vous vous souvenez de votre mot de passe ? Connectez-vous",
     'projects.activeSearch':'Recherche',
 'blog.searchPlaceholder':'Recherche',
+  "resources.preview": "Aperçu",
 
 
 // Commentaires
@@ -1063,10 +1109,36 @@ It may include: name, email address, country, or any other information you volun
 
   "terms.law.title": "7. Loi applicable et cadre juridique",
   "terms.law.content": "Le site Afaq Gulf Coop est enregistré au Koweït et relève, en tant que structure de publication, de la législation koweïtienne relative à la propriété intellectuelle, au droit d’auteur et aux publications.\n\nEn raison de la nature internationale du site, de son hébergement dans le cloud et de la diversité de l’origine des contenus publiés, certaines utilisations peuvent également être soumises :\n\naux règles du droit international applicables en matière de propriété intellectuelle, notamment les conventions internationales ratifiées ;\net, le cas échéant, aux législations des pays d’origine des documents officiels reproduits.\n\nEn cas de difficulté ou de contestation, les parties sont invitées à privilégier une approche de dialogue et de résolution amiable, dans le respect du caractère informatif et non commercial du site.",
+ "preview.loading": "Chargement de l’aperçu…",
 
   "terms.updates.title": "8. Évolution du cadre",
   "terms.updates.content": "Les présentes conditions d’utilisation et la méthodologie éditoriale sont susceptibles d’évoluer afin de :\n\naccompagner le développement du site ;\nintégrer de nouveaux types de contenus ;\ntenir compte des évolutions juridiques et institutionnelles.",
 "resources.searchPlaceholder": "Tapez pour rechercher",
+ "resources.category.legal": "Juridique",
+  "resources.category.data": "Données",
+  "resources.category.diverse": "Divers",
+  "resources.category.studies": "Études",
+   "auth.loginRequiredDownload": "Veuillez vous connecter pour télécharger ce fichier.",
+   'preview.contactTooltip':"Pour signaler un problème ou discuter de ce document, veuillez nous contacter.",
+   'resources.subCategory.all':'tous',
+  'resources.subCategory.national':'National',
+     'resources.subCategory.international':'International',
+     'resources.subCategory.kuwait':'Koweit',
+     'resources.subCategory.oman':'Oman',
+     'resources.subCategory.emirates':'Émirats arabes unis',
+
+     'resources.subCategory.saudi_arabia':'Arabie Saoudite',
+
+     'resources.subCategory.bahrain':'Bahreïn',
+
+     'resources.subCategory.qatar':'Qatar',
+
+
+      'resources.subCategory.opinions':'Opinions',
+      'resources.subCategory.other':'Autres',
+       'resources.subCategory.case_law':'Jurisprudence',
+
+
 
   },
 };

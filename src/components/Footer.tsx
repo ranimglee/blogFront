@@ -15,7 +15,7 @@ import React, { useState } from 'react';
 const Footer = () => {
   const { t } = useLanguage();
  const [email, setEmail] = useState('');
-  const [status, setStatus] = useState(null); // 'success' | 'error' | null
+  const [status, setStatus] = useState(null); 
   const [loading, setLoading] = useState(false);
   const menuItems = [
     { key: 'nav.home', href: '/' },
@@ -109,9 +109,9 @@ const handleSubscribe = async () => {
         <div className="flex space-x-3 rtl:space-x-reverse">
         {[
   { icon: Linkedin, href: '#' },
-  { icon: XIcon, href: 'https://x.com' },
-  { icon: Facebook, href: '#' },
-  { icon: Instagram, href: '#' },
+  { icon: XIcon, href: 'https://x.com/gulfcoop' },
+  { icon: Facebook, href: 'https://www.facebook.com/profile.php?id=61586823820194' },
+  { icon: Instagram, href: 'https://www.instagram.com/gulfcoopafaq/' },
 ].map(({ icon: Icon, href }, index) => (
   <a
     key={index}

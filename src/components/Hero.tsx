@@ -46,15 +46,12 @@ const Hero = () => {
           </div>
           
           {/* Stats */}
-           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-3xl mx-auto">
+<div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-16 max-w-3xl mx-auto justify-items-center">
             <div className="text-center">
               <div className="text-3xl font-bold text-gulf-primary mb-2">600+</div>
               <div className="text-gulf-dark/70">{t('hero.stats.cooperatives')}</div>
             </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-gulf-gold mb-2">6</div>
-              <div className="text-gulf-dark/70">{t('hero.stats.countries')}</div>
-            </div>
+        
             <div className="text-center">
               <div className="text-3xl font-bold text-gulf-coral mb-2">600k+</div>
               <div className="text-gulf-dark/70">{t('hero.stats.members')}</div>
