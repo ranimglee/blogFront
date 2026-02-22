@@ -242,7 +242,7 @@ const translations = {
     'contact.info.title': 'Contact Information',
     'contact.info.address': 'Gulf Cooperation Council Region',
     'contact.info.email': 'gulfcoopafaq@gmail.com',
-    'contact.info.phone': '+971 XX XXX XXXX',
+    'contact.info.phone': '+965 66538052',
     'contact.info.workingHours': 'Sunday - Thursday: 9:00 AM - 6:00 PM\nFriday - Saturday: Closed',
            // Login Page
     'login.title': 'Login',
@@ -600,7 +600,7 @@ It may include: name, email address, country, or any other information you volun
     'contact.info.title': 'معلومات الاتصال',
     'contact.info.address': 'منطقة مجلس التعاون الخليجي',
     'contact.info.email': 'gulfcoopafaq@gmail.com',
-    'contact.info.phone': '+971 XX XXX XXXX',
+    'contact.info.phone': '+965 66538052',
     'contact.info.workingHours': 'الأحد - الخميس: 9:00 صباحاً - 6:00 مساءً\nالجمعة - السبت: مغلق',
     
     'login.title': 'تسجيل الدخول',
@@ -960,7 +960,7 @@ It may include: name, email address, country, or any other information you volun
     'contact.info.title': 'Informations de Contact',
     'contact.info.address': 'Région du Conseil de Coopération du Golfe',
     'contact.info.email': 'gulfcoopafaq@gmail.com',
-    'contact.info.phone': '+971 XX XXX XXXX',
+    'contact.info.phone': '+965 66538052',
     'contact.info.workingHours': 'Dimanche - Jeudi: 9h00 - 18h00\nVendredi - Samedi: Fermé',
 "contact.sending": "Envoi en cours...",
 "contact.successMessage": "Message envoyé avec succès !",
