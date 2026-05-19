@@ -24,7 +24,7 @@ const PrivacyPolicy = () => {
               </h1>
 
               <p className="text-sm text-gulf-dark/60 mb-12 text-center italic">
-                {t('privacy.lastUpdated') || 'Last updated: June 2025'}
+                {t('privacy.lastUpdated') || 'Last updated: June 2026'}
               </p>
 
               <div className="prose max-w-4xl mx-auto text-gulf-dark/80 space-y-10">

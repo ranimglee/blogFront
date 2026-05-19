@@ -136,7 +136,7 @@ const translations = {
     'footer.newsletterDescription': 'Get the latest updates on cooperative developments in the Gulf region.',
     'footer.emailPlaceholder': 'Enter your email',
     'footer.subscribe': 'Subscribe',
-    'footer.copyright': '© 2025 Afaq - Afaq-Gulf cooperatives blog. All rights reserved.',
+    'footer.copyright': '© 2026 Afaq - Afaq-Gulf cooperatives blog. All rights reserved.',
     'footer.privacy': 'Privacy Policy',
     'footer.terms': 'Terms of Use',
     'footer.cookies': 'Cookies',
@@ -292,7 +292,7 @@ const translations = {
 "contact.errorMessage": "Something went wrong. Please try again.",
 'loading.pleaseWait':'Please wait',
  'privacy.title': 'Privacy Policy',
-  'privacy.lastUpdated': 'Last updated: June 2025',
+  'privacy.lastUpdated': 'Last updated: June 2026',
   'privacy.intro': 'The AFAQ Gulf Cooperatives Blog is committed to protecting the privacy of its visitors. This page explains how we collect, use, share, and safeguard your information.',
   'privacy.info.title': '1. Information We Collect',
   'privacy.info.content': `We may collect two types of information:
@@ -498,7 +498,7 @@ It may include: name, email address, country, or any other information you volun
     'footer.newsletterDescription': 'احصل على أحدث التطورات حول تطوير التعاونيات في منطقة الخليج.',
     'footer.emailPlaceholder': 'أدخل بريدك الإلكتروني',
     'footer.subscribe': 'اشترك',
-    'footer.copyright': '© 2025 آفاق - مدونة التعاونيات لدول الخليج العربية. جميع الحقوق محفوظة.',
+    'footer.copyright': '© 2026 آفاق - مدونة التعاونيات لدول الخليج العربية. جميع الحقوق محفوظة.',
     'footer.privacy': 'سياسة الخصوصية',
     'footer.terms': 'شروط الاستخدام',
     'footer.cookies': 'ملفات تعريف الارتباط',
@@ -657,7 +657,7 @@ It may include: name, email address, country, or any other information you volun
 'sitemap.description': 'تعرض هذه الخريطة جميع الصفحات والموارد الهامة المتاحة على منصتنا. استخدمها للتنقل بسهولة واكتشاف كل المحتويات المتاحة.',
 
  'privacy.title': 'سياسة الخصوصية',
-  'privacy.lastUpdated': 'آخر تحديث: يونيو 2025',
+  'privacy.lastUpdated': 'آخر تحديث: يونيو 2026',
   'privacy.intro': 'نلتزم في مدونة آفاق تعاونيات الخليج بحماية خصوصية زوّارنا. توضح هذه الصفحة كيف نقوم بجمع المعلومات واستخدامها ومشاركتها وتأمينها.',
   'privacy.info.title': '1. المعلومات التي نقوم بجمعها',
   'privacy.info.content': `قد نقوم بجمع نوعين من المعلومات:
@@ -869,7 +869,7 @@ It may include: name, email address, country, or any other information you volun
     'footer.newsletterDescription': 'Recevez les dernières mises à jour sur les développements coopératifs dans la région du Golfe.',
     'footer.emailPlaceholder': 'Entrez votre email',
     'footer.subscribe': 'S\'abonner',
-    'footer.copyright': '© 2025 Afaq - Afaq- blog des cooperatives du Golfe. Tous droits réservés.',
+    'footer.copyright': '© 2026 Afaq - Afaq- blog des cooperatives du Golfe. Tous droits réservés.',
     'footer.privacy': 'Politique de Confidentialité',
     'footer.terms': 'Conditions d’utilisation',
     'footer.cookies': 'Cookies',
@@ -1056,7 +1056,7 @@ It may include: name, email address, country, or any other information you volun
 "register.privacyPolicy": "Politique de confidentialité",
 
 'privacy.title': 'Politique de confidentialité',
-  'privacy.lastUpdated': 'Dernière mise à jour : Juin 2025',
+  'privacy.lastUpdated': 'Dernière mise à jour : Juin 2026',
   'privacy.intro': 'Le blog AFAQ Gulf Cooperatives s’engage à protéger la vie privée de ses visiteurs. Cette page explique comment nous collectons, utilisons, partageons et sécurisons vos informations.',
   'privacy.info.title': '1. Informations que nous collectons',
   'privacy.info.content': 'Nous pouvons collecter deux types d’informations :\na) Données non personnelles : collectées automatiquement lors de votre visite, incluant l’adresse IP, le type de navigateur et d’appareil, les pages visitées, la date et l’heure de visite, la source de référence.\nb) Données personnelles : collectées uniquement si vous les fournissez volontairement via des formulaires (contact, commentaires), pouvant inclure le nom, l’e-mail, le pays ou toute autre information volontairement fournie.',
