@@ -10,6 +10,7 @@ interface SearchModalProps {
 interface SearchResultItem {
   id: string | number;
   title: string;
+  slug?: string;
   titre?: string; // resources may have "titre" instead of "title"
 }
 
@@ -102,7 +103,7 @@ const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose }) => {
         ];
         if (allItems[selectedIndex]) {
           onClose();
-          navigate(`${allItems[selectedIndex].baseUrl}/${allItems[selectedIndex].id}`);
+          navigate(`${allItems[selectedIndex].baseUrl}/${allItems[selectedIndex].slug}`);
         }
       }
     };
@@ -307,8 +308,8 @@ const ResultSection: React.FC<ResultSectionProps> = ({
       <div className="space-y-1 mt-2">
         {items.map((item, index) => (
           <button
-            key={item.id}
-            onClick={() => handleClick(item.id)}
+            key={item.slug}
+            onClick={() => handleClick(item.slug)}
             className={`w-full text-left px-3 py-3 rounded-lg hover:bg-gradient-to-r hover:from-blue-50 hover:to-indigo-50 transition-all duration-200 group ${
               selectedIndex === index ? 'bg-blue-50' : ''
             }`}

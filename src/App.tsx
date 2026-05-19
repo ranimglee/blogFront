@@ -70,13 +70,13 @@ export default function App() {
               <Route path="/" element={<Index />} />
               <Route path="/about" element={<About />} />
               <Route path="/article" element={<Blog />} />
-              <Route path="/article/:id" element={<ArticleDetail />} />
+              <Route path="/article/:slug" element={<ArticleDetail />} />
               <Route path="/forgot-password" element={<ForgotPassword />} />
               <Route path="/projects" element={<Projects />} />
               <Route path="/privacy" element={<PrivacyPolicy />} />
               <Route path="/sitemap" element={<Sitemap />} />
               <Route path="/terms" element={<TermsOfUse />} />
-              <Route path="/projects/:id" element={<ProjectDetail />} />
+              <Route path="/projects/:slug" element={<ProjectDetail />} />
               <Route path="/resources" element={<Resources />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/login" element={<Login />} />

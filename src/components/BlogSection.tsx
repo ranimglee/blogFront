@@ -38,6 +38,7 @@ const BlogCarousel = () => {
           .map((article: any) => ({
             id: article.id,
             title: article.title,
+            slug: article.slug,
             excerpt: article.description,
             author: article.auteur,
             date: article.createdAt.split('T')[0],
@@ -133,7 +134,7 @@ readTime: calculateReadTime(article.contenu),
                         {post.readTime} {t('blog.readTime')}
                       </span>
                     </div>
-                    <Link to={`/article/${post.id}`}>
+                    <Link to={`/article/${post.slug}`}>
                       <h3 className="text-xl font-bold mb-3 line-clamp-2 hover:text-gulf-coral transition-colors cursor-pointer">
                         {post.title}
                       </h3>
@@ -146,7 +147,7 @@ readTime: calculateReadTime(article.contenu),
                         {t('blog.author')} {post.author}
                       </span>
                       <Link
-                        to={`/article/${post.id}`}
+                        to={`/article/${post.slug}`}
                         className="text-gulf-coral flex items-center space-x-1 font-medium"
                       >
                         <span>{t('blog.readMore')}</span>

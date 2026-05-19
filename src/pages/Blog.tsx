@@ -44,6 +44,7 @@ const BlogPage = () => {
           .sort((a: any, b: any) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
           .map((article: any) => ({
             id: article.id,
+            slug: article.slug,
             title: article.title,
             excerpt: article.description,
             author: article.auteur,
@@ -177,7 +178,7 @@ const BlogPage = () => {
             {currentArticles.length > 0 ? (
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
                 {currentArticles.map(article => (
-                  <div key={article.id} className="bg-gulf-white border border-gulf-light rounded-2xl overflow-hidden shadow-lg card-hover">
+                  <div key={article.slug} className="bg-gulf-white border border-gulf-light rounded-2xl overflow-hidden shadow-lg card-hover">
                     <div className="relative overflow-hidden">
                       <img src={article.image} alt={article.title} className="w-full h-48 object-cover transition-transform duration-500 hover:scale-110" onError={(e) => { e.currentTarget.src = DEFAULT_IMAGE; }} />
                       <div className="absolute top-4 left-4">
@@ -191,13 +192,13 @@ const BlogPage = () => {
                         <span className="mx-2">•</span>
                         <span>{article.readTime} {t('blog.readTime')}</span>
                       </div>
-                      <Link to={`/article/${article.id}`}>
-                        <h3 className="text-xl font-bold mb-3">{article.title}</h3>
-                      </Link>
+                   <Link to={`/article/${article.slug}`}>
+  <h3 className="text-xl font-bold mb-3">{article.title}</h3>
+</Link>
                       <p className="text-gulf-dark/70 mb-4 line-clamp-3">{article.excerpt}</p>
                       <div className="flex items-center justify-between">
                         <span className="text-sm font-medium text-gulf-dark/80">{t('blog.author')} {article.author}</span>
-                        <Link to={`/article/${article.id}`} className="text-gulf-coral flex items-center space-x-1 font-medium">
+                        <Link to={`/article/${article.slug}`} className="text-gulf-coral flex items-center space-x-1 font-medium">
                           <span>{t('blog.readMore')}</span>
                           <ArrowUp className="w-4 h-4 rotate-45" />
                         </Link>

@@ -40,6 +40,7 @@ useEffect(() => {
         const fetchedProjects = response.data
           .map((project: any) => ({
             id: project.id,
+            slug: project.slug,
             title: project.title,
             description: project.subTitle || project.description || t('projects.noDescription'),
             location: project.country || 'Unknown',
@@ -191,7 +192,7 @@ onClick={() => setSelectedCountry(t('projects.allCountries'))}                  
             {currentProjects.length > 0 ? (
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
                 {currentProjects.map((project) => (
-                  <div key={project.id} className="bg-gulf-white border border-gulf-light rounded-2xl overflow-hidden shadow-lg card-hover">
+                  <div key={project.slug} className="bg-gulf-white border border-gulf-light rounded-2xl overflow-hidden shadow-lg card-hover">
                     <div className="relative overflow-hidden">
                       <img
                         src={project.image}
@@ -214,7 +215,7 @@ onClick={() => setSelectedCountry(t('projects.allCountries'))}                  
                         </div>
                       </div>
                       <Link
-                        to={`/projects/${project.id}`}
+                        to={`/projects/${project.slug}`}
                         className="text-gulf-coral hover:text-gulf-primary transition-colors flex items-center space-x-1 font-medium"
                       >
                         <span>{t('projects.learnMore')}</span>

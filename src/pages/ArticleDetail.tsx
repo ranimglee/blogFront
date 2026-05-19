@@ -15,7 +15,8 @@ interface Comment {
 }
 
 const ArticleDetail = () => {
-  const { id } = useParams<{ id?: string }>();
+    const { slug } = useParams<{ slug?: string }>();
+
   const { t } = useLanguage();
   const [article, setArticle] = useState<any>(null);
   const [comments, setComments] = useState<Comment[]>([]);
@@ -39,55 +40,65 @@ const calculateReadTime = (htmlContent: string) => {
   return Math.max(1, Math.ceil(words / wordsPerMinute));
 };
 
-  useEffect(() => {
-    const fetchArticle = async () => {
-      try {
-        const [articleResponse, commentsResponse] = await Promise.all([
-          axios.get(`${import.meta.env.VITE_API_BASE_URL}/articles/${id}`),
-          axios.get(`${import.meta.env.VITE_API_BASE_URL}/comments/article/${id}`)
-        ]);
 
-        const data = articleResponse.data;
-        const mappedArticle = {
-          id: data.id,
-          title: data.title,
-          excerpt: data.description,
-          content: data.contenu,
-          author: data.auteur,
-          date: data.createdAt.split('T')[0],
-          category: data.type,
-          image: data.imageUrl,
-          readTime: calculateReadTime(data.contenu),
-          tags: [data.type],
-        };
 
-        if (typeof mappedArticle.content === 'string' && !mappedArticle.content.match(/<[^>]+>/)) {
-          mappedArticle.content = mappedArticle.content
-            .split(/[.!?]\s+/)
-            .filter((sentence) => sentence.trim())
-            .map((sentence) => `<p>${sentence.trim()}${sentence.endsWith('.') ? '' : '.'}</p>`)
-            .join('');
-        }
+useEffect(() => {
+  if (!slug) {
+    setLoading(false);
+    setError("No article slug provided.");
+    return;
+  }
 
-        setArticle(mappedArticle);
+  fetchArticle();
+}, [slug]);
 
-        const approvedComments = commentsResponse.data.filter((comment: Comment) => comment.approved);
-        setComments(approvedComments);
-      } catch (err: any) {
-        setError('Failed to load article or comments. Please try again later.');
-        console.error('Error fetching data:', err);
-      } finally {
-        setLoading(false);
-      }
+const fetchArticle = async () => {
+  try {
+    setLoading(true);
+
+    const { data } = await axios.get(
+      `${import.meta.env.VITE_API_BASE_URL}/articles/slug/${slug}`
+    );
+
+    const mappedArticle = {
+      id: data.id,
+      slug: data.slug,
+      title: data.title,
+      excerpt: data.description,
+      content: data.contenu,
+      author: data.auteur,
+      date: data.createdAt.split("T")[0],
+      category: data.type,
+      image: data.imageUrl,
+      readTime: calculateReadTime(data.contenu),
+      tags: [data.type],
     };
 
-    if (id) {
-      fetchArticle();
-    } else {
-      setLoading(false);
-      setError('No article ID provided.');
-    }
-  }, [id]);
+    setArticle(mappedArticle);
+
+    // AFTER article is loaded → fetch comments
+    await fetchComments(data.id);
+
+  } catch (err) {
+    console.error(err);
+    setError("Failed to load article. Please try again later.");
+  } finally {
+    setLoading(false);
+  }
+};
+
+const fetchComments = async (articleId: string) => {
+  try {
+    const { data } = await axios.get(
+      `${import.meta.env.VITE_API_BASE_URL}/comments/article/${articleId}`
+    );
+
+    setComments(data.filter((c: Comment) => c.approved));
+  } catch (err) {
+    console.error("Error loading comments:", err);
+    setComments([]);
+  }
+};
 
   const handleCommentSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -98,11 +109,16 @@ const calculateReadTime = (htmlContent: string) => {
 
     try {
       const token = localStorage.getItem('token');
-      await axios.post(
-        `${import.meta.env.VITE_API_BASE_URL}/comments`,
-        { articleId: id, content: newComment },
-        { headers: { Authorization: `Bearer ${token}` } }
-      );
+     await axios.post(
+  `${import.meta.env.VITE_API_BASE_URL}/comments`,
+  {
+    articleId: article.id,   // ✅ NOT id
+    content: newComment
+  },
+  {
+    headers: { Authorization: `Bearer ${token}` }
+  }
+);
       setCommentSuccess(true);
       setNewComment('');
       setCommentError(null);

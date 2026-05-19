@@ -108,10 +108,10 @@ const handleSubscribe = async () => {
         </p>
         <div className="flex space-x-3 rtl:space-x-reverse">
         {[
-  { icon: Linkedin, href: '#' },
+  { icon: Linkedin, href: 'https://www.linkedin.com/in/afaq-gulfcoop-408947402' },
   { icon: XIcon, href: 'https://x.com/gulfcoop' },
   { icon: Facebook, href: 'https://www.facebook.com/profile.php?id=61586823820194' },
-  { icon: Instagram, href: 'https://www.instagram.com/gulfcoopafaq/' },
+  { icon: Instagram, href: 'https://www.instagram.com/gulfcoopafaq' },
 ].map(({ icon: Icon, href }, index) => (
   <a
     key={index}

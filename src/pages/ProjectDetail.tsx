@@ -7,53 +7,63 @@ import { Calendar, MapPin, ArrowLeft } from 'lucide-react';
 import axios from 'axios';
 
 const ProjectDetail = () => {
-  const { id } = useParams<{ id?: string }>();
+  const { slug } = useParams<{ slug?: string }>();
+
   const { t } = useLanguage();
   const [project, setProject] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  useEffect(() => {
-    const fetchProject = async () => {
-      try {
-        const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/initiatives/get-initiative-by/${id}`);
-        const data = response.data;
-
-        const mappedProject = {
-          id: data.id,
-          title: data.title,
-          excerpt: data.subTitle || 'No excerpt available',
-          content: data.content || 'No detailed description.',
-          author: data.createdBy || 'Admin',
-          date: data.createdAt?.split('T')[0] || 'N/A',
-          image: data.imageUrl || 'https://via.placeholder.com/600x400',
-          location: data.country || 'Unknown',
-          tags: data.tags || [],
-        };
-
-        if (typeof mappedProject.content === 'string' && !mappedProject.content.match(/<[^>]+>/)) {
-          mappedProject.content = mappedProject.content
-            .split(/[.!?]\s+/)
-            .filter((sentence) => sentence.trim())
-            .map((sentence) => `<p>${sentence.trim()}${sentence.endsWith('.') ? '' : '.'}</p>`)
-            .join('');
-        }
-
-        setProject(mappedProject);
-      } catch (err) {
-        setError('Failed to load project. Please try again later.');
-        console.error('Error fetching project:', err);
-      } finally {
+ useEffect(() => {
+  const fetchProject = async () => {
+    try {
+      if (!slug) {
+        setError("No slug provided.");
         setLoading(false);
+        return;
       }
-    };
 
-    if (id) fetchProject();
-    else {
+      const response = await axios.get(
+        `${import.meta.env.VITE_API_BASE_URL}/initiatives/slug/${slug}`
+      );
+
+      const data = response.data;
+
+      const mappedProject = {
+        id: data.id,
+        title: data.title,
+        slug: data.slug,
+        excerpt: data.subTitle || 'No excerpt available',
+        content: data.content || 'No detailed description.',
+        author: data.createdBy || 'Admin',
+        date: data.createdAt?.split('T')[0] || 'N/A',
+        image: data.imageUrl || 'https://via.placeholder.com/600x400',
+        location: data.country || 'Unknown',
+        tags: data.tags || [],
+      };
+
+      if (
+        typeof mappedProject.content === 'string' &&
+        !mappedProject.content.match(/<[^>]+>/)
+      ) {
+        mappedProject.content = mappedProject.content
+          .split(/[.!?]\s+/)
+          .filter((s) => s.trim())
+          .map((s) => `<p>${s.trim()}${s.endsWith('.') ? '' : '.'}</p>`)
+          .join('');
+      }
+
+      setProject(mappedProject);
+    } catch (err) {
+      setError('Failed to load project. Please try again later.');
+      console.error(err);
+    } finally {
       setLoading(false);
-      setError('No project ID provided.');
     }
-  }, [id]);
+  };
+
+  fetchProject();
+}, [slug]);
 
   // Animated LoadingBooks component
   const LoadingBooks = () => (
@@ -82,7 +92,7 @@ const ProjectDetail = () => {
   </div>
   );
 
-  if (loading || !project) {
+  if (loading ) {
     return (
       <div className="min-h-screen bg-gulf-white flex flex-col">
         <Header />
