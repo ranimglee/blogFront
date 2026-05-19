@@ -1,9 +1,9 @@
 
 import React from 'react';
 import Header from '../components/Header';
-import Hero from '../components/Hero-responsive-fixed';
 import BlogSection from '../components/BlogSection';
 import Footer from '../components/Footer';
+import Hero from '@/components/Hero';
 
 const Index = () => {
   return (
