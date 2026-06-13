@@ -414,8 +414,14 @@ It may include: name, email address, country, or any other information you volun
       'resources.subCategory.opinions':'Opinions',
       'resources.subCategory.other':'Other',
        'resources.subCategory.case_law':'Case Law',
+        "articles.relatedArticles": "Related Articles",
+  "errors.relatedArticlesLoad": "Error loading related articles:",
+  "login.error.captchaRequired": "Please complete the captcha",
+"register.error.captchaRequired": "Please complete the captcha"
   },
   ar: {
+    "login.error.captchaRequired": "يرجى إكمال التحقق",
+"register.error.captchaRequired": "يرجى إكمال التحقق",
     // Navigation
     'nav.home': 'الصفحة الرئيسية',
     'nav.about': 'من نحن',
@@ -801,7 +807,8 @@ It may include: name, email address, country, or any other information you volun
 'resources.subCategory.case_law': 'أحكام قضائية',
 'resources.subCategory.opinions': 'آراء وفتاوى',
 'resources.subCategory.other': 'أخرى',
-
+  "articles.relatedArticles": "مقالات ذات صلة",
+  "errors.relatedArticlesLoad": "خطأ أثناء تحميل المقالات ذات الصلة:"
 
 
   },
@@ -1186,12 +1193,14 @@ It may include: name, email address, country, or any other information you volun
      'resources.subCategory.bahrain':'Bahreïn',
 
      'resources.subCategory.qatar':'Qatar',
-
+"login.error.captchaRequired": "Veuillez compléter le captcha",
+"register.error.captchaRequired": "Veuillez compléter le captcha",
 
       'resources.subCategory.opinions':'Opinions',
       'resources.subCategory.other':'Autres',
        'resources.subCategory.case_law':'Jurisprudence',
-
+   "articles.relatedArticles": "Articles similaires",
+  "errors.relatedArticlesLoad": "Erreur lors du chargement des articles similaires :"
 
 
   },

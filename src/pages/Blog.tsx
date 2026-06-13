@@ -139,23 +139,25 @@ const BlogPage = () => {
 
       <main className="pt-20">
         {/* Hero Section */}
-        <section className="py-20 bg-gradient-to-br from-gulf-secondary/30 to-gulf-white text-center">
+        <section className="relative overflow-hidden py-20 bg-gradient-to-br from-gulf-secondary/30 via-gulf-white to-gulf-white text-center">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <h1 className="text-5xl md:text-6xl font-bold text-gulf-dark mb-6">{t('blog.title')}</h1>
+            <div className="mx-auto max-w-3xl">
+              <h1 className="text-4xl md:text-6xl font-bold leading-tight text-gulf-dark mb-5">{t('blog.title')}</h1>
+            </div>
 
             {/* Search Bar */}
-     <div className="mt-8 px-4 flex justify-center">
-  <div className="w-full sm:w-96">
-    <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl shadow-xl border border-blue-200 p-6">
+     <div className="mt-10 px-4 flex justify-center">
+  <div className="w-full max-w-2xl">
+    <div className="rounded-2xl border border-gulf-light/80 bg-white/90 p-3 shadow-xl shadow-gulf-dark/5 backdrop-blur-sm transition-all duration-300 hover:shadow-2xl hover:shadow-gulf-dark/10">
       <div className="flex flex-col gap-4">
         <div className="relative w-full">
           <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-            <Search className="h-5 w-5 text-indigo-500" />
+            <Search className="h-5 w-5 text-gulf-primary/70" />
           </div>
           <input
             type="text"
             placeholder={t('blog.searchPlaceholder') || 'Search articles...'}
-            className="w-full pl-12 pr-4 py-3 border-2 border-indigo-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all outline-none bg-white hover:border-indigo-300"
+            className="h-14 w-full rounded-xl border border-gulf-light bg-white pl-12 pr-4 text-base text-gulf-dark shadow-sm outline-none transition-all duration-300 placeholder:text-gulf-dark/40 hover:border-gulf-primary/30 focus:border-gulf-primary focus:ring-4 focus:ring-gulf-primary/15"
             value={searchQuery}
             onChange={(e) => {
               setSearchQuery(e.target.value);
@@ -173,60 +175,62 @@ const BlogPage = () => {
         </section>
 
         {/* Articles Grid */}
-        <section className="py-20">
+        <section className="py-16 sm:py-20">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             {currentArticles.length > 0 ? (
-              <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
                 {currentArticles.map(article => (
-                  <div key={article.slug} className="bg-gulf-white border border-gulf-light rounded-2xl overflow-hidden shadow-lg card-hover">
-                    <div className="relative overflow-hidden">
-                      <img src={article.image} alt={article.title} className="w-full h-48 object-cover transition-transform duration-500 hover:scale-110" onError={(e) => { e.currentTarget.src = DEFAULT_IMAGE; }} />
+                  <article key={article.slug} className="group flex h-full flex-col overflow-hidden rounded-2xl border border-gulf-light/80 bg-gulf-white shadow-lg shadow-gulf-dark/5 transition-all duration-300 hover:-translate-y-1 hover:border-gulf-primary/20 hover:shadow-2xl hover:shadow-gulf-dark/10">
+                    <div className="relative aspect-[16/10] overflow-hidden bg-gulf-secondary/30">
+                      <img src={article.image} alt={article.title} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" onError={(e) => { e.currentTarget.src = DEFAULT_IMAGE; }} />
+                      <div className="absolute inset-0 bg-gradient-to-t from-gulf-dark/20 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                       <div className="absolute top-4 left-4">
-                        <span className="bg-gulf-primary text-gulf-white px-3 py-1 rounded-full text-sm font-medium">{article.category}</span>
+                        <span className="bg-gulf-primary text-gulf-white px-3 py-1 rounded-full text-xs font-semibold shadow-lg shadow-gulf-dark/10 transition-colors duration-300 group-hover:bg-gulf-coral">{article.category}</span>
                       </div>
                     </div>
-                    <div className="p-6">
-                      <div className="flex items-center text-sm text-gulf-dark/60 mb-3">
-                        <Calendar className="w-4 h-4 mr-2" />
+                    <div className="flex flex-1 flex-col p-6">
+                      <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-gulf-dark/60 mb-4">
+                        <Calendar className="w-4 h-4" />
                         <span>{article.date}</span>
-                        <span className="mx-2">•</span>
+                        <span className="h-1 w-1 rounded-full bg-gulf-dark/30" />
                         <span>{article.readTime} {t('blog.readTime')}</span>
                       </div>
                    <Link to={`/article/${article.slug}`}>
-  <h3 className="text-xl font-bold mb-3">{article.title}</h3>
+  <h3 className="text-xl font-bold leading-8 text-gulf-dark mb-3 transition-colors duration-300 group-hover:text-gulf-primary line-clamp-2">{article.title}</h3>
 </Link>
-                      <p className="text-gulf-dark/70 mb-4 line-clamp-3">{article.excerpt}</p>
-                      <div className="flex items-center justify-between">
-                        <span className="text-sm font-medium text-gulf-dark/80">{t('blog.author')} {article.author}</span>
-                        <Link to={`/article/${article.slug}`} className="text-gulf-coral flex items-center space-x-1 font-medium">
+                      <p className="text-gulf-dark/70 mb-6 line-clamp-3 leading-7">{article.excerpt}</p>
+                      <div className="mt-auto flex items-center justify-between gap-4 border-t border-gulf-light/70 pt-4">
+                        <span className="min-w-0 truncate text-sm font-medium text-gulf-dark/80">{t('blog.author')} {article.author}</span>
+                        <Link to={`/article/${article.slug}`} className="inline-flex shrink-0 items-center gap-1 text-gulf-coral font-semibold transition-all duration-300 hover:text-gulf-primary">
                           <span>{t('blog.readMore')}</span>
-                          <ArrowUp className="w-4 h-4 rotate-45" />
+                          <ArrowUp className="w-4 h-4 rotate-45 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                         </Link>
                       </div>
                     </div>
-                  </div>
+                  </article>
                 ))}
               </div>
             ) : (
-              <div className="flex flex-col items-center justify-center mt-20">
-                <img src={DEFAULT_IMAGE} alt="No content available" className="w-96 h-96 object-contain mb-6" />
-                <p className="text-2xl font-semibold text-gulf-dark/70">{t('resources.no_content') || 'No articles available'}</p>
+              <div className="mx-auto mt-10 flex max-w-xl flex-col items-center justify-center rounded-2xl border border-gulf-light/80 bg-white p-8 text-center shadow-xl shadow-gulf-dark/5 sm:p-10">
+                <img src={DEFAULT_IMAGE} alt="No content available" className="mb-6 h-48 w-48 object-contain opacity-90 sm:h-64 sm:w-64" />
+                <p className="text-2xl font-bold text-gulf-dark">{t('resources.no_content') || 'No articles available'}</p>
+                <p className="mt-3 max-w-md text-sm leading-6 text-gulf-dark/60">{t('blog.searchPlaceholder') || 'Search articles...'}</p>
               </div>
             )}
 
             {/* Pagination */}
 {/* Pagination with Arrows */}
 {totalPages > 1 && (
-  <div className="flex justify-center items-center space-x-2 mt-8">
+  <div className="mt-10 flex flex-wrap justify-center items-center gap-3">
     {/* Previous Button */}
     <button
       onClick={() => currentPage > 1 && handlePageChange(currentPage - 1)}
       disabled={currentPage === 1}
-      className={`px-3 py-2 rounded-full border flex items-center justify-center ${
+      className={`flex h-11 w-11 items-center justify-center rounded-full border shadow-sm transition-all duration-300 ${
         currentPage === 1
           ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
-          : 'bg-white text-gulf-dark hover:bg-gulf-light'
-      } transition-colors`}
+          : 'bg-white text-gulf-dark hover:-translate-y-0.5 hover:border-gulf-primary/30 hover:bg-gulf-secondary/40 hover:text-gulf-primary hover:shadow-md'
+      }`}
     >
       {language === 'ar' ? <ArrowRight className="w-4 h-4" /> : <ArrowLeft className="w-4 h-4" />}
     </button>
@@ -236,11 +240,11 @@ const BlogPage = () => {
       <button
         key={index + 1}
         onClick={() => handlePageChange(index + 1)}
-        className={`px-4 py-2 rounded-full border ${
+        className={`h-11 min-w-11 rounded-full border px-4 font-semibold shadow-sm transition-all duration-300 ${
           currentPage === index + 1
-            ? 'bg-gulf-primary text-white'
-            : 'bg-white text-gulf-dark hover:bg-gulf-light'
-        } transition-colors`}
+            ? 'bg-gulf-primary text-white border-gulf-primary shadow-lg shadow-gulf-primary/20'
+            : 'bg-white text-gulf-dark hover:-translate-y-0.5 hover:border-gulf-primary/30 hover:bg-gulf-secondary/40 hover:text-gulf-primary hover:shadow-md'
+        }`}
       >
         {index + 1}
       </button>
@@ -250,11 +254,11 @@ const BlogPage = () => {
     <button
       onClick={() => currentPage < totalPages && handlePageChange(currentPage + 1)}
       disabled={currentPage === totalPages}
-      className={`px-3 py-2 rounded-full border flex items-center justify-center ${
+      className={`flex h-11 w-11 items-center justify-center rounded-full border shadow-sm transition-all duration-300 ${
         currentPage === totalPages
           ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
-          : 'bg-white text-gulf-dark hover:bg-gulf-light'
-      } transition-colors`}
+          : 'bg-white text-gulf-dark hover:-translate-y-0.5 hover:border-gulf-primary/30 hover:bg-gulf-secondary/40 hover:text-gulf-primary hover:shadow-md'
+      }`}
     >
       {language === 'ar' ? <ArrowLeft className="w-4 h-4" /> : <ArrowRight className="w-4 h-4" />}
     </button>

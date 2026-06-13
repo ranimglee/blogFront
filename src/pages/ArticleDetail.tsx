@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Calendar, ArrowLeft, Clock, User, Tag } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { useLanguage } from '../contexts/LanguageContext';
 import axios from 'axios';
+import { trackEvent } from '@/analytics/events';
 
 interface Comment {
   id: string;
@@ -17,14 +18,22 @@ interface Comment {
 const ArticleDetail = () => {
     const { slug } = useParams<{ slug?: string }>();
 
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const [article, setArticle] = useState<any>(null);
   const [comments, setComments] = useState<Comment[]>([]);
+  const [relatedArticles, setRelatedArticles] = useState<any[]>([]);
   const [newComment, setNewComment] = useState('');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [commentError, setCommentError] = useState<string | null>(null);
   const [commentSuccess, setCommentSuccess] = useState(false);
+const DEFAULT_IMAGE = '/images/no-content.jpg';
+
+const languageMap: Record<string, string> = {
+  ar: 'ARABIC',
+  en: 'ENGLISH',
+  fr: 'FRENCH',
+};
 const calculateReadTime = (htmlContent: string) => {
   if (!htmlContent) return 1;
 
@@ -40,7 +49,20 @@ const calculateReadTime = (htmlContent: string) => {
   return Math.max(1, Math.ceil(words / wordsPerMinute));
 };
 
+const trackedRef = useRef(false);
 
+useEffect(() => {
+  if (!article || trackedRef.current) return;
+
+  trackedRef.current = true;
+
+  trackEvent("PAGE_VIEW", {
+    path: window.location.pathname,
+    pageId: article.id,
+    category: "ARTICLE",
+    referrer: document.referrer,
+  });
+}, [article]);
 
 useEffect(() => {
   if (!slug) {
@@ -75,6 +97,7 @@ const fetchArticle = async () => {
     };
 
     setArticle(mappedArticle);
+    await fetchRelatedArticles(data.slug);
 
     // AFTER article is loaded → fetch comments
     await fetchComments(data.id);
@@ -84,6 +107,31 @@ const fetchArticle = async () => {
     setError("Failed to load article. Please try again later.");
   } finally {
     setLoading(false);
+  }
+};
+
+const fetchRelatedArticles = async (currentSlug: string) => {
+  try {
+    const { data } = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/articles`, {
+      params: { lang: languageMap[language] },
+    });
+
+    const mappedArticles = data
+      .sort((a: any, b: any) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
+      .filter((item: any) => item.slug !== currentSlug)
+      .slice(0, 4)
+      .map((item: any) => ({
+        id: item.id,
+        slug: item.slug,
+        title: item.title,
+        date: item.createdAt?.split('T')[0] || 'N/A',
+        image: item.imageUrl || DEFAULT_IMAGE,
+      }));
+
+    setRelatedArticles(mappedArticles);
+  } catch (err) {
+    console.error(t('errors.relatedArticlesLoad'), err);
+    setRelatedArticles([]);
   }
 };
 
@@ -186,25 +234,25 @@ const fetchComments = async (articleId: string) => {
       <Header />
       <main className="pt-20">
         {/* Article Hero */}
-        <section className="py-12 bg-gradient-to-br from-gulf-secondary/30 to-gulf-white">
+        <section className="py-12 sm:py-16 bg-gradient-to-br from-gulf-secondary/30 via-gulf-white to-gulf-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <Link
               to="/article"
-              className="inline-flex items-center text-gulf-primary hover:text-gulf-coral transition-colors mb-8"
+              className="inline-flex items-center text-gulf-primary hover:text-gulf-coral transition-all duration-300 mb-8 font-medium"
             >
               <ArrowLeft className="w-4 h-4 mr-2" />
               {t('backToArticles')}
             </Link>
-            <div className="max-w-4xl mx-auto">
+            <div className="max-w-5xl mx-auto">
               <div className="mb-6">
-                <span className="bg-gulf-primary text-gulf-white px-3 py-1 rounded-full text-sm font-medium">
+                <span className="bg-gulf-primary text-gulf-white px-4 py-1.5 rounded-full text-sm font-semibold shadow-lg shadow-gulf-primary/15 transition-colors duration-300 hover:bg-gulf-coral">
                   {article.category}
                 </span>
               </div>
-              <h1 className="text-4xl md:text-5xl font-bold text-gulf-dark mb-6 break-words">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-gulf-dark mb-6 break-words">
                 {article.title}
               </h1>
-              <div className="flex flex-wrap items-center gap-6 text-gulf-dark/70 mb-8">
+              <div className="flex flex-wrap items-center gap-x-6 gap-y-3 text-gulf-dark/70 mb-8">
                 <div className="flex items-center">
                   <User className="w-4 h-4 mr-2" />
                   <span>{article.author}</span>
@@ -218,20 +266,25 @@ const fetchComments = async (articleId: string) => {
                   <span>{article.readTime} {t('blog.readTime')}</span>
                 </div>
               </div>
-              <img
-                src={article.image}
-                alt={article.title}
-                className="w-full h-64 md:h-96 object-cover rounded-2xl shadow-lg"
-              />
+              <div className="relative overflow-hidden rounded-2xl shadow-2xl shadow-gulf-dark/10">
+                <img
+                  src={article.image || DEFAULT_IMAGE}
+                  alt={article.title}
+                  className="w-full h-72 md:h-[28rem] object-cover"
+                  onError={(e) => { e.currentTarget.src = DEFAULT_IMAGE; }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-gulf-dark/25 via-transparent to-transparent" />
+              </div>
             </div>
           </div>
         </section>
 
         {/* Article Content & Comments */}
-        <section className="py-16">
+        <section className="py-16 sm:py-20">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-4xl mx-auto">
-              <div className="prose prose-lg max-w-none text-gulf-dark/90 leading-relaxed break-words">
+            <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_22rem] lg:items-start">
+              <article className="mx-auto w-full max-w-4xl">
+              <div className="prose prose-lg max-w-none text-gulf-dark/90 leading-8 break-words prose-p:my-6 prose-p:leading-8 prose-headings:text-gulf-dark prose-a:text-gulf-primary hover:prose-a:text-gulf-coral">
                 <div dangerouslySetInnerHTML={{ __html: article.content }} />
               </div>
 
@@ -242,7 +295,7 @@ const fetchComments = async (articleId: string) => {
                   {article.tags.map((tag: string) => (
                     <span
                       key={tag}
-                      className="bg-gulf-secondary/30 text-gulf-dark px-3 py-1 rounded-full text-sm break-words"
+                      className="bg-gulf-secondary/30 text-gulf-dark px-3 py-1 rounded-full text-sm break-words transition-all duration-300 hover:bg-gulf-primary hover:text-white"
                     >
                       {tag}
                     </span>
@@ -251,7 +304,7 @@ const fetchComments = async (articleId: string) => {
               </div>
 
               {/* Comment Form */}
-          <div className="mt-12 p-6 bg-gulf-secondary/20 rounded-2xl">
+          <div className="mt-12 rounded-2xl border border-gulf-light/80 bg-gulf-secondary/20 p-6 shadow-lg shadow-gulf-dark/5 sm:p-8">
   <h3 className="text-xl font-bold text-gulf-dark mb-4">
     {t('comments.leaveComment')}
   </h3>
@@ -269,7 +322,7 @@ const fetchComments = async (articleId: string) => {
         id="comment"
         value={newComment}
         onChange={(e) => setNewComment(e.target.value)}
-        className="mt-1 block w-full rounded-md border-gulf-light shadow-sm focus:border-gulf-primary focus:ring focus:ring-gulf-primary focus:ring-opacity-50"
+        className="mt-2 block w-full rounded-xl border-gulf-light bg-white p-4 text-gulf-dark shadow-sm transition-all duration-300 focus:border-gulf-primary focus:ring focus:ring-gulf-primary focus:ring-opacity-20"
         rows={4}
         required
       />
@@ -287,7 +340,7 @@ const fetchComments = async (articleId: string) => {
 
     <button
       type="submit"
-      className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-gulf-primary hover:bg-gulf-primary/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gulf-primary"
+      className="inline-flex items-center rounded-xl border border-transparent bg-gulf-primary px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-gulf-primary/15 transition-all duration-300 hover:-translate-y-0.5 hover:bg-gulf-primary/90 hover:shadow-xl hover:shadow-gulf-primary/20 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gulf-primary"
     >
       {t('comments.submit')}
     </button>
@@ -295,23 +348,69 @@ const fetchComments = async (articleId: string) => {
 </div>
 
 
-      <h3 className="text-xl font-bold text-gulf-dark mb-4">{t('comments.title')}</h3>
+      <h3 className="mt-12 text-xl font-bold text-gulf-dark mb-4">{t('comments.title')}</h3>
 {comments.length === 0 ? (
-  <p className="text-gulf-dark/70">{t('comments.noComments')}</p>
+  <p className="rounded-2xl border border-dashed border-gulf-light bg-white p-6 text-gulf-dark/70">{t('comments.noComments')}</p>
 ) : (
   <div className="space-y-6">
     {comments.map((comment) => (
-      <div key={comment.id} className="p-4 bg-gulf-secondary/10 rounded-lg">
-        <div className="flex items-center justify-between mb-2">
-          <span className="font-medium text-gulf-dark">{comment.author}</span>
+      <div key={comment.id} className="rounded-2xl border border-gulf-light/80 bg-white p-5 shadow-sm shadow-gulf-dark/5 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-gulf-dark/10">
+        <div className="mb-3 flex flex-wrap items-center justify-between gap-3">
+          <div className="flex items-center gap-3">
+            <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gulf-primary/10 text-sm font-bold uppercase text-gulf-primary">
+              {comment.author?.charAt(0) || 'A'}
+            </span>
+            <span className="font-semibold text-gulf-dark">{comment.author}</span>
+          </div>
           <span className="text-sm text-gulf-dark/70">{new Date(comment.createdAt).toLocaleDateString()}</span>
         </div>
-        <p className="text-gulf-dark/90">{comment.content}</p>
+        <p className="text-gulf-dark/90 leading-7">{comment.content}</p>
       </div>
     ))}
   </div>
 )}
 
+              </article>
+
+              <aside className="lg:sticky lg:top-28">
+                <div className="rounded-2xl border border-gulf-light/80 bg-white p-5 shadow-xl shadow-gulf-dark/5">
+                  <div className="mb-5 flex items-center justify-between border-b border-gulf-light/70 pb-4">
+                    <h2 className="text-xl font-bold text-gulf-dark">
+                         {t('articles.relatedArticles')}
+                    </h2>
+                  </div>
+
+                  {relatedArticles.length > 0 ? (
+                    <div className="space-y-4">
+                      {relatedArticles.map((related) => (
+                        <Link
+                          key={related.slug}
+                          to={`/article/${related.slug}`}
+                          className="group flex gap-3 rounded-xl border border-transparent p-2 transition-all duration-300 hover:border-gulf-primary/15 hover:bg-gulf-secondary/20 hover:shadow-md"
+                        >
+                          <img
+                            src={related.image}
+                            alt={related.title}
+                            className="h-20 w-24 shrink-0 rounded-lg object-cover"
+                            onError={(e) => { e.currentTarget.src = DEFAULT_IMAGE; }}
+                          />
+                          <div className="min-w-0">
+                            <h3 className="line-clamp-2 text-sm font-bold leading-6 text-gulf-dark transition-colors duration-300 group-hover:text-gulf-primary">
+                              {related.title}
+                            </h3>
+                            <div className="mt-2 flex items-center text-xs text-gulf-dark/60">
+                              <Calendar className="mr-1.5 h-3.5 w-3.5" />
+                              <span>{related.date}</span>
+                            </div>
+                          </div>
+                        </Link>
+                      ))}
+                    </div>
+                  ) : (
+                    <p className="text-sm leading-6 text-gulf-dark/60">{t('resources.no_content') || 'No articles available'}</p>
+                  )}
+                </div>
+              </aside>
             </div>
           </div>
         </section>

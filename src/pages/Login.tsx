@@ -12,14 +12,14 @@ import Select from 'react-select';
 import countryList from 'react-select-country-list';
 import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
-
+import Turnstile from 'react-turnstile';
 const Login = () => {
   const { t } = useLanguage();
   const navigate = useNavigate();
-
+const [turnstileKey, setTurnstileKey] = useState(0);
   const [isLogin, setIsLogin] = useState(true);
   const [loading, setLoading] = useState(false);
-
+const [captchaToken, setCaptchaToken] = useState('');
 
   const [loginData, setLoginData] = useState({
     email: '',
@@ -32,7 +32,7 @@ const Login = () => {
     password: '',
     confirmPassword: '',
     phoneNumber: '',
-    country: null,
+    country: null as { label: string; value: string } | null,
     acceptedPrivacy: false,
   });
 
@@ -40,7 +40,7 @@ const Login = () => {
 
   useEffect(() => {
     const token = localStorage.getItem('token');
-    if (token) navigate('/login');
+    if (token) navigate('/');
   }, [navigate]);
 
   const validateEmail = (email: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -69,18 +69,33 @@ const Login = () => {
       errors.forEach((err) => toast.error(err));
       return;
     }
-
+if (!captchaToken) {
+  toast.error(
+    isLogin
+      ? t('login.error.captchaRequired')
+      : t('register.error.captchaRequired')
+  );
+  return;
+}
     setLoading(true);
 
     try {
       if (isLogin) {
-        const res = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/auth/login`, loginData);
+       const res = await axios.post(
+  `${import.meta.env.VITE_API_BASE_URL}/auth/login`,
+  {
+    ...loginData,
+    captchaToken,
+  }
+);
         const { token, refreshToken, role } = res.data;
         localStorage.setItem('token', token);
         localStorage.setItem('refreshToken', refreshToken);
         localStorage.setItem('role', role);
         toast.success(t('login.success'));
-        navigate('/');
+        setCaptchaToken('');
+setTurnstileKey(prev => prev + 1);
+navigate('/');
       } else {
         const { fullName, email, password, phoneNumber, country } = registerData;
         const [firstname, ...rest] = fullName.trim().split(' ');
@@ -93,9 +108,12 @@ const Login = () => {
           password,
           country: country.label,
           phoneNumber,
+          captchaToken,
+
         });
         toast.success(t('register.success'));
-
+        setCaptchaToken('');
+        setTurnstileKey(prev => prev + 1);
         setIsLogin(true);
         setRegisterData({
           fullName: '',
@@ -146,6 +164,8 @@ const Login = () => {
   const toggleForm = () => {
     setIsLogin(!isLogin);
     setLoginData({ email: '', password: '' });
+    setCaptchaToken('');
+    setTurnstileKey(prev => prev + 1);
     setRegisterData({
       fullName: '',
       email: '',
@@ -351,7 +371,17 @@ const Login = () => {
                       </div>
                     </>
                   )}
-
+<div className="flex justify-center py-4 bg-white border border-gray-200 rounded-xl shadow-sm">
+  <Turnstile
+    key={turnstileKey}
+    sitekey={import.meta.env.VITE_TURNSTILE_SITE_KEY}
+    theme="light"
+    appearance="always"
+    onVerify={(token) => setCaptchaToken(token)}
+    onExpire={() => setCaptchaToken('')}
+    onError={() => setCaptchaToken('')}
+  />
+</div>
                   <Button
                     type="submit"
                     className="w-full h-12 bg-gradient-to-r from-gulf-primary to-gulf-secondary hover:shadow-lg hover:shadow-gulf-primary/30 text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"

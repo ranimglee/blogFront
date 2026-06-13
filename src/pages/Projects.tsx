@@ -96,24 +96,26 @@ const countries = [t('projects.allCountries'), ...Array.from(new Set(projects.ma
 
       <main className="pt-20">
         {/* Hero Section */}
-        <section className="py-20 bg-gradient-to-br from-gulf-secondary/30 to-gulf-white text-center">
+        <section className="border-b border-gulf-light/70 bg-gradient-to-br from-gulf-secondary/25 via-gulf-white to-gulf-white py-12 sm:py-14">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <h1 className="text-5xl md:text-6xl font-bold text-gulf-dark mb-6">{t('projects.title')}</h1>
+            <div className="mx-auto max-w-5xl">
+              <h1 className="text-4xl md:text-5xl font-bold leading-tight text-gulf-dark mb-4">{t('projects.title')}</h1>
+            </div>
             {/* Search + Filter */}
-   <div className="mt-8 px-4">
-      <div className="max-w-4xl mx-auto">
-        <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl shadow-xl border border-blue-200 p-6">
-          <div className="flex flex-col sm:flex-row gap-4">
+   <div className="mt-8">
+      <div className="mx-auto max-w-5xl">
+        <div className="rounded-2xl border border-gulf-light/80 bg-white/85 p-3 shadow-sm backdrop-blur-sm">
+          <div className="flex flex-col gap-3 md:flex-row">
             {/* Search Input */}
             <div className="flex-1 relative">
               <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                <Search className="h-5 w-5 text-indigo-500" />
+                <Search className="h-4 w-4 text-gulf-primary/70" />
               </div>
               <input
                 type="text"
                 placeholder={t('projects.searchPlaceholder')}
 
-                className="w-full pl-12 pr-4 py-3 border-2 border-indigo-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all outline-none bg-white hover:border-indigo-300"
+                className="h-12 w-full rounded-xl border border-gulf-light bg-white pl-11 pr-4 text-sm text-gulf-dark outline-none transition-all duration-300 placeholder:text-gulf-dark/40 hover:border-gulf-primary/30 focus:border-gulf-primary focus:ring-4 focus:ring-gulf-primary/10"
                 value={searchQuery}
                 onChange={(e) => {
                   setSearchQuery(e.target.value);
@@ -123,9 +125,9 @@ const countries = [t('projects.allCountries'), ...Array.from(new Set(projects.ma
             </div>
 
             {/* Country Select */}
-            <div className="sm:w-64 relative">
+            <div className="relative md:w-60">
               <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                <MapPin className="h-5 w-5 text-indigo-500" />
+                <MapPin className="h-4 w-4 text-gulf-primary/70" />
               </div>
               <select
                 value={selectedCountry}
@@ -133,7 +135,7 @@ const countries = [t('projects.allCountries'), ...Array.from(new Set(projects.ma
                   setSelectedCountry(e.target.value);
                   setCurrentPage(1);
                 }}
-                className="w-full pl-12 pr-10 py-3 border-2 border-indigo-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all outline-none bg-white hover:border-indigo-300 appearance-none cursor-pointer"
+                className="h-12 w-full cursor-pointer appearance-none rounded-xl border border-gulf-light bg-white pl-11 pr-10 text-sm text-gulf-dark outline-none transition-all duration-300 hover:border-gulf-primary/30 focus:border-gulf-primary focus:ring-4 focus:ring-gulf-primary/10"
               >
                 {countries.map((country) => (
                   <option key={country} value={country}>
@@ -142,7 +144,7 @@ const countries = [t('projects.allCountries'), ...Array.from(new Set(projects.ma
                 ))}
               </select>
               <div className="absolute inset-y-0 right-0 pr-4 flex items-center pointer-events-none">
-                <svg className="h-5 w-5 text-indigo-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg className="h-4 w-4 text-gulf-primary/70" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
               </div>
@@ -150,14 +152,14 @@ const countries = [t('projects.allCountries'), ...Array.from(new Set(projects.ma
           </div>
 
           {/* Active Filters Display */}
-          {(searchQuery || selectedCountry !== 'All Countries') && (
-            <div className="mt-4 flex flex-wrap gap-2">
+          {(searchQuery || selectedCountry !== t('projects.allCountries')) && (
+            <div className="mt-3 flex flex-wrap gap-2 px-1">
               {searchQuery && (
-                <span className="inline-flex items-center gap-1 px-3 py-1 bg-indigo-600 text-white rounded-full text-sm font-medium shadow-sm">
+                <span className="inline-flex items-center gap-1 rounded-full bg-gulf-primary px-3 py-1 text-xs font-medium text-white">
   {t('projects.activeSearch')}: {searchQuery}
                   <button
                     onClick={() => setSearchQuery('')}
-                    className="ml-1 hover:bg-indigo-700 rounded-full p-0.5 transition-colors"
+                    className="ml-1 hover:bg-gulf-dark/20 rounded-full p-0.5 transition-colors"
                   >
                     <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -166,10 +168,10 @@ const countries = [t('projects.allCountries'), ...Array.from(new Set(projects.ma
                 </span>
               )}
               {selectedCountry !== t('projects.allCountries')&& (
-                <span className="inline-flex items-center gap-1 px-3 py-1 bg-emerald-600 text-white rounded-full text-sm font-medium shadow-sm">
+                <span className="inline-flex items-center gap-1 rounded-full bg-gulf-coral px-3 py-1 text-xs font-medium text-white">
                   {selectedCountry}
                   <button
-onClick={() => setSelectedCountry(t('projects.allCountries'))}                    className="ml-1 hover:bg-emerald-700 rounded-full p-0.5 transition-colors"
+onClick={() => setSelectedCountry(t('projects.allCountries'))}                    className="ml-1 hover:bg-gulf-dark/20 rounded-full p-0.5 transition-colors"
                   >
                     <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -186,70 +188,87 @@ onClick={() => setSelectedCountry(t('projects.allCountries'))}                  
           </div>
         </section>
 
-        {/* Projects Grid */}
-        <section className="py-20">
+        {/* Projects Feed */}
+        <section className="py-10 sm:py-14">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             {currentProjects.length > 0 ? (
-              <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+              <div className="mx-auto max-w-5xl divide-y divide-gulf-light/80 rounded-2xl border border-gulf-light/80 bg-white shadow-sm shadow-gulf-dark/5">
                 {currentProjects.map((project) => (
-                  <div key={project.slug} className="bg-gulf-white border border-gulf-light rounded-2xl overflow-hidden shadow-lg card-hover">
-                    <div className="relative overflow-hidden">
+                  <article key={project.slug} className="group grid gap-4 p-4 transition-colors duration-300 hover:bg-gulf-secondary/15 sm:p-5 md:grid-cols-[12rem_minmax(0,1fr)] md:gap-6">
+                    <div className="relative aspect-[16/10] overflow-hidden rounded-xl bg-gulf-secondary/30 md:aspect-[4/3]">
                       <img
                         src={project.image}
                         alt={project.title}
-                        className="w-full h-48 object-cover transition-transform duration-500 hover:scale-110"
+                        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                         onError={(e) => { e.currentTarget.src = DEFAULT_IMAGE; }}
                       />
+                      <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-gulf-dark/20 to-transparent opacity-70" />
                     </div>
-                    <div className="p-6">
-                      <h3 className="text-xl font-bold text-gulf-dark mb-3">{project.title}</h3>
-                      <p className="text-gulf-dark/70 mb-4 line-clamp-3">{project.description}</p>
-                      <div className="space-y-2 mb-4">
-                        <div className="flex items-center text-sm text-gulf-dark/60">
-                          <MapPin className="w-4 h-4 mr-2" />
+                    <div className="flex min-w-0 flex-col justify-center">
+                      <Link to={`/projects/${project.slug}`} className="w-fit">
+                        <h2 className="line-clamp-2 text-xl font-bold leading-7 text-gulf-dark transition-colors duration-300 group-hover:text-gulf-primary sm:text-2xl sm:leading-8">
+                          {project.title}
+                        </h2>
+                      </Link>
+                      <p className="mt-3 line-clamp-3 text-sm leading-7 text-gulf-dark/65 sm:text-base">{project.description}</p>
+                      <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-gulf-dark/55">
+                        <span className="inline-flex items-center">
+                          <MapPin className="mr-1.5 h-4 w-4 text-gulf-primary/75" />
                           <span>{project.location}</span>
-                        </div>
-                        <div className="flex items-center text-sm text-gulf-dark/60">
-                          <Calendar className="w-4 h-4 mr-2" />
+                        </span>
+                        <span className="h-1 w-1 rounded-full bg-gulf-dark/25" />
+                        <span className="inline-flex items-center">
+                          <Calendar className="mr-1.5 h-4 w-4 text-gulf-primary/75" />
                           <span>{project.date}</span>
-                        </div>
+                        </span>
                       </div>
                       <Link
                         to={`/projects/${project.slug}`}
-                        className="text-gulf-coral hover:text-gulf-primary transition-colors flex items-center space-x-1 font-medium"
+                        className="mt-4 inline-flex w-fit items-center gap-1 text-sm font-semibold text-gulf-coral transition-colors duration-300 hover:text-gulf-primary"
                       >
                         <span>{t('projects.learnMore')}</span>
-                        <ArrowRight className="w-4 h-4" />
+                        <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
                       </Link>
                     </div>
-                  </div>
+                  </article>
                 ))}
               </div>
             ) : (
-              <div className="flex flex-col items-center justify-center mt-20">
+              <div className="mx-auto mt-6 flex max-w-lg flex-col items-center justify-center rounded-2xl border border-gulf-light/80 bg-white p-8 text-center shadow-sm shadow-gulf-dark/5 sm:p-10">
                 <img
                   src={DEFAULT_IMAGE}
                   alt="No content available"
-                  className="w-96 h-96 object-contain mb-6"
+                  className="mb-5 h-40 w-40 object-contain opacity-85 sm:h-52 sm:w-52"
                 />
-                <p className="text-2xl font-semibold text-gulf-dark/70">
+                <p className="text-xl font-bold text-gulf-dark sm:text-2xl">
                   {t('resources.no_content') || 'No projects available'}
                 </p>
+                <p className="mt-2 max-w-md text-sm leading-6 text-gulf-dark/60">{t('projects.searchPlaceholder')}</p>
+                <button
+                  onClick={() => {
+                    setSearchQuery('');
+                    setSelectedCountry(t('projects.allCountries'));
+                    setCurrentPage(1);
+                  }}
+                  className="mt-5 rounded-xl bg-gulf-primary px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:bg-gulf-primary/90"
+                >
+                  {t('projects.allCountries')}
+                </button>
               </div>
             )}
 
 {/* Pagination with Arrow Icons */}
 {totalPages > 1 && (
-  <div className="flex justify-center items-center space-x-2 mt-8">
+  <div className="mt-8 flex flex-wrap justify-center items-center gap-2">
     {/* Previous Button */}
     <button
       onClick={() => currentPage > 1 && handlePageChange(currentPage - 1)}
       disabled={currentPage === 1}
-      className={`px-3 py-2 rounded-full border flex items-center justify-center ${
+      className={`flex h-10 w-10 items-center justify-center rounded-full border transition-all duration-300 ${
         currentPage === 1
           ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
-          : 'bg-white text-gulf-dark hover:bg-gulf-light'
-      } transition-colors`}
+          : 'bg-white text-gulf-dark hover:border-gulf-primary/30 hover:bg-gulf-secondary/35 hover:text-gulf-primary'
+      }`}
     >
       {language === 'ar' ? <ArrowRight className="w-4 h-4" /> : <ArrowLeft className="w-4 h-4" />}
     </button>
@@ -259,11 +278,11 @@ onClick={() => setSelectedCountry(t('projects.allCountries'))}                  
       <button
         key={index + 1}
         onClick={() => handlePageChange(index + 1)}
-        className={`px-4 py-2 rounded-full border ${
+        className={`h-10 min-w-10 rounded-full border px-3 text-sm font-semibold transition-all duration-300 ${
           currentPage === index + 1
-            ? 'bg-gulf-primary text-white'
-            : 'bg-white text-gulf-dark hover:bg-gulf-light'
-        } transition-colors`}
+            ? 'bg-gulf-primary text-white border-gulf-primary shadow-sm shadow-gulf-primary/15'
+            : 'bg-white text-gulf-dark hover:border-gulf-primary/30 hover:bg-gulf-secondary/35 hover:text-gulf-primary'
+        }`}
       >
         {index + 1}
       </button>
@@ -273,11 +292,11 @@ onClick={() => setSelectedCountry(t('projects.allCountries'))}                  
     <button
       onClick={() => currentPage < totalPages && handlePageChange(currentPage + 1)}
       disabled={currentPage === totalPages}
-      className={`px-3 py-2 rounded-full border flex items-center justify-center ${
+      className={`flex h-10 w-10 items-center justify-center rounded-full border transition-all duration-300 ${
         currentPage === totalPages
           ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
-          : 'bg-white text-gulf-dark hover:bg-gulf-light'
-      } transition-colors`}
+          : 'bg-white text-gulf-dark hover:border-gulf-primary/30 hover:bg-gulf-secondary/35 hover:text-gulf-primary'
+      }`}
     >
       {language === 'ar' ? <ArrowLeft className="w-4 h-4" /> : <ArrowRight className="w-4 h-4" />}
     </button>

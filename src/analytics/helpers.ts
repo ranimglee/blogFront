@@ -1,12 +1,18 @@
-// analytics/helpers.ts
 export function extractPageInfo(path: string) {
+
+  // DO NOT TRACK DETAIL PAGES HERE
+  // They are tracked manually with real Mongo IDs
+
   if (path.startsWith("/article/")) {
-    return { category: "ARTICLE", pageId: path.split("/")[2] };
+    return null;
   }
 
   if (path.startsWith("/projects/")) {
-    return { category: "PROJECT", pageId: path.split("/")[2] };
+    return null;
   }
 
-  return { category: "PAGE", pageId: null };
+  return {
+    category: "PAGE",
+    pageId: null,
+  };
 }

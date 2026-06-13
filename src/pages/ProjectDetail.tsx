@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { useLanguage } from '../contexts/LanguageContext';
 import { Calendar, MapPin, ArrowLeft } from 'lucide-react';
 import axios from 'axios';
+import { trackEvent } from '@/analytics/events';
 
 const ProjectDetail = () => {
   const { slug } = useParams<{ slug?: string }>();
@@ -13,6 +14,21 @@ const ProjectDetail = () => {
   const [project, setProject] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const DEFAULT_IMAGE = '/images/no-content.jpg';
+const trackedRef = useRef(false);
+
+useEffect(() => {
+  if (!project || trackedRef.current) return;
+
+  trackedRef.current = true;
+
+  trackEvent("PAGE_VIEW", {
+    path: window.location.pathname,
+    pageId: project.id,
+    category: "PROJECT",
+    referrer: document.referrer,
+  });
+}, [project]);
 
  useEffect(() => {
   const fetchProject = async () => {
@@ -124,52 +140,121 @@ const ProjectDetail = () => {
     <div className="min-h-screen bg-gulf-white">
       <Header />
       <main className="pt-20">
-        <section className="py-12 bg-gradient-to-br from-gulf-secondary/30 to-gulf-white">
+        <section className="py-12 sm:py-16 bg-gradient-to-br from-gulf-secondary/30 via-gulf-white to-gulf-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <Link to="/projects" className="inline-flex items-center text-gulf-primary hover:text-gulf-coral mb-8">
+            <Link to="/projects" className="mb-8 inline-flex max-w-full items-center gap-2 text-sm font-medium text-gulf-primary transition-all duration-300 hover:text-gulf-coral">
               <ArrowLeft className="w-4 h-4 mr-2" />
-              {t('backToProjects')}
+              <span>{t('backToProjects')}</span>
+              <span className="text-gulf-dark/35">/</span>
+              <span className="truncate text-gulf-dark/70">{project.title}</span>
             </Link>
 
-            <div className="max-w-4xl mx-auto">
-              <h1 className="text-4xl md:text-5xl font-bold text-gulf-dark mb-6">{project.title}</h1>
+            <div className="mx-auto max-w-5xl">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-gulf-dark mb-6">{project.title}</h1>
 
-              <div className="flex flex-wrap items-center gap-6 text-gulf-dark/70 mb-8">
-                <div className="flex items-center">
-                  <Calendar className="w-4 h-4 mr-2" />
+              <div className="flex flex-wrap items-center gap-3 text-gulf-dark/70 mb-8">
+                <div className="inline-flex items-center rounded-full bg-white px-3 py-1.5 shadow-sm ring-1 ring-gulf-light/80">
+                  <Calendar className="w-4 h-4 mr-2 text-gulf-primary" />
                   <span>{new Date(project.date).toLocaleDateString()}</span>
                 </div>
-                <div className="flex items-center">
-                  <MapPin className="w-4 h-4 mr-2" />
+                <div className="inline-flex items-center rounded-full bg-white px-3 py-1.5 shadow-sm ring-1 ring-gulf-light/80">
+                  <MapPin className="w-4 h-4 mr-2 text-gulf-primary" />
                   <span>{project.location}</span>
                 </div>
               </div>
 
-              <img
-                src={project.image}
-                alt={project.title}
-                className="w-full h-64 md:h-96 object-cover rounded-2xl shadow-lg mb-8"
-              />
-
-              <div className="prose prose-lg max-w-none text-gulf-dark/90 leading-relaxed break-words">
-                <div dangerouslySetInnerHTML={{ __html: project.content }} />
+              <div className="relative mb-10 overflow-hidden rounded-2xl shadow-2xl shadow-gulf-dark/10">
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="w-full h-72 md:h-[28rem] object-cover"
+                  onError={(e) => { e.currentTarget.src = DEFAULT_IMAGE; }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-gulf-dark/25 via-transparent to-transparent" />
               </div>
+            </div>
 
-              {/* Tags */}
-              {project.tags?.length > 0 && (
-                <div className="mt-12 pt-8 border-t border-gulf-light">
-                  <div className="flex items-center flex-wrap gap-2">
-                    {project.tags.map((tag: string) => (
-                      <span
-                        key={tag}
-                        className="bg-gulf-secondary/30 text-gulf-dark px-3 py-1 rounded-full text-sm break-words"
-                      >
-                        {tag}
-                      </span>
-                    ))}
+            <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_22rem] lg:items-start">
+              <article className="mx-auto w-full max-w-4xl">
+                <div className="prose prose-lg max-w-none text-gulf-dark/90 leading-8 break-words prose-p:my-6 prose-p:leading-8 prose-headings:text-gulf-dark prose-a:text-gulf-primary hover:prose-a:text-gulf-coral">
+                  <div dangerouslySetInnerHTML={{ __html: project.content }} />
+                </div>
+
+                {/* Tags */}
+                {project.tags?.length > 0 && (
+                  <div className="mt-12 pt-8 border-t border-gulf-light">
+                    <div className="flex items-center flex-wrap gap-2">
+                      {project.tags.map((tag: string) => (
+                        <span
+                          key={tag}
+                          className="rounded-full border border-gulf-primary/10 bg-gulf-secondary/30 px-3 py-1 text-sm text-gulf-dark transition-all duration-300 hover:bg-gulf-primary hover:text-white break-words"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </article>
+
+              <aside className="space-y-6 lg:sticky lg:top-28">
+                <div className="rounded-2xl border border-gulf-light/80 bg-white p-5 shadow-xl shadow-gulf-dark/5">
+                  <h2 className="mb-5 border-b border-gulf-light/70 pb-4 text-xl font-bold text-gulf-dark">{t('projects.title')}</h2>
+                  <div className="space-y-3">
+                    <div className="flex items-start gap-3 rounded-xl bg-gulf-secondary/25 p-3">
+                      <MapPin className="mt-0.5 h-4 w-4 text-gulf-primary" />
+                      <div>
+                        <p className="text-sm font-medium text-gulf-dark">{project.location}</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-3 rounded-xl bg-gulf-secondary/25 p-3">
+                      <Calendar className="mt-0.5 h-4 w-4 text-gulf-primary" />
+                      <div>
+                        <p className="text-sm font-medium text-gulf-dark">{new Date(project.date).toLocaleDateString()}</p>
+                      </div>
+                    </div>
+                    {project.tags?.length > 0 && (
+                      <div className="flex flex-wrap gap-2 pt-2">
+                        {project.tags.map((tag: string) => (
+                          <span key={tag} className="rounded-full bg-gulf-secondary/40 px-3 py-1 text-xs font-medium text-gulf-dark/75">
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    )}
                   </div>
                 </div>
-              )}
+
+                <div className="rounded-2xl border border-gulf-light/80 bg-white p-5 shadow-xl shadow-gulf-dark/5">
+                  <h2 className="mb-5 border-b border-gulf-light/70 pb-4 text-xl font-bold text-gulf-dark">{t('projects.viewAll')}</h2>
+                  <Link
+                    to={`/projects/${project.slug}`}
+                    className="group flex gap-3 rounded-xl border border-transparent p-2 transition-all duration-300 hover:border-gulf-primary/15 hover:bg-gulf-secondary/20 hover:shadow-md"
+                  >
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="h-20 w-24 shrink-0 rounded-lg object-cover"
+                      onError={(e) => { e.currentTarget.src = DEFAULT_IMAGE; }}
+                    />
+                    <div className="min-w-0">
+                      <h3 className="line-clamp-2 text-sm font-bold leading-6 text-gulf-dark transition-colors duration-300 group-hover:text-gulf-primary">
+                        {project.title}
+                      </h3>
+                      <div className="mt-2 flex flex-wrap gap-x-3 gap-y-1 text-xs text-gulf-dark/60">
+                        <span className="inline-flex items-center"><Calendar className="mr-1 h-3.5 w-3.5" />{project.date}</span>
+                        <span className="inline-flex items-center"><MapPin className="mr-1 h-3.5 w-3.5" />{project.location}</span>
+                      </div>
+                    </div>
+                  </Link>
+                  <Link
+                    to="/projects"
+                    className="mt-5 inline-flex w-full items-center justify-center rounded-xl bg-gulf-primary px-4 py-3 text-sm font-semibold text-white shadow-lg shadow-gulf-primary/15 transition-all duration-300 hover:-translate-y-0.5 hover:bg-gulf-primary/90"
+                  >
+                    {t('projects.viewAll')}
+                  </Link>
+                </div>
+              </aside>
             </div>
           </div>
         </section>

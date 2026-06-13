@@ -15,13 +15,14 @@ function hasAnalyticsConsent(): boolean {
 
 export function trackEvent(
   event: string,
-  data: {
-    path: string;
-    referrer?: string;
-    pageId?: string;
-    category?: string;
-    userAgent?: string; 
-  }
+data: {
+  path: string;
+  referrer?: string;
+  pageId?: string;
+  slug?: string;
+  category?: string;
+  userAgent?: string;
+}
 ) {
   if (!hasAnalyticsConsent()) return;
 
@@ -42,6 +43,7 @@ export function trackEvent(
     path: data.path,
     referrer: data.referrer,
     pageId: data.pageId,
+    slug: data.slug,
     category: data.category,   
     userAgent: data.userAgent || navigator.userAgent, 
   },

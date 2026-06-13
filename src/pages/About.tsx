@@ -27,7 +27,6 @@ const fadeUp = {
   hidden: { opacity: 0, y: 24 },
   visible: { opacity: 1, y: 0 },
 };
-
 const stagger = {
   visible: {
     transition: {
@@ -40,6 +39,7 @@ const About = () => {
   const { t, language } = useLanguage();
   const navigate = useNavigate();
   const isRtl = language === 'ar';
+const [activeOffer, setActiveOffer] = React.useState(0);
 
   const handleContactClick = () => {
     navigate('/contact');
@@ -61,18 +61,8 @@ const About = () => {
     { icon: Globe2, title: t('about.offer.news'), description: t('about.offer.newsDesc') },
   ];
 
-  const journeyItems = [
-    { icon: Zap, title: t('about.vision.title'), description: t('about.vision.text') },
-    { icon: Target, title: t('about.mission.title'), description: t('about.mission.text') },
-    { icon: Globe2, title: t('about.scope.title'), description: t('about.scope.text') },
-    { icon: Sparkles, title: t('about.team.experience'), description: t('about.team.mission') },
-  ];
 
-  const teamCards = [
-    { icon: Heart, title: t('about.vision.title'), description: t('about.vision.text') },
-    { icon: Target, title: t('about.mission.title'), description: t('about.team.mission') },
-    { icon: Users, title: t('about.team.title'), description: t('about.team.text') },
-  ];
+
 
   const contactItems = [
     { icon: Lightbulb, text: t('about.contact.suggest') },
@@ -257,115 +247,107 @@ const About = () => {
           </div>
         </section>
 
-        <section className="relative bg-white py-16 sm:py-20 lg:py-24">
-          <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-            <motion.div
-              className="mx-auto max-w-3xl text-center"
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.35 }}
-              variants={fadeUp}
+      <section className="relative bg-white py-16 sm:py-20 lg:py-24">
+  <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+
+    {/* Title */}
+    <motion.div
+      className="mx-auto max-w-3xl text-center"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.35 }}
+      variants={fadeUp}
+    >
+      <div className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-gulf-coral text-white shadow-lg shadow-gulf-coral/20">
+        <BookOpen className="h-7 w-7" />
+      </div>
+
+      <h2 className="text-3xl font-bold text-gulf-dark sm:text-4xl">
+        {t('about.offer.title')}
+      </h2>
+    </motion.div>
+
+    {/* Split layout */}
+    <div className="mt-14 grid gap-10 lg:grid-cols-2">
+
+      {/* LEFT SIDE - LIST */}
+      <div className="space-y-3">
+        {offerCards.map((item, index) => {
+          const Icon = item.icon;
+          const isActive = activeOffer === index;
+
+          return (
+            <motion.button
+              key={item.title}
+              onClick={() => setActiveOffer(index)}
+              className={`w-full flex items-center gap-4 rounded-2xl border p-4 text-left transition-all duration-300
+                ${isActive
+                  ? 'bg-gulf-primary text-white shadow-lg'
+                  : 'bg-white hover:bg-gulf-secondary/30 border-gulf-light'
+                }`}
+              whileHover={{ x: 6 }}
+              transition={{ type: 'spring', stiffness: 260, damping: 22 }}
             >
-              <div className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-gulf-coral text-white shadow-lg shadow-gulf-coral/20">
-                <BookOpen className="h-7 w-7" />
+              <div
+                className={`flex h-10 w-10 items-center justify-center rounded-xl shrink-0
+                ${isActive ? 'bg-white/20' : 'bg-gulf-primary/10 text-gulf-primary'}`}
+              >
+                <Icon className="h-5 w-5" />
               </div>
-              <h2 className="text-3xl font-bold text-gulf-dark sm:text-4xl">
-                {t('about.offer.title')}
-              </h2>
-            </motion.div>
 
-            <motion.div
-              className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-5"
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.2 }}
-              variants={stagger}
-            >
-              {offerCards.map((card) => {
-                const Icon = card.icon;
+              <span className="font-medium">
+                {item.title}
+              </span>
+            </motion.button>
+          );
+        })}
+      </div>
 
-                return (
-                  <motion.article
-                    key={card.title}
-                    className="group rounded-2xl border border-gulf-light bg-gradient-to-br from-white to-gulf-secondary/25 p-5 shadow-sm transition-shadow duration-300 hover:shadow-xl hover:shadow-gulf-dark/10"
-                    variants={fadeUp}
-                    whileHover={{ y: -6 }}
-                    transition={{ type: 'spring', stiffness: 260, damping: 22 }}
-                  >
-                    <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-gulf-primary/10 text-gulf-primary transition-transform duration-300 group-hover:scale-105">
-                      <Icon className="h-6 w-6" />
-                    </div>
-                    <h3 className="text-lg font-bold leading-7 text-gulf-dark">
-                      {card.title}
-                    </h3>
-                    <p className="mt-3 text-sm leading-7 text-gulf-dark/65">
-                      {card.description}
-                    </p>
-                  </motion.article>
-                );
-              })}
-            </motion.div>
-          </div>
-        </section>
+      {/* RIGHT SIDE - DETAILS */}
+      <motion.div
+        key={activeOffer}
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.35 }}
+        className="rounded-2xl border border-gulf-light bg-gradient-to-br from-white to-gulf-secondary/20 p-8 shadow-xl"
+      >
+        {(() => {
+          const item = offerCards[activeOffer];
+          const Icon = item.icon;
 
-        <section className="bg-gradient-to-br from-gulf-secondary/20 via-white to-gulf-primary/5 py-16 sm:py-20 lg:py-24">
-          <div className="container mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-            <motion.div
-              className="mx-auto mb-12 max-w-3xl text-center"
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.35 }}
-              variants={fadeUp}
-            >
-              <h2 className="text-3xl font-bold text-gulf-dark sm:text-4xl">
-                {t('about.journey.title')}
-              </h2>
-            </motion.div>
+          return (
+            <div>
+              <div className="flex items-center gap-4 mb-6">
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gulf-primary/10 text-gulf-primary">
+                  <Icon className="h-6 w-6" />
+                </div>
 
-            <div className="relative">
-              <div className="absolute bottom-0 start-6 top-0 w-px bg-gradient-to-b from-gulf-primary/10 via-gulf-primary/30 to-gulf-gold/20 md:start-1/2" />
+                <h3 className="text-xl font-bold text-gulf-dark">
+                  {item.title}
+                </h3>
+              </div>
 
-              <div className="space-y-8">
-                {journeyItems.map((item, index) => {
-                  const Icon = item.icon;
-                  const alignEnd = index % 2 === 1;
+              <p className="text-base leading-8 text-gulf-dark/75">
+                {item.description}
+              </p>
 
-                  return (
-                    <motion.div
-                      key={item.title}
-                      className={`relative grid gap-5 ps-16 md:grid-cols-2 md:ps-0 ${
-                        alignEnd ? '' : 'md:[&>article]:col-start-1'
-                      }`}
-                      initial={{ opacity: 0, y: 24 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true, amount: 0.3 }}
-                      transition={{ duration: 0.55, ease: 'easeOut', delay: index * 0.05 }}
-                    >
-                      <div className="absolute start-0 top-6 flex h-12 w-12 items-center justify-center rounded-2xl bg-gulf-primary text-white shadow-lg shadow-gulf-primary/20 md:start-1/2 md:-translate-x-1/2 rtl:md:translate-x-1/2">
-                        <Icon className="h-5 w-5" />
-                      </div>
-
-                      <motion.article
-                        className={`rounded-2xl border border-gulf-light bg-white p-6 shadow-sm hover:shadow-xl hover:shadow-gulf-dark/10 ${
-                          alignEnd ? 'md:col-start-2' : ''
-                        }`}
-                        whileHover={{ y: -5 }}
-                        transition={{ type: 'spring', stiffness: 260, damping: 22 }}
-                      >
-                        <h3 className="text-xl font-bold text-gulf-dark">
-                          {item.title}
-                        </h3>
-                        <p className="mt-3 text-sm leading-7 text-gulf-dark/70">
-                          {item.description}
-                        </p>
-                      </motion.article>
-                    </motion.div>
-                  );
-                })}
+              <div className="mt-8 h-1 w-full rounded-full bg-gulf-secondary/40 overflow-hidden">
+                <motion.div
+                  className="h-full bg-gulf-primary"
+                  initial={{ width: 0 }}
+                  animate={{ width: '100%' }}
+                  transition={{ duration: 0.4 }}
+                />
               </div>
             </div>
-          </div>
-        </section>
+          );
+        })()}
+      </motion.div>
+
+    </div>
+  </div>
+</section>
+
 
         <section className="bg-white py-16 sm:py-20 lg:py-24">
           <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
@@ -385,9 +367,7 @@ const About = () => {
                     <h2 className="text-3xl font-bold text-gulf-primary">
                       {t('about.team.title')}
                     </h2>
-                    <p className="mt-1 text-sm font-medium text-gulf-dark/60">
-                      {t('about.team.experience')}
-                    </p>
+                  
                   </div>
                 </div>
               </div>
@@ -396,35 +376,7 @@ const About = () => {
                 {t('about.team.text')}
               </p>
 
-              <motion.div
-                className="mt-8 grid gap-5 md:grid-cols-3"
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.25 }}
-                variants={stagger}
-              >
-                {teamCards.map((card) => {
-                  const Icon = card.icon;
-
-                  return (
-                    <motion.article
-                      key={card.title}
-                      className="rounded-2xl border border-white bg-white/85 p-5 shadow-sm backdrop-blur-sm"
-                      variants={fadeUp}
-                      whileHover={{ y: -5 }}
-                      transition={{ type: 'spring', stiffness: 260, damping: 22 }}
-                    >
-                      <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-gulf-primary/10 text-gulf-primary">
-                        <Icon className="h-5 w-5" />
-                      </div>
-                      <h3 className="font-bold text-gulf-dark">{card.title}</h3>
-                      <p className="mt-3 text-sm leading-7 text-gulf-dark/65">
-                        {card.description}
-                      </p>
-                    </motion.article>
-                  );
-                })}
-              </motion.div>
+            
             </motion.div>
           </div>
         </section>

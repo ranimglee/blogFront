@@ -34,15 +34,16 @@ function AnalyticsTracker() {
   const timeout = setTimeout(() => {
     const path = location.pathname;
 
-    const { category, pageId } = extractPageInfo(path);
+    const info = extractPageInfo(path);
 
-    trackEvent("PAGE_VIEW", {
-      path,
-      referrer: prevPathRef.current || document.referrer,
-      pageId,
-      category
+if (!info) return;
 
-    });
+   trackEvent("PAGE_VIEW", {
+  path,
+  referrer: prevPathRef.current || document.referrer,
+  pageId: info.pageId,
+  category: info.category,
+});
 
     prevPathRef.current = path;
   }, 150);
