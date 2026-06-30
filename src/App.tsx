@@ -24,32 +24,94 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import Sitemap from "./pages/Sitemap";
 import TermsOfUse from "./pages/TermsOfUse";
 import { extractPageInfo } from "./analytics/helpers";
-
 const queryClient = new QueryClient();
+
+declare global {
+  interface Window {
+    fbq?: (...args: any[]) => void;
+    _fbq?: any;
+  }
+}
 
 function AnalyticsTracker() {
   const location = useLocation();
   const prevPathRef = useRef<string | null>(null);
- useEffect(() => {
-  const timeout = setTimeout(() => {
-    const path = location.pathname;
+  const initializedRef = useRef(false);
 
-    const info = extractPageInfo(path);
+  // Init Pixel once
+  useEffect(() => {
+    if (window.fbq) return;
 
-if (!info) return;
+    (function (
+      f: any,
+      b: Document,
+      e: string,
+      v: string,
+      n?: any,
+      t?: HTMLScriptElement,
+      s?: HTMLScriptElement
+    ) {
+      if (f.fbq) return;
 
-   trackEvent("PAGE_VIEW", {
-  path,
-  referrer: prevPathRef.current || document.referrer,
-  pageId: info.pageId,
-  category: info.category,
-});
+      n = f.fbq = function () {
+        n.callMethod
+          ? n.callMethod.apply(n, arguments)
+          : n.queue.push(arguments);
+      };
 
-    prevPathRef.current = path;
-  }, 150);
+      if (!f._fbq) f._fbq = n;
 
-  return () => clearTimeout(timeout);
-}, [location.pathname]);
+      n.push = n;
+      n.loaded = true;
+      n.version = "2.0";
+      n.queue = [];
+
+      t = b.createElement(e) as HTMLScriptElement;
+      t.async = true;
+      t.src = v;
+
+      s = b.getElementsByTagName(e)[0] as HTMLScriptElement;
+      s.parentNode?.insertBefore(t, s);
+    })(
+      window,
+      document,
+      "script",
+      "https://connect.facebook.net/en_US/fbevents.js"
+    );
+
+    window.fbq("init", "1528743942036772");
+
+    // ✅ IMPORTANT: first PageView
+    window.fbq("track", "PageView");
+
+    initializedRef.current = true;
+  }, []);
+
+  // Track route changes
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      const path = location.pathname;
+      const info = extractPageInfo(path);
+
+      // Avoid double firing on first render
+      if (initializedRef.current) {
+        window.fbq?.("track", "PageView");
+      }
+
+      if (info) {
+        trackEvent("PAGE_VIEW", {
+          path,
+          referrer: prevPathRef.current || document.referrer,
+          pageId: info.pageId,
+          category: info.category,
+        });
+      }
+
+      prevPathRef.current = path;
+    }, 150);
+
+    return () => clearTimeout(timeout);
+  }, [location.pathname]);
 
   return null;
 }
