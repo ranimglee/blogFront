@@ -16,6 +16,31 @@ const ProjectDetail = () => {
   const [error, setError] = useState<string | null>(null);
   const DEFAULT_IMAGE = '/images/no-content.jpg';
 const trackedRef = useRef(false);
+const trackedProjectId = useRef<string | null>(null);
+
+useEffect(() => {
+  if (!project) return;
+
+  if (trackedProjectId.current === project.id) return;
+
+  trackedProjectId.current = project.id;
+
+  // Your analytics
+  trackEvent("PAGE_VIEW", {
+    path: window.location.pathname,
+    pageId: project.id,
+    category: "project",
+    referrer: document.referrer,
+  });
+
+  // Meta Pixel
+  window.fbq?.("track", "ViewContent", {
+    content_name: project.title,
+    content_category: "project",
+    content_id: project.id,
+  });
+}, [project]);
+
 
 useEffect(() => {
   if (!project || trackedRef.current) return;

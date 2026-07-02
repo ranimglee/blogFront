@@ -80,6 +80,12 @@ const handleSubscribe = async () => {
 
 
     setStatus({ type: 'success', message: t('footer.successMessage') });
+
+// Meta Pixel
+window.fbq?.("track", "Lead", {
+  content_name: "Newsletter Subscription",
+});
+
     setEmail('');
   } catch (err) {
     setStatus({ type: 'error', message: t('footer.errorMessage') });

@@ -66,6 +66,10 @@ const handleSubscribe = async (event: React.FormEvent) => {
       message: t('footer.successMessage'),
     });
 
+// Meta Pixel
+window.fbq?.("track", "Lead", {
+  content_name: "Newsletter Subscription",
+});
     setEmail('');
   } catch (error) {
     setStatus({

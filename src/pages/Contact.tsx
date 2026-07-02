@@ -27,6 +27,11 @@ const Contact = () => {
     setLoading(true);
     try {
       await axios.post(`${import.meta.env.VITE_API_BASE_URL}/public/send-message`, formData);
+      // Meta Pixel
+window.fbq?.("track", "Contact");
+
+// Optional: if a contact message is considered a lead
+window.fbq?.("track", "Lead");
       toast.success(t('contact.successMessage') || 'Message sent successfully!');
       setFormData({ fullName: '', email: '', subject: '', message: '' });
     } catch (error) {

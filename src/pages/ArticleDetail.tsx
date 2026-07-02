@@ -49,18 +49,29 @@ const calculateReadTime = (htmlContent: string) => {
   return Math.max(1, Math.ceil(words / wordsPerMinute));
 };
 
-const trackedRef = useRef(false);
+
+const trackedArticleId = useRef<string | null>(null);
 
 useEffect(() => {
-  if (!article || trackedRef.current) return;
+  if (!article) return;
 
-  trackedRef.current = true;
+  if (trackedArticleId.current === article.id) return;
 
+  trackedArticleId.current = article.id;
+
+  // Your analytics
   trackEvent("PAGE_VIEW", {
     path: window.location.pathname,
     pageId: article.id,
     category: "ARTICLE",
     referrer: document.referrer,
+  });
+
+  // Meta Pixel
+  window.fbq?.("track", "ViewContent", {
+    content_name: article.title,
+    content_category: "Article",
+    content_id: article.id,
   });
 }, [article]);
 

@@ -12,7 +12,7 @@ import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Document, Page, pdfjs } from 'react-pdf';
 import { NationalSubCategory, Resource, ResourceCategory, ResourceSubCategory } from '@/types/types';
-
+import { trackEvent } from '@/analytics/events';
 pdfjs.GlobalWorkerOptions.workerSrc =
   `https://cdn.jsdelivr.net/npm/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
 
@@ -244,37 +244,63 @@ const filteredResources = resources.filter((r) => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const handleDownload = async (id: string, fileName: string) => {
-    if (!isAuthenticated) {
-      toast.warning(t('auth.loginRequiredDownload'));
-      return;
-    }
+  const handleDownload = async (resource: Resource, fileName: string) => {
+  if (!isAuthenticated) {
+    toast.warning(t("auth.loginRequiredDownload"));
+    return;
+  }
 
-    setDownloadingId(id);
+  setDownloadingId(resource.id);
 
-    try {
-      const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/ressources/download/${id}`, {
-        responseType: 'blob',
-        headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
-      });
+  try {
+    const response = await axios.get(
+      `${import.meta.env.VITE_API_BASE_URL}/ressources/download/${resource.id}`,
+      {
+        responseType: "blob",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      }
+    );
 
-      const blob = new Blob([response.data], { type: response.headers['content-type'] });
-      const link = document.createElement('a');
-      link.href = URL.createObjectURL(blob);
-      link.setAttribute('download', fileName);
-      document.body.appendChild(link);
-      link.click();
-      link.remove();
-      URL.revokeObjectURL(link.href);
+    const blob = new Blob([response.data], {
+      type:
+        response.headers["content-type"]?.toString() ??
+        "application/octet-stream",
+    });
 
-      toast.success(t('resources.download_success') || 'Téléchargement terminé.');
-    } catch (err) {
-      console.error(err);
-      toast.error(t('resources.download_error') || 'Échec du téléchargement.');
-    } finally {
-      setDownloadingId(null);
-    }
-  };
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.setAttribute("download", fileName);
+
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+
+    URL.revokeObjectURL(link.href);
+
+    // Meta Pixel
+    window.fbq?.("trackCustom", "ResourceDownload", {
+      resource_id: resource.id,
+      resource_title: resource.title,
+      resource_type: resource.type,
+      resource_category: resource.category,
+      resource_subcategory: resource.subCategory,
+      file_name: fileName,
+    });
+
+    toast.success(
+      t("resources.download_success") || "Téléchargement terminé."
+    );
+  } catch (err) {
+    console.error(err);
+    toast.error(
+      t("resources.download_error") || "Échec du téléchargement."
+    );
+  } finally {
+    setDownloadingId(null);
+  }
+};
 
   const handlePreview = async (resource: Resource) => {
     try {
@@ -527,7 +553,7 @@ className={`px-4 py-1.5 rounded-full text-sm transition-all duration-200
 <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 w-full sm:w-auto">
                         
                           <button
-                            onClick={() => handleDownload(resource.id || '', fileName)}
+                           onClick={() => handleDownload(resource, fileName)}
 
   className="flex items-center justify-center gap-2
   bg-gulf-primary hover:bg-gulf-primary/90

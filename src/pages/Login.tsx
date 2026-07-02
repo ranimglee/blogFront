@@ -111,6 +111,9 @@ navigate('/');
           captchaToken,
 
         });
+        window.fbq?.("track", "CompleteRegistration", {
+  content_name: "User Registration",
+});
         toast.success(t('register.success'));
         setCaptchaToken('');
         setTurnstileKey(prev => prev + 1);
